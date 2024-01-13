@@ -9,6 +9,7 @@ export default function Signup() {
               <form method="POST" action="{{ route('register') }}">
                 @csrf
 
+
                 <div className="row mb-3">
                   <label htmlFor="name" className="col-md-4 col-form-label text-md-end">{{__('Name')}}</label>
 
