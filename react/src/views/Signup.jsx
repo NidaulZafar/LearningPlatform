@@ -8,6 +8,7 @@ export default function Signup() {
 
 
 
+
               <div className="card-body">
                 <form method="POST" action="{{ route('register') }}">
                   @csrf
