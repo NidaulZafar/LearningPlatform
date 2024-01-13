@@ -4,7 +4,7 @@ export default function Signup() {
         <div className="row justify-content-center">
           <div className="col-md-8">
             <div className="card">
-              <div className="card-header">{{__('Register')}}</div>
+              <div className="card-header">Register</div>
 
 
 
