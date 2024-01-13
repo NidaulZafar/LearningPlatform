@@ -22,8 +22,8 @@ export const ContextProvider = ({children}) => {
   }
   return (
     <StateContext.Provider value={{
-      user: null,
-      token: null,
+      user,
+      token,
       setUser,
       setToken,
     }}>
