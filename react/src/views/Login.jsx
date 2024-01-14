@@ -1,7 +1,9 @@
+import {Link} from "react-router-dom";
+
 export default function Login() {
 
 
-  const onsubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault()
   }
   return (
@@ -9,9 +11,9 @@ export default function Login() {
       <div className="row justify-content-center">
         <div className="col-md-8">
           <div className="card">
-            <div className="card-header">Login</div>
+            <h2 className="">Log into your account</h2>
             <div className="card-body">
-              <form method="POST" onSubmit={onsubmit}>
+              <form method="POST" onSubmit={onSubmit}>
                 <div className="row mb-3">
                   <label htmlFor="email"
                          className="col-md-4 col-form-label text-md-end">Email</label>
@@ -54,6 +56,9 @@ export default function Login() {
                     <button type="submit" className="btn btn-primary">
                       Login
                     </button>
+                    <p className="mt-3">
+                      Don't have an account? <Link to="/signup">Signup</Link>
+                    </p>
                   </div>
                 </div>
               </form>

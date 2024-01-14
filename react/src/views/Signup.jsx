@@ -1,14 +1,15 @@
+import {Link} from "react-router-dom";
+
 export default function Signup() {
 
   const onsubmit = (e) => {
     e.preventDefault()
   }
-  return (
-    <div className="container">
+  return (<div className="container">
       <div className="row justify-content-center">
         <div className="col-md-8">
           <div className="card">
-            <div className="card-header">Signup</div>
+            <h2 className="">Signup for a new account</h2>
             <div className="card-body">
               <form method="POST" onSubmit={onsubmit}>
                 <div className="row mb-3">
@@ -79,6 +80,9 @@ export default function Signup() {
                     <button type="submit" className="btn btn-primary">
                       Signup
                     </button>
+                    <p className="mt-3">
+                      Already have an account? <Link to="/login">Login</Link>
+                    </p>
                   </div>
                 </div>
               </form>
@@ -86,6 +90,5 @@ export default function Signup() {
           </div>
         </div>
       </div>
-    </div>
-  )
+    </div>)
 }
