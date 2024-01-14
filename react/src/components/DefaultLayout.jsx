@@ -1,9 +1,8 @@
-import {Navigate, Outlet} from "react-router-dom";
+import {Link, Navigate, Outlet} from "react-router-dom";
 import {useStateContext} from "../contexts/ContextProvider.jsx";
 
 export default function DefaultLayout() {
   const {user, token} = useStateContext()
-  debugger;
 
   if (!token) {
     return <Navigate to="/login"/>
@@ -11,8 +10,23 @@ export default function DefaultLayout() {
 
 
   return (
-    <div>
-      <Outlet/>
+    <div id="">
+      <aside>
+        <Link to="/dashboard">Dashboard</Link>
+        <br/>
+        <Link to="/courses">Courses</Link>
+      </aside>
+      <header>
+        <div>
+          Header
+        </div>
+        <div>
+          {user.name}
+        </div>
+        <main>
+          <Outlet/>
+        </main>
+      </header>
     </div>
-  )
+)
 }
