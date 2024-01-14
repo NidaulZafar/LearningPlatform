@@ -1,5 +1,7 @@
 import {Link} from "react-router-dom";
 import {useRef} from "react";
+import axiosClient from "../axios-client.js";
+import {useStateContext} from "../contexts/ContextProvider.jsx";
 
 export default function Signup() {
 
@@ -11,6 +13,8 @@ export default function Signup() {
   const instructorRef = useRef();
   const studentRef = useRef();
 
+  const {setUser, setToken} = useStateContext()
+
   const onsubmit = (e) => {
     e.preventDefault()
     const payload = {
@@ -21,7 +25,18 @@ export default function Signup() {
       phone: phoneRef.current.value,
       type: instructorRef.current.checked ? 'instructor' : 'student',
     }
-    console.log(payload)
+    axiosClient.post('/signup', payload)
+      .then(({data}) => {
+        setUser(data.user)
+        setToken(data.token)
+      })
+      .catch((error) => {
+        const response = error.response;
+        if (response && response.status === 422) {
+          console.log(response.data.errors);
+        }
+        console.log(error)
+      })
   }
   return (<div className="container">
     <div className="row justify-content-center">
@@ -82,7 +97,7 @@ export default function Signup() {
                   <div className="form-check">
                     <label className="form-check-label" htmlFor="instructor">
                       <input className="form-check-input" type="radio" name="type" id="instructor"
-                             value="instructor" ref={instructorRef}/>
+                             value="instructor" ref={instructorRef} required/>
                       Instructor </label>
                   </div>
                   <div className="form-check">
