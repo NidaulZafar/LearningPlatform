@@ -35,7 +35,6 @@ export default function Signup() {
         if (response && response.status === 422) {
           console.log(response.data.errors);
         }
-        console.log(error)
       })
   }
   return (<div className="container">
