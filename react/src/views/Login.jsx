@@ -21,7 +21,6 @@ export default function Login() {
                   <div className="col-md-6">
                     <input id="email" type="email"
                            className="form-control" name="email"
-
                            required autoComplete="email"/>
                   </div>
                 </div>
