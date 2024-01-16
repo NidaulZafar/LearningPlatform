@@ -1,12 +1,21 @@
+
+// axios-client.js
 import axios from 'axios';
+
 
 
 const axiosClient = axios.create({
   baseURL: `${import.meta.env.VITE_API_BASE_URL}/api`,
-})
+  withCredentials: true,
+  withXSRFToken: true,
+  headers: {
+    'Content-Type': 'application/json',
+  }
+});
 
 axiosClient.interceptors.request.use((config) => {
-  const token = localStorage.get('ACCESS_TOKEN');
+
+  const token = localStorage.getItem('ACCESS_TOKEN');
   config.headers.Authorization = `Bearer ${token}`;
   return config;
 })
@@ -14,13 +23,16 @@ axiosClient.interceptors.request.use((config) => {
 axiosClient.interceptors.response.use((response) => {
   return response;
 }, (error) => {
-  const {response} = error;
-  if (response.status === 401) {
-    localStorage.removeItem('ACCESS_TOKEN');
-    window.location.href = '/login';
+  try {
+    console.log('try error', error);
+    const {response} = error;
+    if (response.status === 401) {
+      localStorage.removeItem('ACCESS_TOKEN');
+      window.location.href = '/login';
+    }
+  } catch (error) {
+    console.error("catch error", error);
   }
-
-  throw error;
 })
 
 export default axiosClient;

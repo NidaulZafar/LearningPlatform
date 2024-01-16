@@ -9,13 +9,16 @@ use App\Models\Instructor;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
-
     public function signup(SignupRequest $request)
     {
-        dd("reached signup method");
+        $headers = [
+            'Access-Control-Allow-Origin' => '*',
+        ];
+        Log::info('reached signup method');
         $data = $request->validated();
         if ($data['type'] === 'student') {
             $user = Student::create([
@@ -36,7 +39,7 @@ class AuthController extends Controller
             ], 422);
         }
         $token = $user->createToken('auth_token')->plainTextToken;
-        return response(compact('user', 'token'));
+        return response(compact('user', 'token', 'headers'));
     }
 
     public function login(LoginRequest $request)
