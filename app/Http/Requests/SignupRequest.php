@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
 
 class SignupRequest extends FormRequest
@@ -14,6 +15,7 @@ class SignupRequest extends FormRequest
      */
     public function authorize(): bool
     {
+        Log::info('reached authorize method');
         return true;
     }
 
