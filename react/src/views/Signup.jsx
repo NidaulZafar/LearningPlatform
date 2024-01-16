@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import {useRef} from "react";
+import {useEffect, useRef} from "react";
 import axiosClient from "../axios-client.js";
 import {useStateContext} from "../contexts/ContextProvider.jsx";
 
@@ -25,18 +25,21 @@ export default function Signup() {
       phone: phoneRef.current.value,
       type: instructorRef.current.checked ? 'instructor' : 'student',
     }
+
     axiosClient.post('/signup', payload)
       .then(({data}) => {
         setUser(data.user)
         setToken(data.token)
+        console.log(data);
       })
       .catch((error) => {
         const response = error.response;
         if (response && response.status === 422) {
-          console.log(response.data.errors);
+          console.log("axios post error", response.data.errors);
         }
       })
   }
+
   return (<div className="container">
     <div className="row justify-content-center">
       <div className="col-md-8">
