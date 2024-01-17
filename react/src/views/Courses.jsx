@@ -3,6 +3,11 @@ export default function Courses() {
         <div>
             Courses
           List of courses
+          <ul>
+            <li>Course 1</li>
+            <li>Course 2</li>
+            <li>Course 3</li>
+          </ul>
         </div>
     )
 }
