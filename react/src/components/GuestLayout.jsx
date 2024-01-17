@@ -9,6 +9,7 @@ export default function GuestLayout() {
 
   return (
     <div>
+      <nav>Nav Guest</nav>
       <Outlet/>
     </div>
   )
