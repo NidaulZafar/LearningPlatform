@@ -7,6 +7,7 @@ export default function Dashboard() {
         <div>
             Dashboard
           Welcome {user.name}
+          You are logged in as {user.type}
 
         </div>
     )
