@@ -7,6 +7,7 @@ How would you like to contact us?
 <li>Email</li>
 <li>Chat</li>
 </ul>
+
 </>
 )
 }
