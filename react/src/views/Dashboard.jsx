@@ -8,6 +8,8 @@ export default function Dashboard() {
             Dashboard
           Welcome {user.name}
           You are logged in as {user.type}
+        {/*  create a logout button */}
+          <a href="/logout">Logout</a>
 
         </div>
     )
