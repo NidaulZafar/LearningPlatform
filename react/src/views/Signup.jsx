@@ -13,7 +13,7 @@ export default function Signup() {
   const instructorRef = useRef();
   const studentRef = useRef();
 
-  const [errors, setErrors] = useState(null);
+  const [errors, setErrors] = useState({});
 
   const {setUser, setToken} = useStateContext()
 
@@ -27,7 +27,7 @@ export default function Signup() {
       phone: phoneRef.current.value,
       type: instructorRef.current.checked ? 'instructor' : 'student',
     }
-console.log(payload);
+    console.log(payload);
     axiosClient.post('/signup', payload)
       .then(({data}) => {
         setUser(data.user)
@@ -37,7 +37,7 @@ console.log(payload);
       .catch((error) => {
         const response = error.response
         if (response && response.status === 422) {
-          setErrors(response.data.errors)
+          setErrors(response.data.errors);
           console.log("axios post error", response.data.errors);
         }
       })
@@ -48,11 +48,13 @@ console.log(payload);
       <div className="col-md-8">
         <div className="card">
           <h2 className="">Signup for a new account</h2>
-          {errors && <div className="alert alert-danger">
-              {Object.keys(errors).map(key => (
-                <p key={key}> {errors[key][0]}</p>
-              ))}
-          </div>}
+          {Object.keys(errors).length > 0 && (<div className="alert alert-danger">
+            {Object.keys(errors).map(key => (
+              errors[key].map((error, index) => (
+                <p key={`${key}-${index}`}> {error}</p>
+              ))
+            ))}
+          </div>)}
           <div className="card-body">
             <form method="POST" onSubmit={onsubmit}>
               <div className="row mb-3">
