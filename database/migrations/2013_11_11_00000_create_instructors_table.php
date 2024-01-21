@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('type')->default('instructor');
             $table->text('bio')->nullable();
             $table->string('avatar')->nullable();
             $table->string('education')->nullable();
