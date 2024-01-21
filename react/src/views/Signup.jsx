@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import {useEffect, useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import axiosClient from "../axios-client.js";
 import {useStateContext} from "../contexts/ContextProvider.jsx";
 
@@ -13,6 +13,8 @@ export default function Signup() {
   const instructorRef = useRef();
   const studentRef = useRef();
 
+  const [errors, setErrors] = useState(null);
+
   const {setUser, setToken} = useStateContext()
 
   const onsubmit = (e) => {
@@ -25,7 +27,7 @@ export default function Signup() {
       phone: phoneRef.current.value,
       type: instructorRef.current.checked ? 'instructor' : 'student',
     }
-
+console.log(payload);
     axiosClient.post('/signup', payload)
       .then(({data}) => {
         setUser(data.user)
@@ -33,8 +35,9 @@ export default function Signup() {
         console.log(data);
       })
       .catch((error) => {
-        const response = error.response;
+        const response = error.response
         if (response && response.status === 422) {
+          setErrors(response.data.errors)
           console.log("axios post error", response.data.errors);
         }
       })
@@ -45,6 +48,11 @@ export default function Signup() {
       <div className="col-md-8">
         <div className="card">
           <h2 className="">Signup for a new account</h2>
+          {errors && <div className="alert alert-danger">
+              {Object.keys(errors).map(key => (
+                <p key={key}> {errors[key][0]}</p>
+              ))}
+          </div>}
           <div className="card-body">
             <form method="POST" onSubmit={onsubmit}>
               <div className="row mb-3">

@@ -19,17 +19,18 @@ axiosClient.interceptors.request.use((config) => {
 })
 
 axiosClient.interceptors.response.use((response) => {
+  console.log("response", response);
   return response;
 }, (error) => {
-  try {
     const {response} = error;
     if (response.status === 401) {
       localStorage.removeItem('ACCESS_TOKEN');
-      window.location.href = '/login';
+    } else if (response.status === 403) {
+      console.log("403");
+    } else if (response.status === 404) {
+      console.log("404");
     }
-  } catch (error) {
-    console.error("catch error", error);
-  }
+    throw error;
 })
 
 export default axiosClient;
