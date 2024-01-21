@@ -1,7 +1,5 @@
-
 // axios-client.js
 import axios from 'axios';
-
 
 
 const axiosClient = axios.create({
@@ -24,7 +22,6 @@ axiosClient.interceptors.response.use((response) => {
   return response;
 }, (error) => {
   try {
-    console.log('try error', error);
     const {response} = error;
     if (response.status === 401) {
       localStorage.removeItem('ACCESS_TOKEN');
