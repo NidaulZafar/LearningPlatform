@@ -19,6 +19,8 @@ export default function DefaultLayout() {
         <Link to="/dashboard">Dashboard</Link>
         <br/>
         <Link to="/courses">Courses</Link>
+        <br/>
+        <Link to="/announcements">Announcement</Link>
       </aside>
       <header>
         <div>

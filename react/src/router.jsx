@@ -6,6 +6,7 @@ import NotFound from "./views/NotFound.jsx";
 import DefaultLayout from "./components/DefaultLayout.jsx";
 import GuestLayout from "./components/GuestLayout.jsx";
 import Courses from "./views/Courses.jsx";
+import Announcements from "./views/Announcements.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/courses",
         element: <Courses/>
+      },
+      {
+        path: "/announcements",
+        element: <Announcements/>
       }
     ]
   },
@@ -38,6 +43,10 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <Signup/>
       },
+      {
+        path: "/announcements",
+        element: <Announcements/>
+      }
     ]
   },
   {
