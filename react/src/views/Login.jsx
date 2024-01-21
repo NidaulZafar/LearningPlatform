@@ -1,13 +1,40 @@
 import {Link} from "react-router-dom";
+import {useRef, useState} from "react";
+import axiosClient from "../axios-client.js";
+import {useStateContext} from "../contexts/ContextProvider.jsx";
 
 export default function Login() {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const instructorRef = useRef();
+  const studentRef = useRef();
+
+  const [errors, setErrors] = useState({});
+  const {setUser, setToken} = useStateContext()
 
 
   const onSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
+    const payload = {
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+      type: instructorRef.current.checked ? 'instructor' : 'student',
+    }
+    axiosClient.post('/signup', payload)
+      .then(({data}) => {
+        setUser(data.user)
+        setToken(data.token)
+        console.log(data);
+      })
+      .catch((error) => {
+        const response = error.response
+        if (response && response.status === 422) {
+          setErrors(response.data.errors);
+          console.log("axios post error", response.data.errors);
+        }
+      })
   }
-  return (
-    <div className="container">
+  return (<div className="container">
       <div className="row justify-content-center">
         <div className="col-md-8">
           <div className="card">
@@ -19,7 +46,7 @@ export default function Login() {
                          className="col-md-4 col-form-label text-md-end">Email</label>
 
                   <div className="col-md-6">
-                    <input id="email" type="email"
+                    <input ref={emailRef} id="email" type="email"
                            className="form-control" name="email"
                            required autoComplete="email"/>
                   </div>
@@ -29,7 +56,7 @@ export default function Login() {
                          className="col-md-4 col-form-label text-md-end">Password</label>
 
                   <div className="col-md-6">
-                    <input id="password" type="password"
+                    <input ref={passwordRef} id="password" type="password"
                            className="form-control" name="password"
                            required autoComplete="new-password"/>
                   </div>
@@ -38,15 +65,15 @@ export default function Login() {
                   <label className="col-md-4 col-form-label text-md-right">User Type</label>
                   <div className="col-md-6">
                     <div className="form-check">
-                      <input className="form-check-input" type="radio" name="type" id="instructor"
-                             value="instructor"/>
                       <label className="form-check-label" htmlFor="instructor">
+                        <input ref={instructorRef} className="form-check-input" type="radio" name="type" id="instructor"
+                               value="instructor"/>
                         Instructor </label>
                     </div>
                     <div className="form-check">
-                      <input className="form-check-input" type="radio" name="type" id="student"
-                             value="student"/>
                       <label className="form-check-label" htmlFor="student">
+                        <input ref={studentRef} className="form-check-input" type="radio" name="type" id="student"
+                               value="student"/>
                         Student </label>
                     </div>
                   </div>
@@ -66,6 +93,5 @@ export default function Login() {
           </div>
         </div>
       </div>
-    </div>
-  )
+    </div>)
 }

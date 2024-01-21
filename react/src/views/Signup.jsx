@@ -49,17 +49,13 @@ export default function Signup() {
         <div className="card">
           <h2 className="">Signup for a new account</h2>
           {Object.keys(errors).length > 0 && (<div className="alert alert-danger">
-            {Object.keys(errors).map(key => (
-              errors[key].map((error, index) => (
-                <p key={`${key}-${index}`}> {error}</p>
-              ))
-            ))}
+            {Object.keys(errors).map(key => (errors[key].map((error, index) => (
+              <p key={`${key}-${index}`}> {error}</p>))))}
           </div>)}
           <div className="card-body">
             <form method="POST" onSubmit={onsubmit}>
               <div className="row mb-3">
                 <label htmlFor="name" className="col-md-4 col-form-label text-md-end">Name</label>
-
                 <div className="col-md-6">
                   <input ref={nameRef} id="name" type="text"
                          className="form-control" name="name"
