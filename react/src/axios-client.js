@@ -28,6 +28,7 @@ axiosClient.interceptors.response.use((response) => {
     } else if (response.status === 403) {
       console.log("403");
     } else if (response.status === 404) {
+      console.log(response)
       console.log("404");
     }
     throw error;
