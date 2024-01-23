@@ -26,26 +26,41 @@ export default function DefaultLayout() {
 
 
   return (
-    <div id="">
-      <aside>
-        <Link to="/dashboard">Dashboard</Link>
-        <br/>
-        <Link to="/courses">Courses</Link>
-        <br/>
-        <Link to="/announcements">Announcement</Link>
-      </aside>
-      <header>
+    <div className="container-fluid">
+      <header className="d-flex justify-content-between align-items-center p-3 bg-light">
         <div>
-          Header
+          <h1>Header</h1>
         </div>
         <div>
           {user.name}
-          <a onClick={logout} className={"btn btn-sm btn-danger"} href="/logout">Logout</a>
+          <a onClick={logout} className="btn btn-sm btn-danger ml-2" href="/logout">
+            Logout
+          </a>
         </div>
-        <main>
+      </header>
+
+      <div className="row">
+        <aside className="col-md-2 d-none d-md-block bg-light sidebar">
+          <div className="sidebar-sticky">
+            <ul className="nav flex-column">
+              <li className="nav-item">
+                <Link to="/dashboard" className="nav-link">Dashboard</Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/courses" className="nav-link">Courses</Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/announcements" className="nav-link">Announcement</Link>
+              </li>
+            </ul>
+          </div>
+        </aside>
+
+        <main className="col-md-10 ml-sm-auto">
           <Outlet/>
         </main>
-      </header>
+      </div>
     </div>
-  )
+  );
+
 }
