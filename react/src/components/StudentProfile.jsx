@@ -13,7 +13,7 @@ const StudentProfile = () => {
   }, []);
 
   if (!student) {
-    return <div>Loading...</div>; // You can display a loader or handle loading state in your UI
+    return <div>Loading...</div>;
   }
 
   return (
