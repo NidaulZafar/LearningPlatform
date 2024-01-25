@@ -23,7 +23,6 @@
         window.csrfToken = csrfToken;
 
         // Log the CSRF token in the console
-        console.log('CSRF Token123:', window.csrfToken);
     </script>
 
 </head>
