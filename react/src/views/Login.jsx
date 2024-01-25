@@ -10,11 +10,15 @@ export default function Login() {
   const studentRef = useRef();
 
   const [errors, setErrors] = useState({});
-  const {setUser, setToken} = useStateContext()
+  const {setUser, setToken} = useStateContext();
 
 
   const onSubmit = (e) => {
     e.preventDefault();
+    if (!instructorRef.current.checked && !studentRef.current.checked) {
+      setErrors({type: ['Please select a user type']})
+      return;
+    }
     const payload = {
       email: emailRef.current.value,
       password: passwordRef.current.value,

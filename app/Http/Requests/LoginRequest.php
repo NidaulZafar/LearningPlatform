@@ -27,7 +27,7 @@ class LoginRequest extends FormRequest
             'email' => [
                 'required',
                 'email',
-                Rule::exists($this->type === 'instructor' ? 'instructors' : 'students', 'email'),
+                Rule::exists($this->input('type') === 'instructor' ? 'instructors' : 'students', 'email'),
             ],
             'password' => ['required', 'string', 'min:3'],
             'type' => ['required', Rule::in(['instructor', 'student'])],
