@@ -38,7 +38,6 @@ export default function Signup() {
         const response = error.response
         if (response && response.status === 422) {
           setErrors(response.data.errors);
-          console.log("axios post error", response.data.errors);
         }
       })
   }
