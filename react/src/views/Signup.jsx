@@ -80,7 +80,7 @@ export default function Signup() {
                    name="phone" autoComplete="phone" placeholder="Enter your Phone Number (Optional)"/>
           </div>
           <div className="form-row">
-            <label className="user-type">User Type</label>
+            <p className="user-type">User Type</p>
             <div className="user-type-options">
               <label htmlFor="instructor">
                 <input type="radio" name="type" id="instructor"

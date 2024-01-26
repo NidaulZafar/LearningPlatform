@@ -68,7 +68,7 @@ export default function Login() {
                    required autoComplete="new-password" placeholder="Enter Password"/>
           </div>
           <div className="form-row">
-            <label className="user-type">User Type</label>
+            <p className="user-type">User Type</p>
             <div className="user-type-options">
               <label htmlFor="instructor">
                 <input ref={instructorRef} className="form-check-input" type="radio" name="type" id="instructor"
