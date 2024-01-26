@@ -25,7 +25,7 @@ export default function Login() {
       password: passwordRef.current.value,
       type: instructorRef.current.checked ? 'instructor' : 'student',
     }
-    console.log(payload);
+    console.log("payload", payload);
     setErrors({});
     axiosClient.post('/login', payload)
       .then(({data}) => {
@@ -34,7 +34,7 @@ export default function Login() {
       })
       .catch((error) => {
         const response = error.response
-        if (response && response.status === 422) {
+        if (response && response.status === 422 || response.status === 401) {
           if (response.data.errors) {
             setErrors(response.data.errors);
           } else {
