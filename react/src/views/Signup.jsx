@@ -2,6 +2,7 @@ import {Link} from "react-router-dom";
 import {useEffect, useRef, useState} from "react";
 import axiosClient from "../axios-client.js";
 import {useStateContext} from "../contexts/ContextProvider.jsx";
+import img from '../assets/form-v6.jpg'
 
 export default function Signup() {
 
@@ -46,10 +47,10 @@ export default function Signup() {
     <div className="page-content">
       <div className="form-v6-content">
         <div className="form-left">
-          <img src="https://picsum.photos/seed/picsum/200/300" alt="form"/>
+          <img src={img} alt="form"/>
         </div>
         <form className="form-detail" method="POST" onSubmit={onsubmit}>
-          <h2>Signup for a new account</h2>
+          <h2>Signup</h2>
           {Object.keys(errors).length > 0 && (<div className="alert alert-danger">
             {Object.keys(errors).map(key => (errors[key].map((error, index) => (
               <p key={`${key}-${index}`}> {error}</p>))))}
