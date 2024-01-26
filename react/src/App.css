@@ -31,7 +31,7 @@ body {
   -webkit-border-radius: 8px;
   margin: 180px 0;
   font-family: 'Nunito', sans-serif;
-  color: #fff;
+  color: #333;
   font-weight: 700;
   position: relative;
   display: flex;
@@ -71,9 +71,7 @@ body {
   padding: 0px 15px 10px 15px;
   border: 2px solid transparent;
   border-bottom: 2px solid #e5e5e5;
-  appearance: unset;
   -moz-appearance: unset;
-  -webkit-appearance: unset;
   -o-appearance: unset;
   -ms-appearance: unset;
   outline: none;
@@ -184,7 +182,7 @@ input:-moz-placeholder { /* Firefox 18- */
   -moz-flex-direction: column;
   -webkit-flex-direction: column;
   margin-bottom: 35px;
-  color: #1a1a1a;
+  color: #333;
 }
 
 .user-type label {
@@ -202,7 +200,6 @@ input:-moz-placeholder { /* Firefox 18- */
   margin-right: 8px;
   appearance: none;
   -moz-appearance: none;
-  -webkit-appearance: none;
   -o-appearance: none;
   -ms-appearance: none;
   border: 2px solid #1a1a1a;
@@ -219,6 +216,7 @@ input:-moz-placeholder { /* Firefox 18- */
   -ms-align-items: center;
   -moz-align-items: center;
   -webkit-align-items: center;
+  color: #333333;
 }
 
 .user-type input:checked {
