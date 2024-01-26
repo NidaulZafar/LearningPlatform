@@ -81,12 +81,12 @@ export default function Login() {
             </div>
           </div>
           <div className="form-row-last">
-              <button type="submit" className="register">
-                Login
-              </button>
-              <p className="mt-3">
-                Don't have an account? <Link to="/signup">Signup</Link>
-              </p>
+            <button type="submit" className="register">
+              Login
+            </button>
+            <p className="mt-3">
+              Don't have an account? <Link to="/signup">Signup</Link>
+            </p>
           </div>
         </form>
       </div>
