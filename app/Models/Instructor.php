@@ -22,7 +22,8 @@ class Instructor extends Model implements Authenticatable
         'education',
         'occupation',
         'phone',
-        'type'
+        'type',
+        'password',
     ];
 
     protected $hidden = [
