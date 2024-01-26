@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import axiosClient from '../axios-client';
+import StudentSidebar from "./StudentSidebar.jsx";
 
 const StudentProfile = () => {
   const [student, setStudent] = useState(null);
@@ -18,6 +19,7 @@ const StudentProfile = () => {
 
   return (
     <div className="container mt-4">
+      <StudentSidebar />
       <h2>Student Profile</h2>
       <div className="row">
         <div className="col-md-6">
