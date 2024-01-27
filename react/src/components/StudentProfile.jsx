@@ -1,7 +1,8 @@
 // resources/js/views/StudentProfile.jsx
 
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import axiosClient from '../axios-client';
+// import './sidebar.js';
 
 const StudentProfile = () => {
   const [student, setStudent] = useState(null);
@@ -11,6 +12,7 @@ const StudentProfile = () => {
       .then(response => setStudent(response.data))
       .catch(error => console.error('Error fetching student profile:', error));
   }, []);
+
 
   if (!student) {
     return <div>Loading...</div>;
@@ -254,7 +256,7 @@ const StudentProfile = () => {
                 </div>
                 <div style={{padding: '0 10px'}}>
                 <span style={{display: 'block', marginBottom: '10px'}}>
-                >Pro sidebar is also available as a react package
+                Pro sidebar is also available as a react package
                 </span>
                   <div style={{marginBottom: '15px'}}>
                     <img
