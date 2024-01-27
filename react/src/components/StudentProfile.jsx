@@ -2,7 +2,8 @@
 
 import React, {useEffect, useState} from 'react';
 import axiosClient from '../axios-client';
-// import './sidebar.js';
+import './sidebar.js';
+import {Link} from "react-router-dom";
 
 const StudentProfile = () => {
   const [student, setStudent] = useState(null);
@@ -49,6 +50,10 @@ const StudentProfile = () => {
                   <div className="sub-menu-list">
                     <ul>
                       <li className="menu-item">
+                        <Link to="/courses">
+                          <span className="menu-title">All Courses</span>
+                        </Link>
+                      </li><li className="menu-item">
                         <a href="#">
                           <span className="menu-title">Enrolled</span>
                         </a>
@@ -234,7 +239,7 @@ const StudentProfile = () => {
             <br/>
           </div>
           <div>
-            <h2>Features</h2>
+            <h2>Dashboard</h2>
             <ul>
               <li><strong>Name:</strong> {student.name}</li>
               <li><strong>Email:</strong> {student.email}</li>
@@ -263,22 +268,22 @@ const StudentProfile = () => {
           </div>
           <footer className="footer">
             <small style={{marginBottom: '20px', display: 'inline-block'}}>
-              © 2023 made with
+              © 2024 made with
               <span style={{color: 'red', fontSize: '18px'}}>&#10084;</span> by -
               <a target="_blank" href="https://azouaoui.netlify.com"> Mohamed Azouaoui </a>
             </small>
             <br/>
             <div className="social-links">
-              <a href="https://github.com/azouaoui-med" target="_blank">
+              <a href="https://github.com/nidaulzafar" target="_blank">
                 <i className="ri-github-fill ri-xl"></i>
               </a>
-              <a href="https://twitter.com/azouaoui_med" target="_blank">
+              <a href="https://twitter.com/" target="_blank">
                 <i className="ri-twitter-fill ri-xl"></i>
               </a>
-              <a href="https://codepen.io/azouaoui-med" target="_blank">
+              <a href="https://codepen.io/" target="_blank">
                 <i className="ri-codepen-fill ri-xl"></i>
               </a>
-              <a href="https://www.linkedin.com/in/mohamed-azouaoui/" target="_blank">
+              <a href="https://www.linkedin.com/in/nidaulzafar/" target="_blank">
                 <i className="ri-linkedin-box-fill ri-xl"></i>
               </a>
             </div>
