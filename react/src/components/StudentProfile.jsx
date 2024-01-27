@@ -234,37 +234,15 @@ const StudentProfile = () => {
             <br/>
           </div>
           <div>
-            <div className="mb-3">
-              <strong>Name:</strong> {student.name}
-            </div>
-            <div className="mb-3">
-              <strong>Email:</strong> {student.email}
-            </div>
-            <div className="mb-3">
-              <strong>Education:</strong> {student.education || 'Not provided'}
-            </div>
-            <div className="mb-3">
-              <strong>Phone:</strong> {student.phone || 'Not provided'}
-            </div>
-            <div className="col-md-6">
-              <div className="mb-3">
-                <strong>Bio:</strong> {student.bio || 'Not provided'}
-              </div>
-              <div className="mb-3">
-                <strong>Avatar:</strong> {student.avatar ?
-                <img src={student.avatar} alt="Avatar" className="img-fluid"/> : 'Not provided'}
-              </div>
-            </div>
-          </div>
-
-          <div>
             <h2>Features</h2>
             <ul>
-              <li>Fully responsive</li>
-              <li>Collapsable sidebar</li>
-              <li>Multi level menu</li>
-              <li>RTL support</li>
-              <li>Customizable</li>
+              <li><strong>Name:</strong> {student.name}</li>
+              <li><strong>Email:</strong> {student.email}</li>
+              <li><strong>Education:</strong> {student.education || 'Not provided'}</li>
+              <li><strong>Phone:</strong> {student.phone || 'Not provided'}</li>
+              <li><strong>Bio:</strong> {student.bio || 'Not provided'}</li>
+              <li><strong>Avatar:</strong> {student.avatar ?
+                <img src={student.avatar} alt="Avatar" className="img-fluid"/> : 'Not provided'}</li>
             </ul>
           </div>
           <div>
