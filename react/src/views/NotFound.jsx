@@ -1,4 +1,3 @@
-import Footer from "../components/Footer.jsx";
 
 export default function NotFound() {
   return (<div>
