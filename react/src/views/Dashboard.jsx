@@ -1,12 +1,13 @@
 import {useStateContext} from "../contexts/ContextProvider.jsx";
 import {useNavigate} from "react-router-dom";
-import InstructorProfile from "../components/InstructorProfile.jsx";
-import StudentProfile from "../components/StudentProfile.jsx";
+// import InstructorProfile from "../components/InstructorProfile.jsx";
+// import StudentProfile from "../components/StudentProfile.jsx";
 import {useEffect} from "react";
+import Profile from "../components/Profile.jsx";
 
 export default function Dashboard() {
-    const navigate = useNavigate();
-    const {user,setUser, setToken} = useStateContext();
+  const navigate = useNavigate();
+  const {user, setUser, setToken} = useStateContext();
 
   useEffect(() => {
     if (!user) {
@@ -14,18 +15,9 @@ export default function Dashboard() {
     }
   }, [user, navigate]);
 
-  const renderProfile = () => {
-    if (user.type === 'instructor') {
-      return <InstructorProfile />;
-    } else if (user.type === 'student') {
-      return <StudentProfile />;
-    }
-    return null;
-  };
-
-    return (
-        <div>
-          {renderProfile()}
-        </div>
-    )
+  return (
+    <div>
+      {user && user.type && <Profile userType={user.type} />}
+    </div>
+  )
 }

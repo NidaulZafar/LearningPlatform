@@ -25,15 +25,6 @@ class Instructor extends Model implements Authenticatable
         'type',
         'password',
     ];
-
-    protected $hidden = [
-        'password',
-    ];
-
-    public function setPasswordAttribute($value): void
-    {
-        $this->attributes['password'] = bcrypt($value);
-    }
     public function courses(): HasMany
     {
         return $this->hasMany(Course::class);
