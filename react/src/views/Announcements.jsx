@@ -1,5 +1,6 @@
 import Sidebar from "../components/Sidebar.jsx";
 import React from "react";
+import Footer from "../components/Footer.jsx";
 
 export default function Announcements() {
 //   import announcements from announcements table
@@ -34,6 +35,7 @@ export default function Announcements() {
               )
             })}
           </ul>
+          <Footer/>
         </main>
       </div>
     </div>
