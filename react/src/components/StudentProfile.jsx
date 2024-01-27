@@ -35,6 +35,11 @@ const StudentProfile = () => {
               Here you can see your student profile.
             </span>
             <br/>
+            <img
+              src={instructorData.avatar || "default-avatar.jpg"}
+              alt={`${instructorData.name}'s Avatar`}
+              className="img-fluid rounded-circle"
+            />
           </div>
           <div>
             <h2>Dashboard</h2>
@@ -44,8 +49,6 @@ const StudentProfile = () => {
               <li><strong>Education:</strong> {student.education || 'Not provided'}</li>
               <li><strong>Phone:</strong> {student.phone || 'Not provided'}</li>
               <li><strong>Bio:</strong> {student.bio || 'Not provided'}</li>
-              <li><strong>Avatar:</strong> {student.avatar ?
-                <img src={student.avatar} alt="Avatar" className="img-fluid"/> : 'Not provided'}</li>
             </ul>
           </div>
           <div>
