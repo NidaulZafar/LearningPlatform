@@ -1,7 +1,5 @@
 import {useStateContext} from "../contexts/ContextProvider.jsx";
 import {useNavigate} from "react-router-dom";
-// import InstructorProfile from "../components/InstructorProfile.jsx";
-// import StudentProfile from "../components/StudentProfile.jsx";
 import {useEffect} from "react";
 import Profile from "../components/Profile.jsx";
 
