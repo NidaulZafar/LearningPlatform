@@ -21,16 +21,16 @@ axiosClient.interceptors.request.use((config) => {
 axiosClient.interceptors.response.use((response) => {
   return response;
 }, (error) => {
-    const {response} = error;
-    if (response.status === 401) {
-      localStorage.removeItem('ACCESS_TOKEN');
-    } else if (response.status === 403) {
-      console.log("403");
-    } else if (response.status === 404) {
-      console.log(response)
-      console.log("404");
-    }
-    throw error;
+  const {response} = error;
+  if (response.status === 401) {
+    localStorage.removeItem('ACCESS_TOKEN');
+  } else if (response.status === 403) {
+    console.log("403");
+  } else if (response.status === 404) {
+    console.log(response)
+    console.log("404");
+  }
+  throw error;
 })
 
 export default axiosClient;
