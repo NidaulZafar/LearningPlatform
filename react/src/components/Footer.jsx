@@ -6,7 +6,7 @@ const Footer = () => {
       <small style={{marginBottom: '20px', display: 'inline-block'}}>
         © 2024 made with
         <span style={{color: 'red', fontSize: '18px'}}>&#10084;</span> by -
-        <a target="_blank" href="https://azouaoui.netlify.com"> Zee </a>
+        <a target="_blank" href="#"> Zee </a>
       </small>
       <br/>
       <div className="social-links">
