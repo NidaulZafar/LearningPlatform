@@ -42,13 +42,8 @@ const Profile = ({userType}) => {
             </span>
         </div>
         <br/>
-        <img
-          src={userData.avatar || "default-avatar.jpg"}
-          alt={`${userData.name}'s Avatar`}
-          className="img-fluid rounded-circle"
-        />
         <div>
-          <h2>Dashboard</h2>
+          <h2>Your Info</h2>
           <ul>
             <li><strong>Name:</strong> {userData.name}</li>
             <li><strong>Email:</strong> {userData.email}</li>

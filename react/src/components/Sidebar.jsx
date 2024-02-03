@@ -30,11 +30,36 @@ const Sidebar = () => {
       setToken(null)
     })
   }
+
+  const renderStudentSidebar = () => {
+    return (
+      <ul className="submenu">
+        <li><Link to='/courses'>All Courses</Link></li>
+        <li>Enrolled</li>
+        <li>Completed</li>
+        <li>Saved</li>
+      </ul>
+    );
+  };
+
+  const renderInstructorSidebar = () => {
+    return (
+      <ul className="submenu">
+        <li><Link to='/courses'>All Courses</Link></li>
+        <li><Link to='/your-courses'>Your Courses</Link></li>
+      </ul>
+    );
+  };
+
+
   return (
     <aside className="sidebar">
       <div className="logo">
-        <img src="your-logo-url" alt="Logo"/>
-        <h1>Your App</h1>
+        <img src={user.avatar || 'https://www.gravatar.com/avatar/00000000000000000000000000000000?s=200&d=mp&r=pg'}
+             alt="User Avatar"
+             className="user-avatar"
+        />
+        <h1>Your Dashboard</h1>
       </div>
 
       <div className="menu">
@@ -51,10 +76,7 @@ const Sidebar = () => {
           </span>
           {isCoursesExpanded && (
             <ul className="submenu">
-              <li><Link to='/courses'>All Courses</Link></li>
-              <li>Enrolled</li>
-              <li>Completed</li>
-              <li>Saved</li>
+              {user.type === 'student' ? renderStudentSidebar() : user.type === 'instructor' && renderInstructorSidebar()}
             </ul>
           )}
         </div>
