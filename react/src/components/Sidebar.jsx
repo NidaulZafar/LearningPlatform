@@ -6,12 +6,13 @@ import {useStateContext} from "../contexts/ContextProvider.jsx";
 import {
   FaBook,
   FaClipboardCheck,
-  FaSave,
   FaFileAlt,
   FaComment,
   FaSignOutAlt,
   FaChevronDown,
-  FaChevronUp
+  FaChevronUp,
+  FaHome,
+  FaEnvelope
 } from 'react-icons/fa';
 
 
@@ -70,7 +71,7 @@ const Sidebar = () => {
         <span className="menu-header">GENERAL</span>
         <div className="menu-item">
           <Link to='/dashboard'>
-            <FaSave/>
+            <FaHome/>
             <span>Home</span>
           </Link>
         </div>
@@ -102,7 +103,7 @@ const Sidebar = () => {
 
         <div className="menu-item">
           <Link to='/announcements'>
-            <FaSave/>
+            <FaEnvelope/>
             <span>Announcements</span>
           </Link>
         </div>
