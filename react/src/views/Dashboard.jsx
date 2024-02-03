@@ -14,8 +14,8 @@ export default function Dashboard() {
   }, [user, navigate]);
 
   return (
-    <div>
+    <>
       {user && user.type && <Profile userType={user.type}/>}
-    </div>
+    </>
   )
 }
