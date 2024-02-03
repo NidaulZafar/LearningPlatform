@@ -29,12 +29,10 @@ export default function Signup() {
       phone: phoneRef.current.value,
       type: instructorRef.current.checked ? 'instructor' : 'student',
     }
-    console.log(payload);
     axiosClient.post('/signup', payload)
       .then(({data}) => {
         setUser(data.user)
         setToken(data.token)
-        console.log(data);
       })
       .catch((error) => {
         const response = error.response

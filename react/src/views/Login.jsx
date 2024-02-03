@@ -25,7 +25,6 @@ export default function Login() {
       password: passwordRef.current.value,
       type: instructorRef.current.checked ? 'instructor' : 'student',
     }
-    console.log("payload", payload);
     setErrors({});
     axiosClient.post('/login', payload)
       .then(({data}) => {
