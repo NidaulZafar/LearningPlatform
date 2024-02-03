@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axiosClient from "../axios-client.js";
 import Sidebar from "./Sidebar.jsx";
-import './default.css';
 
 const Profile = ({userType}) => {
   const [userData, setUserData] = useState({
