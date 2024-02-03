@@ -1,8 +1,7 @@
-import {Link, Navigate, Outlet} from "react-router-dom";
+import {Navigate, Outlet} from "react-router-dom";
 import {useStateContext} from "../contexts/ContextProvider.jsx";
 import React, {useEffect} from "react";
 import axiosClient from "../axios-client.js";
-import './default.css';
 import Footer from "./Footer.jsx";
 
 export default function DefaultLayout() {
