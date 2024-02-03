@@ -1,8 +1,9 @@
 import React from "react";
+import './footer.css';
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="sticky-footer">
       <small style={{marginBottom: '20px', display: 'inline-block'}}>
         © 2024 made with
         <span style={{color: 'red', fontSize: '18px'}}>&#10084;</span> by -
