@@ -1,8 +1,9 @@
 import {Link, Navigate, Outlet} from "react-router-dom";
 import {useStateContext} from "../contexts/ContextProvider.jsx";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import axiosClient from "../axios-client.js";
-import './sidebar.scss';
+import './default.css';
+import Footer from "./Footer.jsx";
 
 export default function DefaultLayout() {
   const {user, token, setUser, setToken} = useStateContext()
@@ -11,13 +12,6 @@ export default function DefaultLayout() {
     return <Navigate to="/login"/>
   }
 
-  const logout = (e) => {
-    e.preventDefault()
-    axiosClient.post('/logout').then(() => {
-      setUser({})
-      setToken(null)
-    })
-  }
 
   useEffect(() => {
     axiosClient.get('/user').then(({data}) => {
@@ -27,13 +21,12 @@ export default function DefaultLayout() {
 
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <main className="col-md-10 ml-sm-auto">
-          <Outlet/>
-        </main>
-      </div>
-    </div>
+    <>
+      <main className="main">
+        <Outlet/>
+      </main>
+      <Footer/>
+    </>
   );
 
 }
