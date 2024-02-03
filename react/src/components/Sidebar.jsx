@@ -55,14 +55,19 @@ const Sidebar = () => {
   return (
     <aside className="sidebar">
       <div className="logo">
-        <img src={user.avatar || 'https://www.gravatar.com/avatar/00000000000000000000000000000000?s=200&d=mp&r=pg'}
+        <img src={user.avatar || `https://i.pravatar.cc/150?u=${user.name}`}
              alt="User Avatar"
              className="user-avatar"
         />
-        <h1>Your Dashboard</h1>
+        <img src={`https://ui-avatars.com/api/?name=${user.name}&background=random&rounded=true&size=150&color=random`}
+             alt="User Avatar"
+             className="user-avatar"
+        />
       </div>
 
       <div className="menu">
+        <h1>Dashboard</h1>
+        <span className="menu-header">GENERAL</span>
         <div className="menu-item">
           <Link to='/dashboard'>
             <FaSave/>
@@ -101,6 +106,7 @@ const Sidebar = () => {
             <span>Announcements</span>
           </Link>
         </div>
+        <span className="menu-header">EXTRA</span>
 
         <div className="menu-item">
           <Link to='/feedback'>
