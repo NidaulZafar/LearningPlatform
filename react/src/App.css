@@ -1,0 +1,10 @@
+.main {
+  display: flex;
+}
+
+.content {
+  flex: 1;
+  overflow: auto;
+  padding: 20px;
+}
+
