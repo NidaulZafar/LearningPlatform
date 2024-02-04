@@ -11,14 +11,12 @@ class Course extends Model
 {
     use HasFactory;
 
-    // Course model
     public function lessons(): HasMany
     {
         return $this->hasMany(Lesson::class);
     }
 
-// A course can belong to a user (instructor) who created it.
-    public function instructor()
+    public function instructor(): BelongsTo
     {
         return $this->belongsTo(Instructor::class, 'instructor_id');
     }
