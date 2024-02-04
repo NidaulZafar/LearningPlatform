@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 import axiosClient from "../axios-client.js";
 import {useStateContext} from "../contexts/ContextProvider.jsx";
 import Sidebar from "../components/Sidebar.jsx";
@@ -74,19 +75,21 @@ export default function Courses() {
         {courses.length > 0 ? (
           <div className="course-grid">
             {courses.map((course) => (
-              <div className="course-card" key={course.id}>
-                <img
-                  className="course-image"
-                  src={course.cover_image}
-                  alt={`Cover for ${course.title}`}
-                />
-                <div className="course-details">
-                  <h3>{course.title}</h3>
-                  <p className="instructor">Instructor: {course.instructor.name}</p>
-                  <p className="description">Description: {course.description}</p>
-                  <p className="created-date">Created Date: {formatDate(course.created_at)}</p>
+              <Link to={`/courses/${course.id}`} key={course.id}>
+                <div className="course-card">
+                  <img
+                    className="course-image"
+                    src={course.cover_image}
+                    alt={`Cover for ${course.title}`}
+                  />
+                  <div className="course-details">
+                    <h3>{course.title}</h3>
+                    <p className="instructor">Instructor: {course.instructor.name}</p>
+                    <p className="description">Description: {course.description}</p>
+                    <p className="created-date">Created Date: {formatDate(course.created_at)}</p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>) : (
           <div>
