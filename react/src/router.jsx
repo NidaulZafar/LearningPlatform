@@ -7,6 +7,7 @@ import DefaultLayout from "./components/DefaultLayout.jsx";
 import GuestLayout from "./components/GuestLayout.jsx";
 import Courses from "./views/Courses.jsx";
 import Announcements from "./views/Announcements.jsx";
+import CourseDetail from "./views/CourseDetail.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/courses",
         element: <Courses/>
+      },
+      {
+        path: "/courses/:id",
+        element: <CourseDetail/>
       },
       {
         path: "/announcements",
