@@ -28,6 +28,7 @@ class CourseFactory extends Factory
             'instructor_id' => $instructor->id,
             'cover_image' => 'https://i.pravatar.cc/300',
             'code' => $this->faker->word() . ' ' . $this->faker->numberBetween(100, 999),
+            'price' => $this->faker->numberBetween(1000, 10000),
         ];
     }
 }
