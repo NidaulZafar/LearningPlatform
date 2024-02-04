@@ -32,5 +32,4 @@ class Video extends Model
         $this->attributes['published_at'] = Carbon::createFromFormat('Y-m-d', $value);
     }
 
-
 }
