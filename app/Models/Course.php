@@ -20,9 +20,9 @@ class Course extends Model
     ];
 
 
-    public function lessons(): HasMany
+    public function modules(): HasMany
     {
-        return $this->hasMany(Lesson::class);
+        return $this->hasMany(Module::class);
     }
 
     public function instructor(): BelongsTo
