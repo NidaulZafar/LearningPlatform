@@ -5,6 +5,7 @@ export default function NotFound() {
     Are you Lost?
     Let's go back to the <a href="/">Home Page</a><br/>
     Or maybe you want to <a href="/login">Login</a>?<br/>
-    New user? <a href="/signup">Sign up</a> here.
+    New user? <a href="/signup">Sign up</a> here.<br/>
+    Or maybe you want to <a href="/courses">Browse Courses</a>?
   </div>)
 }
