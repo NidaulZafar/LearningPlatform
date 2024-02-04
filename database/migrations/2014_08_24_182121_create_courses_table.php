@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->foreignId('instructor_id')->constrained('instructors')->onDelete('cascade');
             $table->string('cover_image')->nullable();
+            $table->integer('price')->default(0);
             $table->timestamps();
         });
     }
