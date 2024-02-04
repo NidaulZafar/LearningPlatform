@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('video_module', static function (Blueprint $table) {
+        Schema::create('module_video', static function (Blueprint $table) {
             $table->id();
             $table->foreignId('video_id')->constrained();
             $table->foreignId('module_id')->constrained();
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('video_module');
+        Schema::dropIfExists('module_video');
     }
 };
