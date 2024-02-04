@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Http\Request;
@@ -27,3 +28,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 });
 Route::post('/signup', [AuthController::class, 'signup']);
 Route::post('/login', [AuthController::class, 'login']);
+
+
+Route::get('/courses', [CourseController::class, 'index']);
