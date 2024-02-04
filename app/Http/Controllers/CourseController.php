@@ -12,7 +12,7 @@ class CourseController extends Controller
 
     public function index(): JsonResponse
     {
-        $courses = Course::with('instructor')->get();
+        $courses = Course::with(['instructor', 'modules'])->get();
 
         return response()->json($courses);
     }
@@ -21,7 +21,7 @@ class CourseController extends Controller
     public function show($id): JsonResponse
     {
         try {
-            $course = Course::with('instructor')->findOrFail($id);
+            $course = Course::with(['instructor', 'modules'])->findOrFail($id);
             return response()->json($course);
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => 'Course not found!'], 404);
