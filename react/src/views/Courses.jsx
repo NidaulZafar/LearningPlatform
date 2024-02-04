@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axiosClient from "../axios-client.js";
 import {useStateContext} from "../contexts/ContextProvider.jsx";
 import Sidebar from "../components/Sidebar.jsx";
+import './CSS/courses.css';
 
 export default function Courses() {
 
@@ -10,7 +11,7 @@ export default function Courses() {
   const [courses, setCourses] = useState([{
     id: null,
     title: "",
-    instructor: { name: "" },
+    instructor: {name: ""},
     description: "",
     cover_image: "",
     created_at: "",
@@ -44,7 +45,6 @@ export default function Courses() {
       try {
         const response = await axiosClient.get("/courses");
         setCourses(response.data);
-        console.log("Courses:", courses);
       } catch (error) {
         console.error("Error fetching courses:", error);
       }
@@ -55,7 +55,7 @@ export default function Courses() {
   }, [user]);
 
   function formatDate(dateString) {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const options = {year: 'numeric', month: 'long', day: 'numeric'};
     return new Date(dateString).toLocaleDateString(undefined, options);
   }
 
@@ -70,25 +70,25 @@ export default function Courses() {
             </span>
         <br/>
       </div>
-      <div>
+      <div className="course-list">
         {courses.length > 0 ? (
-        <ul>
-          {courses.map((course) => (
-            <li key={course.id}>
-              <div>
-                <h3>{course.title}</h3>
-                <p>Instructor: {course.instructor.name}</p>
-                <p>Description: {course.description}</p>
+          <div className="course-grid">
+            {courses.map((course) => (
+              <div className="course-card" key={course.id}>
                 <img
+                  className="course-image"
                   src={course.cover_image}
                   alt={`Cover for ${course.title}`}
-                  style={{ maxWidth: "100px", maxHeight: "100px" }}
                 />
-                <p>Created Date: {formatDate(course.created_at)}</p>
+                <div className="course-details">
+                  <h3>{course.title}</h3>
+                  <p className="instructor">Instructor: {course.instructor.name}</p>
+                  <p className="description">Description: {course.description}</p>
+                  <p className="created-date">Created Date: {formatDate(course.created_at)}</p>
+                </div>
               </div>
-            </li>
-          ))}
-        </ul>) : (
+            ))}
+          </div>) : (
           <div>
             <h2>No courses available</h2>
           </div>
