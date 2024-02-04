@@ -32,14 +32,14 @@ export default function CourseDetail() {
       <main className="content">
         {course ? (
           <div className="course-detail">
-            <h2>{course.title}</h2>
-            <p>Instructor: {course.instructor.name}</p>
-            <p>Description: {course.description}</p>
             <img
               src={course.cover_image}
               alt={`Cover for ${course.title}`}
               style={{maxWidth: "100%", maxHeight: "400px"}}
             />
+            <h2>{course.title}</h2>
+            <p>Instructor: {course.instructor.name}</p>
+            <p>Description: {course.description}</p>
           </div>
         ) : (
           <div>
