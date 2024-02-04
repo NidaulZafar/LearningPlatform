@@ -31,3 +31,4 @@ Route::post('/login', [AuthController::class, 'login']);
 
 
 Route::get('/courses', [CourseController::class, 'index']);
+Route::get('/courses/{id}', [CourseController::class, 'show']);
