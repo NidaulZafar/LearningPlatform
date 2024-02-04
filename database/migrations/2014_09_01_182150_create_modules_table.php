@@ -16,7 +16,6 @@ return new class extends Migration {
             $table->string('title');
             $table->text('description')->nullable();
             $table->text('content')->nullable();
-            $table->string('video_url')->nullable();
             $table->string('resource_files')->nullable();
             $table->string('resource_links')->nullable();
             $table->integer('duration')->nullable();
