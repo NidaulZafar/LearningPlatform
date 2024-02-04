@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -17,9 +18,14 @@ class CourseController extends Controller
     }
 
 
-    public function show($course)
+    public function show($id): JsonResponse
     {
-        // Define the logic to show the details of a specific course
+        try {
+            $course = Course::with('instructor')->findOrFail($id);
+            return response()->json($course);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['error' => 'Course not found!'], 404);
+        }
     }
 
     public function create()
