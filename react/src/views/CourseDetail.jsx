@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import axiosClient from "../axios-client.js";
 import Sidebar from "../components/Sidebar.jsx";
+import './CSS/courseDetail.css';
 
 export default function CourseDetail() {
   const {id} = useParams();
@@ -36,7 +37,7 @@ export default function CourseDetail() {
 
   const {
     title,
-    instructor: { name: instructorName },
+    instructor: {name: instructorName},
     cover_image,
     description,
     price,
@@ -69,6 +70,13 @@ export default function CourseDetail() {
                 </ul>
               </>
             )}
+            <button
+              type="button"
+              className="enroll-button"
+              onClick={() => handleEnroll(course.id)}
+            >
+              Enroll Now
+            </button>
           </div>
         ) : (
           <div>

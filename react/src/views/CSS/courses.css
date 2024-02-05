@@ -10,6 +10,11 @@
   gap: 20px;
 }
 
+.course-grid a {
+  text-decoration: none;
+  color: #333;
+}
+
 .course-card {
   border: 1px solid #ddd;
   border-radius: 8px;
