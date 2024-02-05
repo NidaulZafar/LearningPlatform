@@ -34,6 +34,15 @@ export default function CourseDetail() {
     fetchCourseDetail();
   }, [id]);
 
+  const {
+    title,
+    instructor: { name: instructorName },
+    cover_image,
+    description,
+    price,
+    modules,
+  } = course;
+
   return (
     <>
       <Sidebar/>
@@ -41,26 +50,30 @@ export default function CourseDetail() {
         {course ? (
           <div className="course-detail">
             <img
-              src={course.cover_image}
-              alt={`Cover for ${course.title}`}
+              src={cover_image}
+              alt={`Cover for ${title}`}
               style={{maxWidth: "100%", maxHeight: "400px"}}
             />
-            <h2>{course.title}</h2>
-            <p>Instructor: {course.instructor.name}</p>
-            <p>Description: {course.description}</p>
-            <p>Price: ${course.price}</p>
-            <h3>Modules</h3>
-            <p>This course has the following {course.modules.length} Modules:</p>
-            <ul>
-              {course.modules.map((module) => (
-                <li key={module.id}>{module.title}</li>
-              ))}
-            </ul>
+            <h2>{title}</h2>
+            <p>Instructor: {instructorName}</p>
+            <p>Description: {description}</p>
+            <p>Price: ${price}</p>
+            {modules.length > 0 && (
+              <>
+                <h3>Modules</h3>
+                <p>This course has the following {modules.length} Modules:</p>
+                <ul>
+                  {modules.map((module) => (
+                    <li key={module.id}>{module.title}</li>
+                  ))}
+                </ul>
+              </>
+            )}
           </div>
         ) : (
           <div>
             {error ? (
-              <h2>{error}</h2>
+              <h2>Error: {error}</h2>
             ) : (
               <h2>Loading...</h2>
             )}
