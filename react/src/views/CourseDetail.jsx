@@ -5,7 +5,14 @@ import Sidebar from "../components/Sidebar.jsx";
 
 export default function CourseDetail() {
   const {id} = useParams();
-  const [course, setCourse] = useState(null);
+  const [course, setCourse] = useState({
+    title: "",
+    instructor: {name: ""},
+    cover_image: "",
+    description: "",
+    price: 0,
+    modules: [],
+  });
   const [error, setError] = useState(null);
 
 
@@ -41,6 +48,14 @@ export default function CourseDetail() {
             <h2>{course.title}</h2>
             <p>Instructor: {course.instructor.name}</p>
             <p>Description: {course.description}</p>
+            <p>Price: ${course.price}</p>
+            <h3>Modules</h3>
+            <p>This course has the following {course.modules.length} Modules:</p>
+            <ul>
+              {course.modules.map((module) => (
+                <li key={module.id}>{module.title}</li>
+              ))}
+            </ul>
           </div>
         ) : (
           <div>
