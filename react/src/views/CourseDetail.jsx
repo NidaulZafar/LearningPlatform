@@ -15,6 +15,7 @@ export default function CourseDetail() {
     modules: [],
   });
   const [error, setError] = useState(null);
+  const [enrolled, setEnrolled] = useState(false);
 
 
   useEffect(() => {
@@ -34,6 +35,37 @@ export default function CourseDetail() {
 
     fetchCourseDetail();
   }, [id]);
+
+  const handleEnroll = async (courseId) => {
+    try {
+      await axiosClient.post('/enroll', {course_id: courseId});
+      setEnrolled(true);
+    } catch (error) {
+      console.error('Error enrolling in the course:', error);
+      setError("Error enrolling in the course");
+    }
+  }
+
+
+  if (!course) {
+    return (
+      <>
+        <Sidebar/>
+        <main className="content">
+          {error ? (
+            <div>
+              <h2>Error: {error}</h2>
+            </div>
+          ) : (
+            <div>
+              <h2>Loading...</h2>
+            </div>
+          )}
+        </main>
+      </>
+    );
+  }
+
 
   const {
     title,
