@@ -36,7 +36,7 @@ const Sidebar = () => {
     return (
       <ul className="submenu">
         <li><Link to='/courses'>All Courses</Link></li>
-        <li>Enrolled</li>
+        <li><Link to='/enrolled'>Enrolled</Link></li>
         <li>Completed</li>
         <li>Saved</li>
       </ul>
