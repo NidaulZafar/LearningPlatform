@@ -52,9 +52,9 @@ export default function EnrolledCourses() {
             <ul>
               {enrolledCourses.map((enrollment) => (
                 <li key={enrollment.id}>
-                  <strong>Course Title:</strong> {enrollment.course.title}<br />
-                  <strong>Course Description:</strong> {enrollment.course.description}<br />
-                  <strong>Enrolled At:</strong> {enrollment.enrolled_at}<br />
+                  <strong>Course Title:</strong> {enrollment.course.title}<br/>
+                  <strong>Course Description:</strong> {enrollment.course.description}<br/>
+                  <strong>Enrolled At:</strong> {enrollment.enrolled_at}<br/>
                 </li>
               ))}
             </ul>
