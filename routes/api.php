@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Http\Request;
@@ -18,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //
-Route::group(['middleware' => 'auth:sanctum'], function () {
-    Route::get('/user', function () {
+Route::group(['middleware' => 'auth:sanctum'], static function () {
+    Route::get('/user', static function () {
         return auth()->user();
     });
     Route::get('/instructor-profile', [InstructorController::class, 'getInstructorProfile']);
@@ -29,6 +30,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 Route::post('/signup', [AuthController::class, 'signup']);
 Route::post('/login', [AuthController::class, 'login']);
 
+Route::group(['middleware' => 'auth:sanctum'], static function () {
+    Route::get('/enrolled-courses', [EnrollmentController::class, 'getEnrolledCourses']);
+    Route::post('/enroll', [EnrollmentController::class, 'enrollStudent']);
+});
 
 Route::get('/courses', [CourseController::class, 'index']);
 Route::get('/courses/{id}', [CourseController::class, 'show']);
