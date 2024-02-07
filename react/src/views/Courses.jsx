@@ -7,8 +7,7 @@ import './CSS/courses.css';
 
 export default function Courses() {
 
-  const {user, token, setUser, setToken} = useStateContext();
-  const [student, setStudent] = useState(null);
+  const {user} = useStateContext();
   const [courses, setCourses] = useState([{
     id: null,
     title: "",
@@ -18,30 +17,7 @@ export default function Courses() {
     created_at: "",
   },]);
 
-
-  if (!user) {
-    return <div>Loading...</div>;
-  }
-
   useEffect(() => {
-    const fetchUserProfile = async () => {
-      try {
-        let profileEndpoint = '';
-        if (user?.type === 'student') {
-          profileEndpoint = '/student-profile';
-        } else if (user?.type === 'instructor') {
-          profileEndpoint = '/instructor-profile';
-        }
-
-        if (profileEndpoint) {
-          const response = await axiosClient.get(profileEndpoint);
-          setStudent(response.data);
-        }
-      } catch (error) {
-        console.error(`Error fetching ${user?.type} profile:`, error);
-      }
-    };
-
     const fetchCourses = async () => {
       try {
         const response = await axiosClient.get("/courses");
@@ -50,8 +26,6 @@ export default function Courses() {
         console.error("Error fetching courses:", error);
       }
     };
-
-    fetchUserProfile().then(r => r).catch(e => e);
     fetchCourses().then(r => r).catch(e => e);
   }, [user]);
 
