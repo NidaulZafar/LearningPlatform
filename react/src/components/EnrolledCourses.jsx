@@ -2,33 +2,22 @@ import {useStateContext} from "../contexts/ContextProvider.jsx";
 import {useEffect, useState} from "react";
 import axiosClient from "../axios-client.js";
 import Sidebar from "./Sidebar.jsx";
+import {Link} from "react-router-dom";
 
 export default function EnrolledCourses() {
-  const userContext = useStateContext();
-  const [user, setUser] = useState({});
+  const {user} = useStateContext();
   const [enrolledCourses, setEnrolledCourses] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
 
 
   useEffect(() => {
-    fetchStudentData();
-    fetchEnrolledCourses();
+    fetchEnrolledCourses().then(r => r).catch(e => e);
   }, []);
-
-  const fetchStudentData = async () => {
-    try {
-      const response = await axiosClient.get('/student-profile');
-      setUser(response.data);
-    } catch (error) {
-      console.error('Error fetching student data:', error);
-    }
-  };
 
   const fetchEnrolledCourses = async () => {
     try {
       const response = await axiosClient.get('/enrolled-courses');
       if (Array.isArray(response.data)) {
-        console.log('Enrolled courses:', response.data);
         setEnrolledCourses(response.data);
       } else {
         setErrorMessage(response.data.message);
@@ -38,29 +27,42 @@ export default function EnrolledCourses() {
     }
   };
 
+  function formatDate(dateString) {
+    const options = {year: 'numeric', month: 'long', day: 'numeric'};
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  }
+
+
   return (
     <>
       <Sidebar/>
-      <h1>Enrolled Courses</h1>
-      <div>
-        <p>Welcome, {user.name}!</p>
-        {errorMessage ? (
-          <p>{errorMessage}</p>
-        ) : (
-          <>
-            <p>Your enrolled courses:</p>
-            <ul>
-              {enrolledCourses.map((enrollment) => (
-                <li key={enrollment.id}>
-                  <strong>Course Title:</strong> {enrollment.course.title}<br/>
-                  <strong>Course Description:</strong> {enrollment.course.description}<br/>
-                  <strong>Enrolled At:</strong> {enrollment.enrolled_at}<br/>
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
-      </div>
+      <main className="content">
+        <h1>Enrolled Courses</h1>
+        <div className="course-list">
+          <p>Welcome, {user.name}!</p>
+          {errorMessage ? (
+            <p>{errorMessage}</p>
+          ) : (
+            <>
+              <p>Here are the courses you have already enrolled:</p>
+              <div className="course-grid">
+                {enrolledCourses.map((enrollment) => (
+                  <Link to={`/courses/${enrollment.course.id}`} key={enrollment.course.id}>
+                    <div key={enrollment.course.id} className="course-card">
+                      <img className="course-image"
+                           src={enrollment.course.cover_image} alt={enrollment.course.title}/>
+                      <div className="course-details">
+                        <h3>{enrollment.course.title}</h3>
+                        <p>Enrolled on: {formatDate(enrollment.created_at)}</p>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      </main>
     </>
   )
 }
