@@ -106,12 +106,12 @@ export default function CourseDetail() {
             )}
             {user && user.type === 'student' && (
               <button
-              type="button"
-              className="enroll-button"
-              onClick={() => handleEnroll(course.id)}
-            >
-              Enroll Now
-            </button>
+                type="button"
+                className="enroll-button"
+                onClick={() => handleEnroll(course.id)}
+              >
+                Enroll Now
+              </button>
             )}
           </div>
         ) : (
