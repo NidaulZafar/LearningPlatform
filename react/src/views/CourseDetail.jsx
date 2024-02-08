@@ -3,8 +3,10 @@ import {useParams} from "react-router-dom";
 import axiosClient from "../axios-client.js";
 import Sidebar from "../components/Sidebar.jsx";
 import './CSS/courseDetail.css';
+import {useStateContext} from "../contexts/ContextProvider.jsx";
 
 export default function CourseDetail() {
+  const {user} = useStateContext();
   const {id} = useParams();
   const [course, setCourse] = useState({
     title: "",
@@ -102,13 +104,15 @@ export default function CourseDetail() {
                 </ul>
               </>
             )}
-            <button
+            {user && user.type === 'student' && (
+              <button
               type="button"
               className="enroll-button"
               onClick={() => handleEnroll(course.id)}
             >
               Enroll Now
             </button>
+            )}
           </div>
         ) : (
           <div>
