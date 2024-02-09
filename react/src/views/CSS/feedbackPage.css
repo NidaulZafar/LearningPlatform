@@ -1,5 +1,5 @@
 .feedback-container {
-  max-width: 800px;
+  width: 50vw;
   margin: 0 auto;
   padding: 20px;
 }
@@ -7,6 +7,45 @@
 form {
   margin-bottom: 20px;
 }
+
+.input-container {
+  margin-bottom: 15px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.textarea-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
 
 .feedback-list {
   list-style-type: none;
