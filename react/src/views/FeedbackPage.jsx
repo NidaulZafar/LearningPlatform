@@ -80,19 +80,19 @@ const FeedbackPage = () => {
           <form onSubmit={handleSubmit}>
             <div className="input-container">
               <label className="label">Name:</label>
-              <input type="text" name="name" value={formData.name} onChange={handleChange} className="input-field"/>
+              <input type="text" name="name" value={formData.name} onChange={handleChange} className="input-field" required/>
             </div>
             <div className="input-container">
               <label className="label">Title:</label>
-              <input type="text" name="title" value={formData.title} onChange={handleChange} className="input-field"/>
+              <input type="text" name="title" value={formData.title} onChange={handleChange} className="input-field" required/>
             </div>
             <div className="input-container">
               <label className="label">Email:</label>
-              <input type="email" name="email" value={formData.email} onChange={handleChange} className="input-field"/>
+              <input type="email" name="email" value={formData.email} onChange={handleChange} className="input-field" required/>
             </div>
             <div className="input-container">
               <label className="label">Message:</label>
-              <textarea name="message" value={formData.message} onChange={handleChange} className="textarea-field"/>
+              <textarea name="message" value={formData.message} onChange={handleChange} className="textarea-field" required/>
             </div>
             <button type="submit" className="button">Submit Feedback</button>
           </form>
