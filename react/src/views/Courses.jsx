@@ -39,11 +39,16 @@ export default function Courses() {
     <Sidebar/>
     <main className="content">
       <div>
-        <h1 style={{marginBottom: '0'}}>Courses</h1>
-        <span style={{display: 'inline-block'}}>
-              Here you can see the complete list of courses available.
-            </span>
-        <br/>
+        <h1>Courses</h1>
+        <p>
+          Here you can see the complete list of courses available.
+        </p>
+        {user && user.type === "instructor" && (
+          <p>
+            You're logged in as an instructor. To enroll in a course, please sign in as a student.
+            Like to add a new course? <a href="/courses/new">Click here</a>
+          </p>
+        )}
       </div>
       <div className="course-list">
         {courses.length > 0 ? (
@@ -70,7 +75,6 @@ export default function Courses() {
             <h2>No courses available</h2>
           </div>
         )}
-        Like to add a new course? <a href="/courses/new">Click here</a>
       </div>
     </main>
   </>)
