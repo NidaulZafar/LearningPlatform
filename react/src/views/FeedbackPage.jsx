@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axiosClient from "../axios-client.js";
 import {useStateContext} from "../contexts/ContextProvider.jsx";
 import './CSS/feedbackPage.css';
+import Sidebar from "../components/Sidebar.jsx";
 
 const FeedbackPage = () => {
   const {user} = useStateContext();
@@ -71,39 +72,44 @@ const FeedbackPage = () => {
   };
 
   return (
-    <div className="feedback-container">
-      <h1>Feedback Page</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="input-container">
-          <label className="label">Name:</label>
-          <input type="text" name="name" value={formData.name} onChange={handleChange} className="input-field"/>
+    <>
+      <Sidebar/>
+      <main className="content">
+        <div className="feedback-container">
+          <h1>Feedback Page</h1>
+          <form onSubmit={handleSubmit}>
+            <div className="input-container">
+              <label className="label">Name:</label>
+              <input type="text" name="name" value={formData.name} onChange={handleChange} className="input-field"/>
+            </div>
+            <div className="input-container">
+              <label className="label">Title:</label>
+              <input type="text" name="title" value={formData.title} onChange={handleChange} className="input-field"/>
+            </div>
+            <div className="input-container">
+              <label className="label">Email:</label>
+              <input type="email" name="email" value={formData.email} onChange={handleChange} className="input-field"/>
+            </div>
+            <div className="input-container">
+              <label className="label">Message:</label>
+              <textarea name="message" value={formData.message} onChange={handleChange} className="textarea-field"/>
+            </div>
+            <button type="submit" className="button">Submit Feedback</button>
+          </form>
+          <h2>Existing Feedback:</h2>
+          <ul className="feedback-list">
+            {feedback.map(item => (
+              <li key={item.id} className="feedback-item">
+                <p><strong>Name:</strong> {item.name} <span className="user-type">({renderUserType(item)})</span></p>
+                <p><strong>Title:</strong> {item.title}</p>
+                <p><strong>Message:</strong> {item.message}</p>
+                <p><strong>Creation Date:</strong> {item.created_at}</p>
+              </li>
+            ))}
+          </ul>
         </div>
-        <div className="input-container">
-          <label className="label">Title:</label>
-          <input type="text" name="title" value={formData.title} onChange={handleChange} className="input-field"/>
-        </div>
-        <div className="input-container">
-          <label className="label">Email:</label>
-          <input type="email" name="email" value={formData.email} onChange={handleChange} className="input-field"/>
-        </div>
-        <div className="input-container">
-          <label className="label">Message:</label>
-          <textarea name="message" value={formData.message} onChange={handleChange} className="textarea-field"/>
-        </div>
-        <button type="submit" className="button">Submit Feedback</button>
-      </form>
-      <h2>Existing Feedback:</h2>
-      <ul className="feedback-list">
-        {feedback.map(item => (
-          <li key={item.id} className="feedback-item">
-            <p><strong>Name:</strong> {item.name} <span className="user-type">({renderUserType(item)})</span></p>
-            <p><strong>Title:</strong> {item.title}</p>
-            <p><strong>Message:</strong> {item.message}</p>
-            <p><strong>Creation Date:</strong> {item.created_at}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+      </main>
+    </>
   );
 };
 
