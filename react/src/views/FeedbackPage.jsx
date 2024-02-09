@@ -18,8 +18,9 @@ const FeedbackPage = () => {
 
 
   useEffect(() => {
-    axiosClient.get('/api/feedback')
+    axiosClient.get('/feedback')
       .then(response => {
+        console.log('Feedback:', response.data);
         setFeedback(response.data);
       })
       .catch(error => {
@@ -46,8 +47,7 @@ const FeedbackPage = () => {
       formDataCopy.instructor_id = user.id;
       formDataCopy.student_id = '';
     }
-    console.log('formDataCopy:', formDataCopy);
-    axiosClient.post('/api/feedback', formDataCopy)
+    axiosClient.post('/feedback', formDataCopy)
       .then(response => {
         console.log('Feedback submitted:', response.data);
         setFeedback([...feedback, response.data]);
