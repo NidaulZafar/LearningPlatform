@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axiosClient from "../axios-client.js";
 import {useStateContext} from "../contexts/ContextProvider.jsx";
+import './CSS/feedbackPage.css';
 
 const FeedbackPage = () => {
   const {user} = useStateContext();
@@ -70,7 +71,7 @@ const FeedbackPage = () => {
   };
 
   return (
-    <div>
+    <div className="feedback-container">
       <h1>Feedback Page</h1>
       <form onSubmit={handleSubmit}>
         <label>
@@ -92,13 +93,13 @@ const FeedbackPage = () => {
         <button type="submit">Submit Feedback</button>
       </form>
       <h2>Existing Feedback:</h2>
-      <ul>
+      <ul className="feedback-list">
         {feedback.map(item => (
-          <li key={item.id}>
-            <p>Name: {item.name} ({renderUserType(item)})</p>
-            <p>Title: {item.title}</p>
-            <p>Message: {item.message}</p>
-            <p>Creation Date: {item.created_at}</p>
+          <li key={item.id} className="feedback-item">
+            <p><strong>Name:</strong> {item.name} <span className="user-type">({renderUserType(item)})</span></p>
+            <p><strong>Title:</strong> {item.title}</p>
+            <p><strong>Message:</strong> {item.message}</p>
+            <p><strong>Creation Date:</strong> {item.created_at}</p>
           </li>
         ))}
       </ul>
