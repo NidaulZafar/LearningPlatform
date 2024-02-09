@@ -9,6 +9,7 @@ import Courses from "./views/Courses.jsx";
 import Announcements from "./views/Announcements.jsx";
 import CourseDetail from "./views/CourseDetail.jsx";
 import EnrolledCourses from "./components/EnrolledCourses.jsx";
+import FeedbackPage from "./views/FeedbackPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/announcements",
         element: <Announcements/>
+      },
+      {
+        path: "/feedback",
+        element: <FeedbackPage/>
       }
     ]
   },
