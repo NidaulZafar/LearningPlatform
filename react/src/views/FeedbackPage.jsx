@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, {useState, useEffect} from 'react';
+import axiosClient from "../axios-client.js";
+import {useStateContext} from "../contexts/ContextProvider.jsx";
 
 const FeedbackPage = () => {
+  const {user} = useStateContext();
   const [feedback, setFeedback] = useState([]);
   const [formData, setFormData] = useState({
     name: '',
@@ -12,8 +14,9 @@ const FeedbackPage = () => {
     message: ''
   });
 
+
   useEffect(() => {
-    axios.get('/api/feedback')
+    axiosClient.get('/api/feedback')
       .then(response => {
         setFeedback(response.data);
       })
@@ -22,10 +25,29 @@ const FeedbackPage = () => {
       });
   }, []);
 
+  const renderUserType = (feedbackItem) => {
+    if (feedbackItem.student_id !== null) {
+      return ("Student");
+    } else if (feedbackItem.instructor_id !== null) {
+      return ("Instructor");
+    }
+    return null;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('/api/feedback', formData)
+    const formDataCopy = {...formData};
+    if (user.type === 'student') {
+      formDataCopy.student_id = user.id;
+      formDataCopy.instructor_id = '';
+    } else if (user.type === 'instructor') {
+      formDataCopy.instructor_id = user.id;
+      formDataCopy.student_id = '';
+    }
+    console.log('formDataCopy:', formDataCopy);
+    axiosClient.post('/api/feedback', formDataCopy)
       .then(response => {
+        console.log('Feedback submitted:', response.data);
         setFeedback([...feedback, response.data]);
         setFormData({
           student_id: '',
@@ -52,23 +74,31 @@ const FeedbackPage = () => {
       <h1>Feedback Page</h1>
       <form onSubmit={handleSubmit}>
         <label>
+          Name:
+          <input type="text" name="name" value={formData.name} onChange={handleChange}/>
+        </label>
+        <label>
           Title:
-          <input type="text" name="title" value={formData.title} onChange={handleChange} />
+          <input type="text" name="title" value={formData.title} onChange={handleChange}/>
         </label>
         <label>
           Email:
-          <input type="email" name="email" value={formData.email} onChange={handleChange} />
+          <input type="email" name="email" value={formData.email} onChange={handleChange}/>
         </label>
-        {/* Other input fields for student_id, instructor_id, message */}
+        <label>
+          Message:
+          <textarea name="message" value={formData.message} onChange={handleChange}/>
+        </label>
         <button type="submit">Submit Feedback</button>
       </form>
       <h2>Existing Feedback:</h2>
       <ul>
         {feedback.map(item => (
           <li key={item.id}>
-            <p>{item.title}</p>
-            <p>{item.email}</p>
-            {/* Display other feedback data */}
+            <p>Name: {item.name} ({renderUserType(item)})</p>
+            <p>Title: {item.title}</p>
+            <p>Message: {item.message}</p>
+            <p>Creation Date: {item.created_at}</p>
           </li>
         ))}
       </ul>
