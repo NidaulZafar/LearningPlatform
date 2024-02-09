@@ -74,23 +74,23 @@ const FeedbackPage = () => {
     <div className="feedback-container">
       <h1>Feedback Page</h1>
       <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input type="text" name="name" value={formData.name} onChange={handleChange}/>
-        </label>
-        <label>
-          Title:
-          <input type="text" name="title" value={formData.title} onChange={handleChange}/>
-        </label>
-        <label>
-          Email:
-          <input type="email" name="email" value={formData.email} onChange={handleChange}/>
-        </label>
-        <label>
-          Message:
-          <textarea name="message" value={formData.message} onChange={handleChange}/>
-        </label>
-        <button type="submit">Submit Feedback</button>
+        <div className="input-container">
+          <label className="label">Name:</label>
+          <input type="text" name="name" value={formData.name} onChange={handleChange} className="input-field"/>
+        </div>
+        <div className="input-container">
+          <label className="label">Title:</label>
+          <input type="text" name="title" value={formData.title} onChange={handleChange} className="input-field"/>
+        </div>
+        <div className="input-container">
+          <label className="label">Email:</label>
+          <input type="email" name="email" value={formData.email} onChange={handleChange} className="input-field"/>
+        </div>
+        <div className="input-container">
+          <label className="label">Message:</label>
+          <textarea name="message" value={formData.message} onChange={handleChange} className="textarea-field"/>
+        </div>
+        <button type="submit" className="button">Submit Feedback</button>
       </form>
       <h2>Existing Feedback:</h2>
       <ul className="feedback-list">
