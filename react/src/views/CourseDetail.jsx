@@ -25,7 +25,6 @@ export default function CourseDetail() {
       try {
         const response = await axiosClient.get(`/courses/${id}`);
         setCourse(response.data);
-        console.log('resp', response.data);
       } catch (error) {
         if (error.response && error.response.status === 404) {
           setError("Course not found");
