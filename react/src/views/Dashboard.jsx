@@ -15,7 +15,7 @@ export default function Dashboard() {
 
   return (
     <>
-      {user && user.type && <Profile userType={user.type}/>}
+      {user && user.type && <Profile />}
     </>
   )
 }
