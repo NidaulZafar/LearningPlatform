@@ -9,6 +9,7 @@ const Profile = () => {
   const [editing, setEditing] = useState(false);
   const [editedUser, setEditedUser] = useState(user);
 
+
   useEffect(() => {
     setEditedUser(user);
   }, [user]);
@@ -23,64 +24,63 @@ const Profile = () => {
 
   const handleSaveChanges = async () => {
     try {
-      let endpoint = user.type === "instructor" ? "instructors" : user.type === "student" ? "students" : (() => { throw new Error("Invalid user type") })();
-      console.log('endpoint:', endpoint);
-      console.log('editedUser:', editedUser);
+      let endpoint = user.type === "instructor" ? "instructors" : user.type === "student" ? "students" : (() => {
+        throw new Error("Invalid user type")
+      })();
       const response = await axiosClient.put(`/${endpoint}/${editedUser.id}`, editedUser);
       setUser(response.data); // Update user in context after successful update
-      console.log("Profile updated:", response.data);
       setEditing(false); // Exit editing mode
     } catch (error) {
       console.error("Error updating profile:", error);
-      // Handle error updating profile (e.g., show error message)
     }
   };
+
+  const {name, type, email, phone, bio, occupation, education} = user;
 
   const renderProfileHeader = () => (
     <div className="profile-header">
       <div className="profile-info">
         <h1>
           {editing ? (
-            <input type="text" name="name" value={editedUser.name || ''} onChange={handleInputChange} />
+            <input type="text" name="name" value={editedUser.name || ''} onChange={handleInputChange}/>
           ) : (
-            user.name
+            name
           )}
         </h1>
-        <h3>({user.type} Profile)</h3>
+        <h3>({type} Profile)</h3>
       </div>
       {!editing && <button onClick={() => setEditing(true)}>Edit</button>}
       {editing && <button onClick={handleSaveChanges}>Save</button>}
     </div>
   );
 
-  console.log('user:', user);
-
   const renderProfileDetails = () => (
     <div className="profile-details">
       <h2>About Me</h2>
-      <p>{editing ? <textarea name="bio" value={editedUser.bio || ''} onChange={handleInputChange} /> : user.bio || "Bio not provided"}</p>
+      <p>{editing ? <textarea name="bio" value={editedUser.bio || ''}
+                              onChange={handleInputChange}/> : bio || "Bio not provided"}</p>
       <h2>Contact Information</h2>
       <ul>
         <li>
-          <strong>Email:</strong> {user.email}
+          <strong>Email:</strong> {email}
         </li>
         <li>
           <strong>Phone:</strong>{" "}
           {editing ? (
-            <input type="text" name="phone" value={editedUser.phone || ''} onChange={handleInputChange} />
+            <input type="text" name="phone" value={editedUser.phone || ''} onChange={handleInputChange}/>
           ) : (
-            user.phone || "Phone number not provided"
+            phone || "Phone number not provided"
           )}
         </li>
       </ul>
-      {user.type === "instructor" && (
+      {type === "instructor" && (
         <>
           <h2>Occupation</h2>
           <p>
             {editing ? (
-              <input type="text" name="occupation" value={editedUser.occupation || ''} onChange={handleInputChange} />
+              <input type="text" name="occupation" value={editedUser.occupation || ''} onChange={handleInputChange}/>
             ) : (
-              user.occupation || 'Occupation Not provided'
+              occupation || 'Occupation Not provided'
             )}
           </p>
         </>
@@ -88,9 +88,9 @@ const Profile = () => {
       <h2>Education</h2>
       <p>
         {editing ? (
-          <input type="text" name="education" value={editedUser.education || ''} onChange={handleInputChange} />
+          <input type="text" name="education" value={editedUser.education || ''} onChange={handleInputChange}/>
         ) : (
-          user.education || "Education nottt provided"
+          education || "Education not provided"
         )}
       </p>
     </div>
@@ -98,7 +98,7 @@ const Profile = () => {
 
   return (
     <>
-      <Sidebar />
+      <Sidebar/>
       <main className="content">
         {renderProfileHeader()}
         {renderProfileDetails()}
