@@ -26,6 +26,8 @@ Route::group(['middleware' => 'auth:sanctum'], static function () {
     });
     Route::get('/instructor-profile', [InstructorController::class, 'getInstructorProfile']);
     Route::get('/student-profile', [StudentController::class, 'getStudentProfile']);
+    Route::put('/students/{id}', [StudentController::class, 'update']);
+    Route::put('/instructors/{id}', [InstructorController::class, 'update']);
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 Route::post('/signup', [AuthController::class, 'signup']);
