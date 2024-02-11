@@ -3,6 +3,9 @@
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
 }
 
 .avatar {
@@ -12,10 +15,31 @@
   margin-right: 20px;
 }
 
+.profile-info {
+  display: flex;
+  align-items: center;
+}
+
 .profile-info h1 {
   font-size: 24px;
   margin: 0;
   color: #333;
+}
+
+.profile-info h3 {
+  color: #666;
+  font-weight: normal;
+  margin: 0 0 0 10px;
+}
+
+.profile-header button {
+  background-color: #0c1e35;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-left: auto;
+  border-radius: 10px;
 }
 
 .profile-info p {
@@ -23,10 +47,13 @@
   color: #666;
 }
 
+.profile-details {
+  padding: 20px;
+}
+
 .profile-details h2 {
   font-size: 20px;
-  margin-top: 30px;
-  margin-bottom: 10px;
+  margin: 0 0 20px 0;
   color: #333;
 }
 
@@ -41,10 +68,21 @@
 
 .profile-details strong {
   font-weight: bold;
-  margin-right: 5px;
+  margin-right: 0;
 }
 
 .profile-details p {
   color: #666;
-  margin-top: 5px;
+  margin-top: 0;
+}
+
+.profile-details input[type="text"],
+.profile-details textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.profile-details textarea {
+  height: 100px;
 }
