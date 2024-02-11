@@ -49,8 +49,8 @@ const Profile = () => {
         </h1>
         <h3>({type} Profile)</h3>
       </div>
-      {!editing && <button onClick={() => setEditing(true)}>Edit</button>}
-      {editing && <button onClick={handleSaveChanges}>Save</button>}
+      {!editing && <button onClick={() => setEditing(true)}>Edit Profile</button>}
+      {editing && <button onClick={handleSaveChanges}>Save Changes</button>}
     </div>
   );
 
