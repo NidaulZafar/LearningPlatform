@@ -18,7 +18,7 @@ class EnrollmentController extends Controller
             ->get();
 
         if ($enrolledCourses->isEmpty()) {
-            return response()->json(['message' => 'No courses enrolled'], 200);
+            return response()->json(['message' => 'No courses enrolled. Please browse through our courses'], 200);
         }
 
         return response()->json($enrolledCourses);
