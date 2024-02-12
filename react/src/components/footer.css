@@ -3,13 +3,24 @@
   bottom: 0;
   left: 0;
   width: 100vw;
+  height: 5vh;
   padding: 10px 20px;
   text-align: center;
   background-color: #0c1e35;
   color: #7d84ab;
 }
 
+.sticky-footer small {
+  font-size: 0.8em;
+  margin-bottom: 20px;
+}
+
 .sticky-footer a {
   color: #7d84ab;
   text-decoration: none;
+}
+
+.sticky-footer small span {
+  color: red;
+  font-size: 18px;
 }

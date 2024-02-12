@@ -4,9 +4,9 @@ import './footer.css';
 const Footer = () => {
   return (
     <footer className="sticky-footer">
-      <small style={{marginBottom: '20px', display: 'inline-block'}}>
+      <small>
         © 2024 made with
-        <span style={{color: 'red', fontSize: '18px'}}>&#10084;</span> by -
+        <span>&#10084;</span> by -
         <a target="_blank" href="#"> Zee </a>
       </small>
       <br/>
