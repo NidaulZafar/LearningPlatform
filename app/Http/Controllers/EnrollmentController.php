@@ -26,9 +26,6 @@ class EnrollmentController extends Controller
 
     public function enrollStudent(Request $request): JsonResponse
     {
-
-        Log::info('Enrollment request payload:', $request->all());
-
         $request->validate([
             'course_id' => 'required|exists:courses,id',
         ]);
