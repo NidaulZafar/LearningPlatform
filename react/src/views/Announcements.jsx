@@ -12,8 +12,8 @@ export default function Announcements() {
       <Sidebar/>
       <main className="content">
         <div>
-          <h1 style={{marginBottom: '0'}}>Announcements</h1>
-          <span style={{display: 'inline-block'}}>
+          <h1>Announcements</h1>
+          <span>
               Check the latest announcements here.
             </span>
           <br/>
