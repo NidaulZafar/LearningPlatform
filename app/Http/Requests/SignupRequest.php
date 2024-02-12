@@ -15,7 +15,6 @@ class SignupRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        Log::info('reached authorize method');
         return true;
     }
 
