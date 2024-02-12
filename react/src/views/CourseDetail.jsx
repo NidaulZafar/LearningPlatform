@@ -18,6 +18,7 @@ export default function CourseDetail() {
   });
   const [error, setError] = useState(null);
   const [enrolled, setEnrolled] = useState(false);
+  const [message, setMessage] = useState(null);
 
 
   useEffect(() => {
@@ -41,6 +42,10 @@ export default function CourseDetail() {
     try {
       await axiosClient.post('/enroll', {course_id: courseId});
       setEnrolled(true);
+      setMessage("You have successfully enrolled in the course");
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
     } catch (error) {
       console.error('Error enrolling in the course:', error);
       setError("Error enrolling in the course");
@@ -86,7 +91,6 @@ export default function CourseDetail() {
             <img
               src={cover_image}
               alt={`Cover for ${title}`}
-              style={{maxWidth: "100%", maxHeight: "400px"}}
             />
             <h2>{title}</h2>
             <p>Instructor: {instructorName}</p>
@@ -111,6 +115,11 @@ export default function CourseDetail() {
               >
                 Enroll Now
               </button>
+            )}
+            {message && (
+              <div className="message">
+                {message}
+              </div>
             )}
           </div>
         ) : (
