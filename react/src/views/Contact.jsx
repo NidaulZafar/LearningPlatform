@@ -10,7 +10,6 @@ export default function Contact() {
         <li>Email</li>
         <li>Chat</li>
       </ul>
-
     </>
   )
 }
