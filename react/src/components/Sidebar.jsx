@@ -12,7 +12,8 @@ import {
   FaChevronDown,
   FaChevronUp,
   FaHome,
-  FaEnvelope
+  FaEnvelope,
+  FaPhoneAlt
 } from 'react-icons/fa';
 
 
@@ -118,7 +119,7 @@ const Sidebar = () => {
 
         <div className="menu-item">
           <Link to='/contact'>
-            <FaComment/>
+            <FaPhoneAlt/>
             <span>Contact Us</span>
           </Link>
         </div>
