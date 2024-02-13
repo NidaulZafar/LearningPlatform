@@ -116,6 +116,13 @@ const Sidebar = () => {
           </Link>
         </div>
 
+        <div className="menu-item">
+          <Link to='/contact'>
+            <FaComment/>
+            <span>Contact Us</span>
+          </Link>
+        </div>
+
         <div className="menu-item" onClick={logout}>
           <FaSignOutAlt/>
           <span>Logout</span>
