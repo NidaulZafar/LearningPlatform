@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\FeedbackController;
@@ -38,6 +39,7 @@ Route::group(['middleware' => 'auth:sanctum'], static function () {
     Route::post('/enroll', [EnrollmentController::class, 'enrollStudent']);
     Route::post('/feedback', [FeedbackController::class, 'store']);
     Route::get('/feedback', [FeedbackController::class, 'index']);
+    Route::post('/contact', [ContactController::class, 'store']);
 });
 
 Route::get('/courses', [CourseController::class, 'index']);
