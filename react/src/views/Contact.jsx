@@ -1,6 +1,7 @@
 import Sidebar from "../components/Sidebar.jsx";
 import {useState} from "react";
 import axiosClient from "../axios-client.js";
+import './CSS/contact.css';
 
 
 export default function Contact() {
@@ -51,7 +52,7 @@ export default function Contact() {
             <span>Chat with a representative</span>
           </div>
         </div>
-        <div>
+        <div className="contact-form">
           <h3>Contact Form</h3>
           <form onSubmit={handleSubmit}>
             <div>
