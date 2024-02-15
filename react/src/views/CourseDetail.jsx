@@ -55,6 +55,20 @@ export default function CourseDetail() {
     }
   }
 
+  const handleUnenroll = async (courseId) => {
+    try {
+      await axiosClient.delete(`/enroll/${courseId}`);
+      setEnrolled(false);
+      setMessage("You have successfully unenrolled from the course");
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
+    } catch (error) {
+      console.error('Error unenrolling from the course:', error);
+      setError("Error unenrolling from the course");
+    }
+  }
+
 
   if (!course) {
     return (
@@ -110,14 +124,26 @@ export default function CourseDetail() {
                 </ul>
               </>
             )}
-            {user && user.type === 'student' && !enrolled && (
-              <button
-                type="button"
-                className="enroll-button"
-                onClick={() => handleEnroll(course.id)}
-              >
-                Enroll Now
-              </button>
+            {user && user.type === 'student' && (
+              <div>
+                {!enrolled ? (
+                  <button
+                    type="button"
+                    className="enroll-button"
+                    onClick={() => handleEnroll(course.id)}
+                  >
+                    Enroll Now
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="enroll-button"
+                    onClick={() => handleUnenroll(course.id)}
+                  >
+                    Unenroll
+                  </button>
+                )}
+              </div>
             )}
             {enrolled && (
               <div className="message">
