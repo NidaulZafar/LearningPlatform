@@ -26,6 +26,9 @@ export default function CourseDetail() {
       try {
         const response = await axiosClient.get(`/courses/${id}`);
         setCourse(response.data);
+        if (user && user.type === 'student' && response.data.enrolled) {
+          setEnrolled(true);
+        }
       } catch (error) {
         if (error.response && error.response.status === 404) {
           setError("Course not found");
@@ -36,7 +39,7 @@ export default function CourseDetail() {
     };
 
     fetchCourseDetail();
-  }, [id]);
+  }, [id, user]);
 
   const handleEnroll = async (courseId) => {
     try {
@@ -107,7 +110,7 @@ export default function CourseDetail() {
                 </ul>
               </>
             )}
-            {user && user.type === 'student' && (
+            {user && user.type === 'student' && !enrolled && (
               <button
                 type="button"
                 className="enroll-button"
@@ -115,6 +118,11 @@ export default function CourseDetail() {
               >
                 Enroll Now
               </button>
+            )}
+            {enrolled && (
+              <div className="message">
+                You are already enrolled in this course.
+              </div>
             )}
             {message && (
               <div className="message">
