@@ -64,7 +64,6 @@ class EnrollmentController extends Controller
     public function unenrollStudent(Request $request, $enrollmentId): JsonResponse
     {
         $studentId = auth()->id();
-        Log::info('Student ID', ['student_id' => $studentId]);
         $enrollment = Enrollment::findOrFail($enrollmentId);
 
         if ($enrollment->student_id !== $studentId) {
