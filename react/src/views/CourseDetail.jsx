@@ -19,6 +19,7 @@ export default function CourseDetail() {
   const [error, setError] = useState(null);
   const [enrolled, setEnrolled] = useState(false);
   const [message, setMessage] = useState(null);
+  const [enrollmentId, setEnrollmentId] = useState(null);
 
 
   useEffect(() => {
@@ -28,6 +29,10 @@ export default function CourseDetail() {
         setCourse(response.data);
         if (user && user.type === 'student' && response.data.enrolled) {
           setEnrolled(true);
+          setEnrollmentId(response.data.enrollments[0].id);
+        } else {
+          setEnrolled(false);
+          setEnrollmentId(null);
         }
       } catch (error) {
         if (error.response && error.response.status === 404) {
@@ -43,8 +48,12 @@ export default function CourseDetail() {
 
   const handleEnroll = async (courseId) => {
     try {
-      await axiosClient.post('/enroll', {course_id: courseId});
+      const response = await axiosClient.post('/enroll', {course_id: courseId});
+      console.log('Enrollment response:', response.data);
+      const {enrollment_id} = response.data;
+      setEnrollmentId(enrollment_id);
       setEnrolled(true);
+      localStorage.setItem(`enrolled_${enrollment_id}`, "true");
       setMessage("You have successfully enrolled in the course");
       setTimeout(() => {
         setMessage(null);
