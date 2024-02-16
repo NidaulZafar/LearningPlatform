@@ -54,6 +54,30 @@ class EnrollmentController extends Controller
 
     }
 
+    public function unenrollStudent(Request $request, $enrollmentId): JsonResponse
+    {
+        Log::info('Unenroll student', ['enrollment_id' => $enrollmentId]);
+        Log::info('Request', $request->all());
+        $studentId = auth()->id();
+        Log::info('Student ID', ['student_id' => $studentId]);
+        $enrollment = Enrollment::findOrFail($enrollmentId);
+
+        if ($enrollment->student_id !== $studentId) {
+            return response()->json(['message' => 'You are not authorized to unenroll from this course'], 403);
+        }
+
+        if (!$enrollment) {
+            return response()->json(['message' => 'You are not enrolled in this course'], 404);
+        }
+
+
+        $enrollment->status = 'dropped';
+        $enrollment->finished_at = now();
+        $enrollment->save();
+
+        return response()->json(['message' => 'Unenrolled successfully'], 200);
+    }
+
 
 
 }
