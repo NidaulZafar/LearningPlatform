@@ -21,7 +21,7 @@ class CourseController extends Controller
     public function show($id): JsonResponse
     {
         try {
-            $course = Course::with(['instructor', 'modules'])->findOrFail($id);
+            $course = Course::with(['instructor', 'modules', 'enrollments'])->findOrFail($id);
             return response()->json($course);
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => 'Course not found!'], 404);
