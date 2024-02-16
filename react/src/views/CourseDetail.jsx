@@ -60,7 +60,10 @@ export default function CourseDetail() {
       }, 3000);
     } catch (error) {
       console.error('Error enrolling in the course:', error);
-      setError("Error enrolling in the course");
+      setMessage(error.response.data.message);
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
     }
   }
 
