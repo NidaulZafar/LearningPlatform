@@ -33,6 +33,15 @@ class EnrollmentController extends Controller
 
         $studentId = auth()->id();
 
+        $isEnrolled = Enrollment::where('student_id', $studentId)
+            ->where('course_id', $request->course_id)
+            ->where('status', 'enrolled')
+            ->exists();
+
+        if ($isEnrolled) {
+            return response()->json(['message' => 'You are already enrolled in this course'], 400);
+        }
+
         DB::beginTransaction();
         try {
             $enrollment = new Enrollment();
