@@ -49,7 +49,6 @@ export default function CourseDetail() {
   const handleEnroll = async (courseId) => {
     try {
       const response = await axiosClient.post('/enroll', {course_id: courseId});
-      console.log('Enrollment response:', response.data);
       const {enrollment_id} = response.data;
       setEnrollmentId(enrollment_id);
       setEnrolled(true);
