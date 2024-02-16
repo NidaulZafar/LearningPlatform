@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Enrollment;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class EnrollmentController extends Controller
@@ -32,14 +33,27 @@ class EnrollmentController extends Controller
 
         $studentId = auth()->id();
 
-        $enrollment = new Enrollment();
-        $enrollment->course_id = $request->course_id;
-        $enrollment->student_id = $studentId;
-        $enrollment->status = 'enrolled';
-        $enrollment->enrolled_at = now();
-        $enrollment->save();
+        DB::beginTransaction();
 
-        return response()->json(['message' => 'Enrolled successfully'], 200);
+        try {
+            $enrollment = new Enrollment();
+            $enrollment->course_id = $request->course_id;
+            $enrollment->student_id = $studentId;
+            $enrollment->status = 'enrolled';
+            $enrollment->enrolled_at = now();
+            $enrollment->save();
+
+            DB::commit();
+
+            return response()->json(['message' => 'Enrolled successfully', 'enrollment_id' => $enrollment->id], 200);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Enrollment failed', ['error' => $e->getMessage()]);
+            return response()->json(['message' => 'Enrollment failed'], 500);
+        }
+
     }
+
+
 
 }
