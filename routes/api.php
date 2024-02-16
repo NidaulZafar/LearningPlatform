@@ -37,6 +37,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::group(['middleware' => 'auth:sanctum'], static function () {
     Route::get('/enrolled-courses', [EnrollmentController::class, 'getEnrolledCourses']);
     Route::post('/enroll', [EnrollmentController::class, 'enrollStudent']);
+    Route::delete('/enroll/{enrollmentId}', [EnrollmentController::class, 'unenrollStudent']);
     Route::post('/feedback', [FeedbackController::class, 'store']);
     Route::get('/feedback', [FeedbackController::class, 'index']);
     Route::post('/contact', [ContactController::class, 'store']);
