@@ -34,7 +34,6 @@ class EnrollmentController extends Controller
         $studentId = auth()->id();
 
         DB::beginTransaction();
-
         try {
             $enrollment = new Enrollment();
             $enrollment->course_id = $request->course_id;
@@ -51,7 +50,6 @@ class EnrollmentController extends Controller
             Log::error('Enrollment failed', ['error' => $e->getMessage()]);
             return response()->json(['message' => 'Enrollment failed'], 500);
         }
-
     }
 
     public function unenrollStudent(Request $request, $enrollmentId): JsonResponse
@@ -70,13 +68,10 @@ class EnrollmentController extends Controller
             return response()->json(['message' => 'You are not enrolled in this course'], 404);
         }
 
-
         $enrollment->status = 'dropped';
         $enrollment->finished_at = now();
         $enrollment->save();
 
         return response()->json(['message' => 'Unenrolled successfully'], 200);
     }
-
-
 }
