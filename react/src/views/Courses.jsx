@@ -34,7 +34,6 @@ export default function Courses() {
     return new Date(dateString).toLocaleDateString(undefined, options);
   }
 
-
   return (<>
     <Sidebar/>
     <main className="content">
