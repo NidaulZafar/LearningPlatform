@@ -51,7 +51,16 @@ const disEnrollFromCourse = async (enrollmentId, setEnrolled, setMessage, setErr
   }
 }
 
-const CourseDetailComponent = ({course, enrolled, enrollmentId, handleEnroll, handleUnenroll, message, error, user}) => {
+const CourseDetailComponent = ({
+                                 course,
+                                 enrolled,
+                                 enrollmentId,
+                                 handleEnroll,
+                                 handleUnenroll,
+                                 message,
+                                 error,
+                                 user
+                               }) => {
   const {
     title,
     instructor: {name: instructorName},
@@ -83,7 +92,8 @@ const CourseDetailComponent = ({course, enrolled, enrollmentId, handleEnroll, ha
         </>
       )}
       {user && user.type === 'student' && (
-        <EnrollmentButton enrolled={enrolled} handleEnroll={handleEnroll} handleUnenroll={handleUnenroll} courseId={course.id} enrollmentId={enrollmentId} />
+        <EnrollmentButton enrolled={enrolled} handleEnroll={handleEnroll} handleUnenroll={handleUnenroll}
+                          courseId={course.id} enrollmentId={enrollmentId}/>
       )}
       {message && (
         <div className="message">
@@ -147,21 +157,21 @@ const CourseDetail = () => {
   }, [id]);
 
   useEffect(() => {
-      if (course["enrollments"]) {
-        const enrolledStatus = course["enrollments"].some(enrollment => enrollment.status === 'enrolled');
-        if (user && user.type === 'student' && enrolledStatus) {
-          console.log('enrolled', enrolled);
-          setEnrolled(true);
-          console.log('enrolled', enrolled);
-          const enrolledEnrollment = course["enrollments"].find(enrollment => enrollment.status === 'enrolled');
-          console.log(enrolledEnrollment);
-          setEnrollmentId(enrolledEnrollment.id);
-        } else {
-          setEnrolled(false);
-          setEnrollmentId(null);
-        }
+    if (course["enrollments"]) {
+      const enrolledStatus = course["enrollments"].some(enrollment => enrollment.status === 'enrolled');
+      if (user && user.type === 'student' && enrolledStatus) {
+        console.log('enrolled', enrolled);
+        setEnrolled(true);
+        console.log('enrolled', enrolled);
+        const enrolledEnrollment = course["enrollments"].find(enrollment => enrollment.status === 'enrolled');
+        console.log(enrolledEnrollment);
+        setEnrollmentId(enrolledEnrollment.id);
+      } else {
+        setEnrolled(false);
+        setEnrollmentId(null);
       }
-    }, [course, user]);
+    }
+  }, [course, user]);
 
   const handleEnroll = async (courseId) => {
     await enrollInCourse(courseId, setEnrolled, setMessage, setEnrollmentId, setError);
