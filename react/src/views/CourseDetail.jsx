@@ -26,10 +26,14 @@ export default function CourseDetail() {
     const fetchCourseDetail = async () => {
       try {
         const response = await axiosClient.get(`/courses/${id}`);
+        console.log('Course detail:', response.data);
         setCourse(response.data);
-        if (user && user.type === 'student' && response.data.enrolled) {
+        const enrolledStatus = response.data.enrollments.some(enrollment => enrollment.status === 'enrolled');
+        if (user && user.type === 'student' && enrolledStatus) {
           setEnrolled(true);
-          setEnrollmentId(response.data.enrollments[0].id);
+          console.log(enrolled);
+          const enrolledEnrollment = response.data.enrollments.find(enrollment => enrollment.status === 'enrolled');
+          setEnrollmentId(enrolledEnrollment.id);
         } else {
           setEnrolled(false);
           setEnrollmentId(null);
