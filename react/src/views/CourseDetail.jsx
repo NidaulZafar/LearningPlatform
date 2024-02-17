@@ -35,7 +35,7 @@ const enrollInCourse = async (courseId, setEnrolled, setMessage, setEnrollmentId
       setMessage(null);
     }, 3000);
   }
-}
+};
 
 const disEnrollFromCourse = async (enrollmentId, setEnrolled, setMessage, setError) => {
   try {
