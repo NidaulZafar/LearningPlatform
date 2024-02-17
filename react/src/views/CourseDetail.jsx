@@ -84,27 +84,6 @@ export default function CourseDetail() {
     }
   }
 
-
-  if (!course) {
-    return (
-      <>
-        <Sidebar/>
-        <main className="content">
-          {error ? (
-            <div>
-              <h2>Error: {error}</h2>
-            </div>
-          ) : (
-            <div>
-              <h2>Loading...</h2>
-            </div>
-          )}
-        </main>
-      </>
-    );
-  }
-
-
   const {
     title,
     instructor: {name: instructorName},
