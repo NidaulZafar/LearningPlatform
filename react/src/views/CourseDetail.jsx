@@ -16,7 +16,7 @@ const fetchCourseDetail = async (id, setCourse, setError) => {
       setError("Error fetching course details");
     }
   }
-}
+};
 
 const enrollInCourse = async (courseId, setEnrolled, setMessage, setEnrollmentId) => {
   try {
