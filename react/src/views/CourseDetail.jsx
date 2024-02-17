@@ -54,7 +54,6 @@ export default function CourseDetail() {
       const {enrollment_id} = response.data;
       setEnrollmentId(enrollment_id);
       setEnrolled(true);
-      localStorage.setItem(`enrolled_${enrollment_id}`, "true");
       setMessage("You have successfully enrolled in the course");
       setTimeout(() => {
         setMessage(null);
@@ -73,7 +72,6 @@ export default function CourseDetail() {
     try {
       await axiosClient.delete(`/enroll/${enrollmentId}`);
       setEnrolled(false);
-      localStorage.removeItem(`enrolled_${enrollmentId}`);
       setMessage("You have successfully dis-enrolled from the course");
       setTimeout(() => {
         setMessage(null);
