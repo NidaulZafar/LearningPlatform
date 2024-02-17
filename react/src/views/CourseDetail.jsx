@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import axiosClient from "../axios-client.js";
-import Sidebar from "../components/Sidebar.jsx";
-import './CSS/courseDetail.css';
 import {useStateContext} from "../contexts/ContextProvider.jsx";
+import Sidebar from "../components/Sidebar.jsx";
+import axiosClient from "../axios-client.js";
+import './CSS/courseDetail.css';
 
 const fetchCourseDetail = async (id, setCourse, setError) => {
   try {
@@ -18,7 +18,7 @@ const fetchCourseDetail = async (id, setCourse, setError) => {
   }
 }
 
-const enrollInCourse = async (courseId, setEnrolled, setMessage, setEnrollmentId, setError) => {
+const enrollInCourse = async (courseId, setEnrolled, setMessage, setEnrollmentId) => {
   try {
     const response = await axiosClient.post('/enroll', {course_id: courseId});
     const {enrollment_id} = response.data;
@@ -58,7 +58,6 @@ const CourseDetailComponent = ({
                                  handleEnroll,
                                  handleUnenroll,
                                  message,
-                                 error,
                                  user
                                }) => {
   const {
