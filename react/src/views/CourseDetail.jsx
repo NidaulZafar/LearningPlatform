@@ -160,9 +160,7 @@ const CourseDetail = () => {
     if (course["enrollments"]) {
       const enrolledStatus = course["enrollments"].some(enrollment => enrollment.status === 'enrolled');
       if (user && user.type === 'student' && enrolledStatus) {
-        console.log('enrolled', enrolled);
         setEnrolled(true);
-        console.log('enrolled', enrolled);
         const enrolledEnrollment = course["enrollments"].find(enrollment => enrollment.status === 'enrolled');
         console.log(enrolledEnrollment);
         setEnrollmentId(enrolledEnrollment.id);
