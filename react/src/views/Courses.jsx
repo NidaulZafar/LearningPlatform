@@ -45,7 +45,7 @@ export default function Courses() {
         </p>
         {user && user.type === "instructor" && (
           <p>
-            You're logged in as an instructor. To enroll in a course, please sign in as a student.
+            You're logged in as an instructor. To enroll in a course, please sign up as a student.
             Like to add a new course? <a href="/courses/new">Click here</a>
           </p>
         )}
