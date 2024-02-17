@@ -45,7 +45,7 @@ export default function CourseDetail() {
       }
     };
 
-    fetchCourseDetail();
+    fetchCourseDetail().then(r => r);
   }, [id, user]);
 
   const handleEnroll = async (courseId) => {
