@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth:sanctum'], static function () {
     Route::post('/feedback', [FeedbackController::class, 'store']);
     Route::get('/feedback', [FeedbackController::class, 'index']);
     Route::post('/contact', [ContactController::class, 'store']);
+    Route::get('/courses/{id}', [CourseController::class, 'show']);
 });
 
 Route::get('/courses', [CourseController::class, 'index']);
-Route::get('/courses/{id}', [CourseController::class, 'show']);
