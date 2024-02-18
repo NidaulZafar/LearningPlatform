@@ -21,6 +21,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //
+
+
+Route::post('/signup', [AuthController::class, 'signup']);
+Route::post('/login', [AuthController::class, 'login']);
+
 Route::group(['middleware' => 'auth:sanctum'], static function () {
     Route::get('/user', static function () {
         return auth()->user();
@@ -31,8 +36,7 @@ Route::group(['middleware' => 'auth:sanctum'], static function () {
     Route::put('/instructors/{id}', [InstructorController::class, 'update']);
     Route::post('/logout', [AuthController::class, 'logout']);
 });
-Route::post('/signup', [AuthController::class, 'signup']);
-Route::post('/login', [AuthController::class, 'login']);
+
 
 Route::group(['middleware' => 'auth:sanctum'], static function () {
     Route::get('/enrolled-courses', [EnrollmentController::class, 'getEnrolledCourses']);
