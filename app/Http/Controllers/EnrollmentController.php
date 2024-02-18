@@ -12,10 +12,10 @@ class EnrollmentController extends Controller
 {
     public function getEnrolledCourses(): JsonResponse
     {
-        $userId = auth()->id(); // Get the current authenticated user's ID
+        $userId = auth()->id();
         $enrolledCourses = Enrollment::where('student_id', $userId)
             ->where('status', 'enrolled')
-            ->with('course') // Assuming you have defined the relationship in your Enrollment model
+            ->with('course')
             ->get();
 
         if ($enrolledCourses->isEmpty()) {
