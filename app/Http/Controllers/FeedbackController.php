@@ -30,7 +30,7 @@ class FeedbackController extends Controller
         $feedback->message = $validatedData['message'];
         $feedback->save();
 
-        return response()->json(['message' => 'Thank you for your feedback!']);
+        return response()->json(['message' => 'Thank you for your feedback!', 'feedback' => $feedback]);
     }
 
     public function index(): JsonResponse
