@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 
 class FeedbackController extends Controller
 {
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
             'name' => 'required|string',
@@ -30,7 +30,8 @@ class FeedbackController extends Controller
         $feedback->message = $validatedData['message'];
         $feedback->save();
 
-        return redirect()->back()->with('success', 'Thank you for your feedback!', 200);
+//        return redirect()->back()->with('success', 'Thank you for your feedback!', 200);
+        return response()->json(['message' => 'Thank you for your feedback!']);
     }
 
     public function index(): JsonResponse
