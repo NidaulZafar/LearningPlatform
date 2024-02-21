@@ -20,7 +20,6 @@ const FeedbackPage = () => {
   useEffect(() => {
     axiosClient.get('/feedback')
       .then(response => {
-        console.log('Feedback:', response.data);
         setFeedback(response.data);
       })
       .catch(error => {
