@@ -23,7 +23,6 @@ class ContactController extends Controller
         $contact->message = $validatedData['message'];
         $contact->save();
 
-//        return redirect()->back()->with('success', 'Thank you for your message!', 200);
         return response()->json(['message' => 'Thank you for your message!']);
     }
 }
