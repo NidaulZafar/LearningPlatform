@@ -6,6 +6,7 @@ import Sidebar from "../components/Sidebar.jsx";
 
 const FeedbackPage = () => {
   const {user} = useStateContext();
+  const [message, setMessage] = useState(null);
   const [feedback, setFeedback] = useState([]);
   const [formData, setFormData] = useState({
     name: '',
@@ -21,6 +22,7 @@ const FeedbackPage = () => {
     axiosClient.get('/feedback')
       .then(response => {
         setFeedback(response.data);
+        console.log('Feedback fetched:', feedback);
       })
       .catch(error => {
         console.error('Error fetching feedback:', error);
@@ -49,7 +51,7 @@ const FeedbackPage = () => {
     axiosClient.post('/feedback', formDataCopy)
       .then(response => {
         console.log('Feedback submitted:', response.data);
-        setFeedback([...feedback, response.data]);
+        setMessage(response.data.message);
         setFormData({
           name: '',
           student_id: '',
@@ -58,6 +60,9 @@ const FeedbackPage = () => {
           email: '',
           message: ''
         });
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
       })
       .catch(error => {
         console.error('Error submitting feedback:', error);
@@ -101,7 +106,7 @@ const FeedbackPage = () => {
             <button type="submit" className="button">Submit Feedback</button>
           </form>
           <h2>Received Public Feedback:</h2>
-          <ul className="feedback-list">
+          <ul className="feedback-list" key={"as"}>
             {feedback.map(item => (
               <li key={item.id} className="feedback-item">
                 <p><strong>Name:</strong> {item.name} <span className="user-type">({renderUserType(item)})</span></p>
@@ -111,6 +116,11 @@ const FeedbackPage = () => {
               </li>
             ))}
           </ul>
+          {message && (
+            <div className="message">
+              {message}
+            </div>
+          )}
         </div>
       </main>
     </>
