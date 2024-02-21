@@ -40,6 +40,11 @@ const FeedbackPage = () => {
     return null;
   };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const formDataCopy = {...formData};
@@ -114,7 +119,7 @@ const FeedbackPage = () => {
                 <p><strong>Name:</strong> {item.name} <span className="user-type">({renderUserType(item)})</span></p>
                 <p><strong>Title:</strong> {item.title}</p>
                 <p><strong>Message:</strong> {item.message}</p>
-                <p><strong>Creation Date:</strong> {item.created_at}</p>
+                <p><strong>Creation Date:</strong> {formatDate(item.created_at)}</p>
               </li>
             ))}
           </ul>
