@@ -69,9 +69,6 @@ const CourseDetailComponent = ({
     modules,
   } = course;
 
-  const handleModuleClick = (moduleId) => {
-    console.log(`Module ${moduleId} clicked`);
-  }
 
   return (
     <div className="course-detail">
@@ -91,7 +88,7 @@ const CourseDetailComponent = ({
             {modules.map((module) => (
               <li key={module.id}>
                 {enrolled ? (
-                  <Link to={`/module/${module.id}`} onClick={() => handleModuleClick(module.id)}>
+                  <Link to={`/module/${module.id}`}>
                 {module.title}
                   </Link>
                 ) : (
