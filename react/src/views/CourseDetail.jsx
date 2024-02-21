@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {useStateContext} from "../contexts/ContextProvider.jsx";
 import Sidebar from "../components/Sidebar.jsx";
 import axiosClient from "../axios-client.js";
@@ -69,6 +69,10 @@ const CourseDetailComponent = ({
     modules,
   } = course;
 
+  const handleModuleClick = (moduleId) => {
+    console.log(`Module ${moduleId} clicked`);
+  }
+
   return (
     <div className="course-detail">
       <img
@@ -85,7 +89,15 @@ const CourseDetailComponent = ({
           <p>This course has the following {modules.length} Modules:</p>
           <ul>
             {modules.map((module) => (
-              <li key={module.id}>{module.title}</li>
+              <li key={module.id}>
+                {enrolled ? (
+                  <Link to={`/module/${module.id}`} onClick={() => handleModuleClick(module.id)}>
+                {module.title}
+                  </Link>
+                ) : (
+                  module.title
+                )}
+                  </li>
             ))}
           </ul>
         </>
