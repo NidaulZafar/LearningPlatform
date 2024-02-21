@@ -22,7 +22,6 @@ const FeedbackPage = () => {
     axiosClient.get('/feedback')
       .then(response => {
         setFeedback(response.data);
-        console.log('Feedback fetched:', feedback);
       })
       .catch(error => {
         console.error('Error fetching feedback:', error);
@@ -50,7 +49,6 @@ const FeedbackPage = () => {
     }
     axiosClient.post('/feedback', formDataCopy)
       .then(response => {
-        console.log('Feedback submitted and:', response.data);
         setMessage(response.data.message);
         setFeedback([...feedback, response.data.feedback]);
         setFormData({
