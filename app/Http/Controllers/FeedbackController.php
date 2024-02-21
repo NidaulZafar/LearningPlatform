@@ -30,7 +30,6 @@ class FeedbackController extends Controller
         $feedback->message = $validatedData['message'];
         $feedback->save();
 
-//        return redirect()->back()->with('success', 'Thank you for your feedback!', 200);
         return response()->json(['message' => 'Thank you for your feedback!']);
     }
 
