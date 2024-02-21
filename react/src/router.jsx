@@ -11,6 +11,7 @@ import CourseDetail from "./views/CourseDetail.jsx";
 import EnrolledCourses from "./components/EnrolledCourses.jsx";
 import FeedbackPage from "./views/FeedbackPage.jsx";
 import Contact from "./views/Contact.jsx";
+import ModuleDetail from "./components/ModuleDetail.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/courses/:id",
         element: <CourseDetail/>
+      },
+      {
+        path: "module/:id",
+        element: <ModuleDetail/>
       },
       {
         path: "/enrolled",
