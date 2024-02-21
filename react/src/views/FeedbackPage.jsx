@@ -21,7 +21,10 @@ const FeedbackPage = () => {
   useEffect(() => {
     axiosClient.get('/feedback')
       .then(response => {
-        setFeedback(response.data);
+        const sortedFeedback = response.data.sort((a, b) => {
+          return new Date(b.created_at) - new Date(a.created_at);
+        });
+        setFeedback(sortedFeedback);
       })
       .catch(error => {
         console.error('Error fetching feedback:', error);
@@ -50,7 +53,7 @@ const FeedbackPage = () => {
     axiosClient.post('/feedback', formDataCopy)
       .then(response => {
         setMessage(response.data.message);
-        setFeedback([...feedback, response.data.feedback]);
+        setFeedback([response.data.feedback, ...feedback]);
         setFormData({
           name: '',
           student_id: '',
