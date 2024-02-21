@@ -106,7 +106,7 @@ const FeedbackPage = () => {
             <button type="submit" className="button">Submit Feedback</button>
           </form>
           <h2>Received Public Feedback:</h2>
-          <ul className="feedback-list" key={"as"}>
+          <ul className="feedback-list">
             {feedback.map(item => (
               <li key={item.id} className="feedback-item">
                 <p><strong>Name:</strong> {item.name} <span className="user-type">({renderUserType(item)})</span></p>
