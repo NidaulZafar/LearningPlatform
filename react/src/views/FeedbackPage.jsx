@@ -50,12 +50,10 @@ const FeedbackPage = () => {
     }
     axiosClient.post('/feedback', formDataCopy)
       .then(response => {
-        console.log('Feedback submitted:', response.data);
         setMessage(response.data.message);
         axiosClient.get('/feedback')
           .then(response => {
             setFeedback(response.data);
-            console.log('Feedback fetched:', response.data);
           })
           .catch(error => {
             console.error('Error fetching feedback:', error);
