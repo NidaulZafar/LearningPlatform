@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import axiosClient from '../axios-client';
 import {useParams} from "react-router-dom";
 
 const ModuleDetail = () => {
-const {id} = useParams();
-const [moduleData, setModuleData] = useState(null);
+  const {id} = useParams();
+  const [moduleData, setModuleData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -33,7 +33,7 @@ const [moduleData, setModuleData] = useState(null);
     return <div>Error: {error}</div>;
   }
 
-  const { title, description, content, resource_files, resource_links, duration } = moduleData;
+  const {title, description, content, resource_files, resource_links, duration} = moduleData;
 
   return (
     <div className="module-detail">
