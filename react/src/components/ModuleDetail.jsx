@@ -40,16 +40,16 @@ const ModuleDetail = () => {
     <>
       <Sidebar/>
       <main className="content">
-    <div className="module-detail">
-      <h2>{title}</h2>
-      <p>Description: {description}</p>
-      <p>Content: {content}</p>
-      <p>Resource Files: {resource_files}</p>
-      <p>Resource Links: {resource_links}</p>
-      <p>Duration: {duration} minutes</p>
-    </div>
-</main>
-</>
+        <div className="module-detail">
+          <h2>{title}</h2>
+          <p>Description: {description}</p>
+          <p>Content: {content}</p>
+          <p>Resource Files: {resource_files}</p>
+          <p>Resource Links: {resource_links}</p>
+          <p>Duration: {duration} minutes</p>
+        </div>
+      </main>
+    </>
   );
 };
 
