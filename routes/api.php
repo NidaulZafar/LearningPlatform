@@ -6,6 +6,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\InstructorController;
+use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,7 @@ Route::group(['middleware' => 'auth:sanctum'], static function () {
     Route::get('/feedback', [FeedbackController::class, 'index']);
     Route::post('/contact', [ContactController::class, 'store']);
     Route::get('/courses/{id}', [CourseController::class, 'show']);
+    Route::get('/module/{id}', [ModuleController::class, 'getModuleContent']);
 });
 
 Route::get('/courses', [CourseController::class, 'index']);
