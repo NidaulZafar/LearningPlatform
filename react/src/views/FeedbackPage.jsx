@@ -52,6 +52,7 @@ const FeedbackPage = () => {
         console.log('Feedback submitted:', response.data);
         setFeedback([...feedback, response.data]);
         setFormData({
+          name: '',
           student_id: '',
           instructor_id: '',
           title: '',
