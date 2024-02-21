@@ -22,7 +22,6 @@ const FeedbackPage = () => {
     axiosClient.get('/feedback')
       .then(response => {
         setFeedback(response.data);
-        console.log('Feedback fetched:', feedback);
       })
       .catch(error => {
         console.error('Error fetching feedback:', error);
