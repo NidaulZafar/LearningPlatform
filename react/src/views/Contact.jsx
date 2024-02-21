@@ -1,10 +1,11 @@
 import Sidebar from "../components/Sidebar.jsx";
-import {useState} from "react";
+import React, {useState} from "react";
 import axiosClient from "../axios-client.js";
 import './CSS/contact.css';
 
 
 export default function Contact() {
+  const [message, setMessage] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -22,7 +23,16 @@ export default function Contact() {
     e.preventDefault();
     try {
       const response = await axiosClient.post('/contact', formData);
-      console.log(response.data); // Log the response from the backend
+      setMessage(response.data.message);
+      console.log('Form submitted:', response.data.message);
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      });
     } catch (error) {
       console.error('Error submitting form:', error);
     }
@@ -69,6 +79,11 @@ export default function Contact() {
             </div>
             <button type="submit">Submit</button>
           </form>
+          {message && (
+            <div className="message">
+              {message}
+            </div>
+          )}
         </div>
       </main>
     </>
