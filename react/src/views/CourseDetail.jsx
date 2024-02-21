@@ -89,12 +89,12 @@ const CourseDetailComponent = ({
               <li key={module.id}>
                 {enrolled ? (
                   <Link to={`/module/${module.id}`}>
-                {module.title}
+                    {module.title}
                   </Link>
                 ) : (
                   module.title
                 )}
-                  </li>
+              </li>
             ))}
           </ul>
         </>
