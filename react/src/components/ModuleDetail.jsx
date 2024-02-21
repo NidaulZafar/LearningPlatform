@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axiosClient from '../axios-client';
 import {useParams} from "react-router-dom";
+import Sidebar from "./Sidebar.jsx";
 
 const ModuleDetail = () => {
   const {id} = useParams();
@@ -36,6 +37,9 @@ const ModuleDetail = () => {
   const {title, description, content, resource_files, resource_links, duration} = moduleData;
 
   return (
+    <>
+      <Sidebar/>
+      <main className="content">
     <div className="module-detail">
       <h2>{title}</h2>
       <p>Description: {description}</p>
@@ -44,6 +48,8 @@ const ModuleDetail = () => {
       <p>Resource Links: {resource_links}</p>
       <p>Duration: {duration} minutes</p>
     </div>
+</main>
+</>
   );
 };
 
