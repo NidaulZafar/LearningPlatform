@@ -24,7 +24,6 @@ export default function Contact() {
     try {
       const response = await axiosClient.post('/contact', formData);
       setMessage(response.data.message);
-      console.log('Form submitted:', response.data.message);
       setTimeout(() => {
         setMessage(null);
       }, 3000);
