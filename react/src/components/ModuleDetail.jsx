@@ -13,7 +13,6 @@ const ModuleDetail = () => {
     const fetchModuleData = async () => {
       try {
         const response = await axiosClient.get(`/module/${id}`);
-        console.log(response.data);
         setModuleData(response.data);
         setLoading(false);
       } catch (error) {
