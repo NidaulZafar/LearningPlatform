@@ -13,8 +13,8 @@ const ModuleDetail = () => {
     const fetchModuleData = async () => {
       try {
         const response = await axiosClient.get(`/module/${id}`);
-        setModuleData(response.data);
         console.log(response.data);
+        setModuleData(response.data);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching module data:', error);
