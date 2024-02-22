@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axiosClient from '../axios-client';
 import {useParams} from "react-router-dom";
 import Sidebar from "./Sidebar.jsx";
+import './module.css';
 
 const ModuleDetail = () => {
   const {id} = useParams();
