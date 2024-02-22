@@ -1,0 +1,54 @@
+.content {
+  display: flex;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+.module-detail {
+  flex: 1;
+  padding: 20px;
+}
+
+.module-detail h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.module-detail p {
+  margin-bottom: 10px;
+}
+
+.module-detail ul {
+  list-style: none;
+  padding: 0;
+}
+
+.module-detail li {
+  margin-bottom: 20px;
+}
+
+.module-detail h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.module-detail img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.module-detail a {
+  color: #007bff;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.module-detail a:hover {
+  text-decoration: underline;
+}
