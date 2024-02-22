@@ -44,8 +44,6 @@ const ModuleDetail = () => {
           <h2>{title}</h2>
           <p>Description: {description}</p>
           <p>Content: {content}</p>
-          <p>Resource Files: {resource_files}</p>
-          <p>Resource Links: {resource_links}</p>
           <p>Duration: {duration} minutes</p>
           <div>
             <h3>Videos:</h3>
@@ -55,12 +53,18 @@ const ModuleDetail = () => {
                   <h4>{video.title}</h4>
                   <p>Description: {video.description}</p>
                   <p>Duration: {video.duration} minutes</p>
-                  <img src={video.thumbnail} alt={video.title}/>
-                  <a href={video.video_url} target="_blank" rel="noopener noreferrer">Watch Video</a>
+                  <a href={video.video_url} target="_blank" rel="noopener noreferrer">
+                    <img src={video.thumbnail}
+                         alt={video.title}/>
+                    <br/>
+                    Watch Video</a>
                 </li>
               ))}
             </ul>
           </div>
+          <h4>Extra Resources:</h4>
+          <p>Resource Files: {resource_files}</p>
+          <p>Resource Links: {resource_links}</p>
         </div>
       </main>
     </>
