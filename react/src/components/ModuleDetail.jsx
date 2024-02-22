@@ -23,7 +23,7 @@ const ModuleDetail = () => {
     };
 
     fetchModuleData();
-  }, []);
+  }, [id]);
 
   if (loading) {
     return <div>Loading module data...</div>;
@@ -33,7 +33,7 @@ const ModuleDetail = () => {
     return <div>Error: {error}</div>;
   }
 
-  const {title, description, content, resource_files, resource_links, duration} = moduleData;
+  const {title, description, content, resource_files, resource_links, duration, videos} = moduleData;
 
   return (
     <>
@@ -46,6 +46,21 @@ const ModuleDetail = () => {
           <p>Resource Files: {resource_files}</p>
           <p>Resource Links: {resource_links}</p>
           <p>Duration: {duration} minutes</p>
+          <div>
+            <h3>Videos:</h3>
+            <ul>
+              {videos.map(video => (
+                <li key={video.id}>
+                  <h4>{video.title}</h4>
+                  <p>Description: {video.description}</p>
+                  <p>Duration: {video.duration} minutes</p>
+                  {/* You can render video thumbnail and link here */}
+                  <img src={video.thumbnail} alt={video.title}/>
+                  <a href={video.video_url} target="_blank" rel="noopener noreferrer">Watch Video</a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </main>
     </>
