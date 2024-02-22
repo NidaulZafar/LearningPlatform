@@ -17,9 +17,9 @@ class Module extends Model
         return $this->belongsTo(Course::class);
     }
 
-    public function videos(): HasMany
+    public function videos(): BelongsToMany
     {
-        return $this->hasMany(Video::class);
+        return $this->belongsToMany(Video::class, 'module_video', 'module_id', 'video_id');
     }
 
 }
