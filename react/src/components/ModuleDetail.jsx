@@ -54,7 +54,6 @@ const ModuleDetail = () => {
                   <h4>{video.title}</h4>
                   <p>Description: {video.description}</p>
                   <p>Duration: {video.duration} minutes</p>
-                  {/* You can render video thumbnail and link here */}
                   <img src={video.thumbnail} alt={video.title}/>
                   <a href={video.video_url} target="_blank" rel="noopener noreferrer">Watch Video</a>
                 </li>
