@@ -3,9 +3,9 @@ import Sidebar from "./Sidebar.jsx";
 const Assignment = () => {
   return (
     <>
-      <Sidebar />
+      <Sidebar/>
       <main className={"content"}>
-Assignments Page coming soon
+        Assignments Page coming soon
       </main>
     </>
   )
