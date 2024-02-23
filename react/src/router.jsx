@@ -12,6 +12,7 @@ import EnrolledCourses from "./components/EnrolledCourses.jsx";
 import FeedbackPage from "./views/FeedbackPage.jsx";
 import Contact from "./views/Contact.jsx";
 import ModuleDetail from "./components/ModuleDetail.jsx";
+import Assignments from "./components/Assignments.jsx";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact/>
+      },
+      {
+        path: "/assignments",
+        element: <Assignments/>
       }
     ]
   },
