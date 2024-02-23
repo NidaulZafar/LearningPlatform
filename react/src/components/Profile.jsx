@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axiosClient from "../axios-client.js";
 import Sidebar from "./Sidebar.jsx";
-import "./profile.css";
+import "./styles/profile.css";
 import {useStateContext} from "../contexts/ContextProvider.jsx";
 
 const Profile = () => {
