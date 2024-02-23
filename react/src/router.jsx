@@ -13,6 +13,7 @@ import FeedbackPage from "./views/FeedbackPage.jsx";
 import Contact from "./views/Contact.jsx";
 import ModuleDetail from "./components/ModuleDetail.jsx";
 import Assignments from "./components/Assignments.jsx";
+import Quiz from "./components/Quiz.jsx";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,14 @@ const router = createBrowserRouter([
       {
         path: "/assignments",
         element: <Assignments/>
+      },
+      {
+        path: "/assignments/:id",
+        element: <Assignments/>
+      },
+      {
+        path: "/quiz",
+        element: <Quiz/>
       }
     ]
   },
