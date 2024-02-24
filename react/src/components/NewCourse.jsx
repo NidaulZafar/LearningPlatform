@@ -2,7 +2,7 @@ import Sidebar from "./Sidebar.jsx";
 import {useState} from "react";
 
 const NewCourse = () => {
-  const [courseData, setCourseData] = useState({
+  const initialCourseData = {
     title: "",
     code: "",
     description: "",
@@ -27,7 +27,22 @@ const NewCourse = () => {
         ]
       }
     ]
-  });
+  }
+  const [courseData, setCourseData] = useState(initialCourseData);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // send courseData to the server
+
+    console.log(courseData);
+  //   reset the form
+    setCourseData({...initialCourseData})
+  };
+
+  function handleCourseDataChange() {
+    const {name, value} = e.target;
+    setCourseData({...courseData, [name]: value});
+  }
 
   return (
     <>
@@ -37,7 +52,15 @@ const NewCourse = () => {
         <p>
           Here you can add a new course.
         </p>
-        <form>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="title">Title:</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            value={courseData.title}
+            onChange={handleCourseDataChange}
+          />
 
         </form>
       </main>
