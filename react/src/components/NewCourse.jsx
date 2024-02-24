@@ -62,37 +62,40 @@ const NewCourse = () => {
   };
 
   const handleModuleDataChange = (index, e) => {
-    const { name, value } = e.target;
+    const {name, value} = e.target;
     const modules = [...courseData.modules];
     modules[index][name] = value;
-    setCourseData({ ...courseData, modules });
+    setCourseData({...courseData, modules});
   };
 
   const handleVideoDataChange = (moduleIndex, videoIndex, e) => {
-    const { name, value } = e.target;
+    const {name, value} = e.target;
     const modules = [...courseData.modules];
     modules[moduleIndex].videos[videoIndex][name] = value;
-    setCourseData({ ...courseData, modules });
+    setCourseData({...courseData, modules});
   };
 
   const addModule = () => {
     setCourseData({
       ...courseData,
-      modules: [...courseData.modules, {...initialCourseData.modules[0], videos: [initialCourseData.modules[0].videos[0]]}]
+      modules: [...courseData.modules, {
+        ...initialCourseData.modules[0],
+        videos: [initialCourseData.modules[0].videos[0]]
+      }]
     });
   }
 
   const addVideo = (moduleIndex) => {
     const modules = [...courseData.modules];
-    modules[moduleIndex].videos.push({ ...initialCourseData.modules[0].videos[0] });
-    setCourseData({ ...courseData, modules });
+    modules[moduleIndex].videos.push({...initialCourseData.modules[0].videos[0]});
+    setCourseData({...courseData, modules});
   };
 
   return (
     <>
       <Sidebar/>
       <main className="content">
-      <h1>New Course Form</h1>
+        <h1>New Course Form</h1>
         <p>
           Here you can add a new course.
         </p>
