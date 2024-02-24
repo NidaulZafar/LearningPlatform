@@ -49,6 +49,7 @@ const Sidebar = () => {
       <ul className="submenu">
         <li><Link to='/courses'>All Courses</Link></li>
         <li><Link to='/your-courses'>Your Courses</Link></li>
+        <li><Link to='/courses/new'>New Course</Link></li>
       </ul>
     );
   };
