@@ -95,6 +95,7 @@ const NewCourse = () => {
               name="title"
               value={courseData.title}
               onChange={handleCourseDataChange}
+              required
             />
           </div>
           <div className="form-group">
@@ -105,6 +106,7 @@ const NewCourse = () => {
               name="code"
               value={courseData.code}
               onChange={handleCourseDataChange}
+              required
             />
           </div>
           <div className="form-group">
@@ -134,6 +136,7 @@ const NewCourse = () => {
               name="price"
               value={courseData.price}
               onChange={handleCourseDataChange}
+              required
             />
           </div>
 
@@ -148,6 +151,7 @@ const NewCourse = () => {
                 name="title"
                 value={module.title}
                 onChange={(e) => handleModuleDataChange(moduleIndex, e)}
+                required
               />
             </div>
             <div className="form-group">
@@ -200,6 +204,7 @@ const NewCourse = () => {
                   name="video_url"
                   value={video.video_url}
                   onChange={(e) => handleVideoDataChange(moduleIndex, videoIndex, e)}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -210,6 +215,7 @@ const NewCourse = () => {
                   name="duration"
                   value={video.duration}
                   onChange={(e) => handleVideoDataChange(moduleIndex, videoIndex, e)}
+                  required
                 />
               </div>
               <div className="form-group">
