@@ -5,29 +5,11 @@ import {useStateContext} from "../contexts/ContextProvider.jsx";
 
 const NewCourse = () => {
   const initialCourseData = {
-    title: "",
-    code: "",
-    description: "",
-    coverImage: "",
-    price: 0,
-    modules: [
-      {
-        title: "",
-        description: "",
-        duration: 0,
-        content: "",
-        videos: [
-          {
-            title: "",
-            video_url: "",
-            duration: 0,
-            thumbnail: "",
-            description: "",
-            content: ""
-          }
-        ]
-      }
-    ]
+    title: "", code: "", description: "", coverImage: "", price: 0, modules: [{
+      title: "", description: "", duration: 0, content: "", videos: [{
+        title: "", video_url: "", duration: 0, thumbnail: "", description: "", content: ""
+      }]
+    }]
   };
   const {user} = useStateContext();
   const [courseData, setCourseData] = useState(initialCourseData);
@@ -43,8 +25,7 @@ const NewCourse = () => {
             You don't have permission to access this page.
           </p>
         </main>
-      </>
-    );
+      </>);
   }
 
   const handleSubmit = async (e) => {
@@ -77,10 +58,8 @@ const NewCourse = () => {
 
   const addModule = () => {
     setCourseData({
-      ...courseData,
-      modules: [...courseData.modules, {
-        ...initialCourseData.modules[0],
-        videos: [initialCourseData.modules[0].videos[0]]
+      ...courseData, modules: [...courseData.modules, {
+        ...initialCourseData.modules[0], videos: [initialCourseData.modules[0].videos[0]]
       }]
     });
   }
@@ -91,8 +70,7 @@ const NewCourse = () => {
     setCourseData({...courseData, modules});
   };
 
-  return (
-    <>
+  return (<>
       <Sidebar/>
       <main className="content">
         <h1>New Course Form</h1>
@@ -141,8 +119,7 @@ const NewCourse = () => {
           />
 
           <h2>Modules</h2>
-          {courseData.modules.map((module, moduleIndex) => (
-            <div key={`module-${moduleIndex}`}>
+          {courseData.modules.map((module, moduleIndex) => (<div key={`module-${moduleIndex}`}>
               <h2>Module {moduleIndex + 1}</h2>
               <label htmlFor={`module-title-${moduleIndex}`}>Title:</label>
               <input
@@ -175,8 +152,7 @@ const NewCourse = () => {
                 onChange={(e) => handleModuleDataChange(moduleIndex, e)}
               />
 
-              {module.videos.map((video, videoIndex) => (
-                <div key={`video-${moduleIndex}-${videoIndex}`}>
+              {module.videos.map((video, videoIndex) => (<div key={`video-${moduleIndex}-${videoIndex}`}>
                   <h3>Video {videoIndex + 1}</h3>
                   <label htmlFor={`video-title-${moduleIndex}-${videoIndex}`}>Title:</label>
                   <input
@@ -224,13 +200,11 @@ const NewCourse = () => {
                     value={video.content}
                     onChange={(e) => handleVideoDataChange(moduleIndex, videoIndex, e)}
                   />
-                </div>
-              ))}
+                </div>))}
               <button type="button" onClick={() => addVideo(moduleIndex)}>
                 Add Video
               </button>
-            </div>
-          ))}
+            </div>))}
           <button type="button" onClick={addModule}>
             Add Module
           </button>
@@ -239,8 +213,7 @@ const NewCourse = () => {
 
         </form>
       </main>
-    </>
-  );
+    </>);
 };
 
 export default NewCourse;
