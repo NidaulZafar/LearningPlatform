@@ -80,4 +80,10 @@ class CourseController extends Controller
     {
         // Define the logic to delete a course
     }
+
+    public function allCourses($instructorId): JsonResponse
+    {
+        $courses = Course::with(['instructor', 'modules'])->where('instructor_id', $instructorId)->get();
+        return response()->json($courses);
+    }
 }
