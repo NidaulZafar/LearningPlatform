@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Module;
+use App\Models\Video;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CourseController extends Controller
 {
@@ -37,9 +40,33 @@ class CourseController extends Controller
         // Define the logic for creating a new course
     }
 
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
-        // Define the logic to store a new course
+        // Validate the incoming request data
+
+        $courseData = $request->all();
+
+        $courseData['instructor_id'] = auth()->id();
+Log::info($courseData);
+        // Create the course
+        $course = Course::create($courseData);
+
+        // Create modules
+        foreach ($courseData['modules'] as $moduleData) {
+            $module = new Module($moduleData);
+            $course->modules()->save($module);
+
+            // Create videos for each module
+            if (isset($moduleData['videos'])) {
+                foreach ($moduleData['videos'] as $videoData) {
+                    $video = new Video($videoData);
+                    $module->videos()->save($video);
+                }
+            }
+        }
+
+        // Return success response
+        return response()->json(['message' => 'Course created successfully'], 201);
     }
 
     public function edit($course)
