@@ -10,7 +10,6 @@ const NewCourse = () => {
     description: "",
     coverImage: "",
     price: 0,
-    instructorId: '',
     modules: [
       {
         title: "",
