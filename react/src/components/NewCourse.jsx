@@ -34,7 +34,6 @@ const NewCourse = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log('courseData', courseData);
       const response = await axiosClient.post("/courses", courseData);
       setCourseData({...initialCourseData})
     }
