@@ -1,5 +1,7 @@
 import Sidebar from "./Sidebar.jsx";
 import {useState} from "react";
+import axiosClient from "../axios-client.js";
+import {useStateContext} from "../contexts/ContextProvider.jsx";
 
 const NewCourse = () => {
   const initialCourseData = {
