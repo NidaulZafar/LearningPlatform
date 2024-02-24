@@ -1,6 +1,34 @@
 import Sidebar from "./Sidebar.jsx";
+import {useState} from "react";
 
 const NewCourse = () => {
+  const [courseData, setCourseData] = useState({
+    title: "",
+    code: "",
+    description: "",
+    coverImage: "",
+    price: 0,
+    instructorId: '',
+    modules: [
+      {
+        title: "",
+        description: "",
+        duration: 0,
+        content: "",
+        videos: [
+          {
+            title: "",
+            videoUrl: "",
+            duration: 0,
+            thumbnail: "",
+            description: "",
+            content: ""
+          }
+        ]
+      }
+    ]
+  });
+
   return (
     <>
       <Sidebar/>
