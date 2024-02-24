@@ -32,7 +32,7 @@ const InstructorsCourses = () => {
     <Sidebar/>
     <main className="content">
       <h1>Your Courses</h1>
-      <p>Here are the courses you are teaching.</p>
+      <p>Here you will the courses created by you. </p>
       {isLoading ? (
         <p>Loading...</p>
       ) : (
@@ -58,13 +58,13 @@ const InstructorsCourses = () => {
               ))}
             </div>) : (
             <div>
-              <h2>No courses available</h2>
+              <h2>Currently no courses authored by you available. <Link to="/courses/new">Click here</Link> to create your first course</h2>
             </div>
           )}
         </div>
       )}
-        </main>
-        </>)
-      };
+    </main>
+  </>)
+};
 
 export default InstructorsCourses;
