@@ -18,6 +18,7 @@ class Course extends Model
         'cover_image',
         'created_at',
         'instructor_id',
+        'code',
     ];
 
 
