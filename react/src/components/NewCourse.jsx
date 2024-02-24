@@ -14,6 +14,7 @@ const NewCourse = () => {
   };
   const {user} = useStateContext();
   const [courseData, setCourseData] = useState(initialCourseData);
+  const [message, setMessage] = useState("");
 
   if (user.type !== 'instructor') {
     return (
@@ -35,6 +36,10 @@ const NewCourse = () => {
     e.preventDefault();
     try {
       const response = await axiosClient.post("/courses", courseData);
+      setMessage(response.data.message);
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
       setCourseData({...initialCourseData})
     }
     catch (error) {
@@ -247,6 +252,7 @@ const NewCourse = () => {
           <button type="submit">Submit Course</button>
           </div>
         </form>
+        {message && <div className="message">{message}</div>}
       </div>
     </main>
     </>
