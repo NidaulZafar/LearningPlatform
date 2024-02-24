@@ -41,8 +41,7 @@ const NewCourse = () => {
         setMessage(null);
       }, 3000);
       setCourseData({...initialCourseData})
-    }
-    catch (error) {
+    } catch (error) {
       console.error(error);
     }
   };
@@ -81,188 +80,190 @@ const NewCourse = () => {
   };
 
   return (<>
-    <Sidebar/>
-    <main className="content">
-      <div className="new-course-form">
-        <h1>New Course Form</h1>
-        <p>Here you can add a new course.</p>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="title">Title:</label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              value={courseData.title}
-              onChange={handleCourseDataChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="code">Code:</label>
-            <input
-              type="text"
-              id="code"
-              name="code"
-              value={courseData.code}
-              onChange={handleCourseDataChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="description">Description:</label>
-            <textarea
-              id="description"
-              name="description"
-              value={courseData.description}
-              onChange={handleCourseDataChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="coverImage">Cover Image:</label>
-            <input
-              type="text"
-              id="coverImage"
-              name="coverImage"
-              value={courseData.coverImage}
-              onChange={handleCourseDataChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="price">Price:</label>
-            <input
-              type="number"
-              id="price"
-              name="price"
-              value={courseData.price}
-              onChange={handleCourseDataChange}
-              required
-            />
-          </div>
-
-          <h2>Modules</h2>
-          {courseData.modules.map((module, moduleIndex) => (<div className="module" key={`module-${moduleIndex}`}>
-            <h2>Module {moduleIndex + 1}</h2>
+      <Sidebar/>
+      <main className="content">
+        <div className="new-course-form">
+          <h1>New Course Form</h1>
+          <p>Here you can add a new course.</p>
+          <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor={`module-title-${moduleIndex}`}>Title:</label>
+              <label htmlFor="title">Title<span className="required">*</span></label>
               <input
                 type="text"
-                id={`module-title-${moduleIndex}`}
+                id="title"
                 name="title"
-                value={module.title}
-                onChange={(e) => handleModuleDataChange(moduleIndex, e)}
+                value={courseData.title}
+                onChange={handleCourseDataChange}
                 required
               />
             </div>
             <div className="form-group">
-              <label htmlFor={`module-description-${moduleIndex}`}>Description:</label>
-              <textarea
-                id={`module-description-${moduleIndex}`}
-                name="description"
-                value={module.description}
-                onChange={(e) => handleModuleDataChange(moduleIndex, e)}
+              <label htmlFor="code">Code<span className="required">*</span></label>
+              <input
+                type="text"
+                id="code"
+                name="code"
+                value={courseData.code}
+                onChange={handleCourseDataChange}
+                required
               />
             </div>
             <div className="form-group">
-              <label htmlFor={`module-duration-${moduleIndex}`}>Duration:</label>
+              <label htmlFor="description">Description:</label>
+              <textarea
+                id="description"
+                name="description"
+                value={courseData.description}
+                onChange={handleCourseDataChange}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="coverImage">Cover Image:</label>
+              <input
+                type="text"
+                id="coverImage"
+                name="coverImage"
+                value={courseData.coverImage}
+                onChange={handleCourseDataChange}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="price">Price<span className="required">*</span></label>
               <input
                 type="number"
-                id={`module-duration-${moduleIndex}`}
-                name="duration"
-                value={module.duration}
-                onChange={(e) => handleModuleDataChange(moduleIndex, e)}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor={`module-content-${moduleIndex}`}>Content:</label>
-              <textarea
-                id={`module-content-${moduleIndex}`}
-                name="content"
-                value={module.content}
-                onChange={(e) => handleModuleDataChange(moduleIndex, e)}
+                id="price"
+                name="price"
+                value={courseData.price}
+                onChange={handleCourseDataChange}
+                required
               />
             </div>
 
-            {module.videos.map((video, videoIndex) => (<div key={`video-${moduleIndex}-${videoIndex}`}>
-              <h3>Video {videoIndex + 1}</h3>
+            <h2>Modules</h2>
+            {courseData.modules.map((module, moduleIndex) => (<div className="module" key={`module-${moduleIndex}`}>
+              <h2>Module {moduleIndex + 1}</h2>
               <div className="form-group">
-                <label htmlFor={`video-title-${moduleIndex}-${videoIndex}`}>Title:</label>
+                <label htmlFor={`module-title-${moduleIndex}`}>Title<span className="required">*</span></label>
                 <input
                   type="text"
-                  id={`video-title-${moduleIndex}-${videoIndex}`}
+                  id={`module-title-${moduleIndex}`}
                   name="title"
-                  value={video.title}
-                  onChange={(e) => handleVideoDataChange(moduleIndex, videoIndex, e)}
+                  value={module.title}
+                  onChange={(e) => handleModuleDataChange(moduleIndex, e)}
                   required
                 />
               </div>
               <div className="form-group">
-                <label htmlFor={`video-video_url-${moduleIndex}-${videoIndex}`}>Video URL:</label>
-                <input
-                  type="text"
-                  id={`video-video_url-${moduleIndex}-${videoIndex}`}
-                  name="video_url"
-                  value={video.video_url}
-                  onChange={(e) => handleVideoDataChange(moduleIndex, videoIndex, e)}
-                  required
+                <label htmlFor={`module-description-${moduleIndex}`}>Description:</label>
+                <textarea
+                  id={`module-description-${moduleIndex}`}
+                  name="description"
+                  value={module.description}
+                  onChange={(e) => handleModuleDataChange(moduleIndex, e)}
                 />
               </div>
               <div className="form-group">
-                <label htmlFor={`video-duration-${moduleIndex}-${videoIndex}`}>Duration:</label>
+                <label htmlFor={`module-duration-${moduleIndex}`}>Duration:</label>
                 <input
                   type="number"
-                  id={`video-duration-${moduleIndex}-${videoIndex}`}
+                  id={`module-duration-${moduleIndex}`}
                   name="duration"
-                  value={video.duration}
-                  onChange={(e) => handleVideoDataChange(moduleIndex, videoIndex, e)}
-                  required
+                  value={module.duration}
+                  onChange={(e) => handleModuleDataChange(moduleIndex, e)}
                 />
               </div>
               <div className="form-group">
-                <label htmlFor={`video-thumbnail-${moduleIndex}-${videoIndex}`}>Thumbnail:</label>
-                <input
-                  type="text"
-                  id={`video-thumbnail-${moduleIndex}-${videoIndex}`}
-                  name="thumbnail"
-                  value={video.thumbnail}
-                  onChange={(e) => handleVideoDataChange(moduleIndex, videoIndex, e)}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor={`video-description-${moduleIndex}-${videoIndex}`}>Description:</label>
+                <label htmlFor={`module-content-${moduleIndex}`}>Content:</label>
                 <textarea
-                  id={`video-description-${moduleIndex}-${videoIndex}`}
-                  name="description"
-                  value={video.description}
-                  onChange={(e) => handleVideoDataChange(moduleIndex, videoIndex, e)}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor={`video-content-${moduleIndex}-${videoIndex}`}>Content:</label>
-                <textarea
-                  id={`video-content-${moduleIndex}-${videoIndex}`}
+                  id={`module-content-${moduleIndex}`}
                   name="content"
-                  value={video.content}
-                  onChange={(e) => handleVideoDataChange(moduleIndex, videoIndex, e)}
+                  value={module.content}
+                  onChange={(e) => handleModuleDataChange(moduleIndex, e)}
                 />
               </div>
+
+              {module.videos.map((video, videoIndex) => (<div key={`video-${moduleIndex}-${videoIndex}`}>
+                <h3>Video {videoIndex + 1}</h3>
+                <div className="form-group">
+                  <label htmlFor={`video-title-${moduleIndex}-${videoIndex}`}>Title<span
+                    className="required">*</span></label>
+                  <input
+                    type="text"
+                    id={`video-title-${moduleIndex}-${videoIndex}`}
+                    name="title"
+                    value={video.title}
+                    onChange={(e) => handleVideoDataChange(moduleIndex, videoIndex, e)}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor={`video-video_url-${moduleIndex}-${videoIndex}`}>Video URL<span
+                    className="required">*</span></label>
+                  <input
+                    type="text"
+                    id={`video-video_url-${moduleIndex}-${videoIndex}`}
+                    name="video_url"
+                    value={video.video_url}
+                    onChange={(e) => handleVideoDataChange(moduleIndex, videoIndex, e)}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor={`video-duration-${moduleIndex}-${videoIndex}`}>Duration<span
+                    className="required">*</span></label>
+                  <input
+                    type="number"
+                    id={`video-duration-${moduleIndex}-${videoIndex}`}
+                    name="duration"
+                    value={video.duration}
+                    onChange={(e) => handleVideoDataChange(moduleIndex, videoIndex, e)}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor={`video-thumbnail-${moduleIndex}-${videoIndex}`}>Thumbnail:</label>
+                  <input
+                    type="text"
+                    id={`video-thumbnail-${moduleIndex}-${videoIndex}`}
+                    name="thumbnail"
+                    value={video.thumbnail}
+                    onChange={(e) => handleVideoDataChange(moduleIndex, videoIndex, e)}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor={`video-description-${moduleIndex}-${videoIndex}`}>Description:</label>
+                  <textarea
+                    id={`video-description-${moduleIndex}-${videoIndex}`}
+                    name="description"
+                    value={video.description}
+                    onChange={(e) => handleVideoDataChange(moduleIndex, videoIndex, e)}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor={`video-content-${moduleIndex}-${videoIndex}`}>Content:</label>
+                  <textarea
+                    id={`video-content-${moduleIndex}-${videoIndex}`}
+                    name="content"
+                    value={video.content}
+                    onChange={(e) => handleVideoDataChange(moduleIndex, videoIndex, e)}
+                  />
+                </div>
+              </div>))}
+              <button type="button" onClick={() => addVideo(moduleIndex)}>
+                Add Video
+              </button>
             </div>))}
-            <button type="button" onClick={() => addVideo(moduleIndex)}>
-              Add Video
+            <button type="button" onClick={addModule}>
+              Add Module
             </button>
-          </div>))}
-          <button type="button" onClick={addModule}>
-            Add Module
-          </button>
-          <div className="form-group">
-          <button type="submit">Submit Course</button>
-          </div>
-        </form>
-        {message && <div className="message">{message}</div>}
-      </div>
-    </main>
-    </>
-  );
+            <div className="form-group">
+              <button type="submit">Submit Course</button>
+            </div>
+          </form>
+          {message && <div className="message">{message}</div>}
+        </div>
+      </main>
+    </>);
 };
 
 export default NewCourse;
