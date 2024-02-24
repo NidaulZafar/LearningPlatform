@@ -11,6 +11,8 @@ class Video extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title', 'description', 'video_url', 'duration', 'thumbnail', 'content'];
+
     public function modules(): BelongsToMany
     {
         return $this->belongsToMany(Module::class, 'module_video', 'video_id', 'module_id');
