@@ -15,6 +15,7 @@ import ModuleDetail from "./components/ModuleDetail.jsx";
 import Assignments from "./components/Assignments.jsx";
 import Quiz from "./components/Quiz.jsx";
 import NewCourse from "./components/NewCourse.jsx";
+import InstructorsCourses from "./components/InstructorsCourses.jsx";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/courses/:id",
         element: <CourseDetail/>
+      },
+      {
+        path: "your-courses",
+        element: <InstructorsCourses/>
       },
       {
         path: "module/:id",
