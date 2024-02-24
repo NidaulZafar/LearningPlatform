@@ -16,7 +16,8 @@ class Course extends Model
         'instructor_name',
         'description',
         'cover_image',
-        'created_at'
+        'created_at',
+        'instructor_id',
     ];
 
 
