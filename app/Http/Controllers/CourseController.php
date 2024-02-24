@@ -8,7 +8,6 @@ use App\Models\Video;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class CourseController extends Controller
 {
@@ -47,8 +46,6 @@ class CourseController extends Controller
         $courseData = $request->all();
 
         $courseData['instructor_id'] = auth()->id();
-Log::info($courseData);
-        // Create the course
         $course = Course::create($courseData);
 
         // Create modules
