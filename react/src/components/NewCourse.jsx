@@ -36,8 +36,6 @@ const NewCourse = () => {
     try {
       console.log('courseData', courseData);
       const response = await axiosClient.post("/courses", courseData);
-      console.log(courseData);
-      console.log('response', response);
       setCourseData({...initialCourseData})
     }
     catch (error) {
