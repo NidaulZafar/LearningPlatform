@@ -2,6 +2,7 @@ import Sidebar from "./Sidebar.jsx";
 import {useState} from "react";
 import axiosClient from "../axios-client.js";
 import {useStateContext} from "../contexts/ContextProvider.jsx";
+import './styles/newCourse.css';
 
 const NewCourse = () => {
   const initialCourseData = {
@@ -20,10 +21,12 @@ const NewCourse = () => {
       <>
         <Sidebar/>
         <main className="content">
-          <h1>Access Denied</h1>
-          <p>
-            You don't have permission to access this page.
-          </p>
+          <div className="access-denied">
+            <h1>Access Denied</h1>
+            <p>
+              You don't have permission to access this page.
+            </p>
+          </div>
         </main>
       </>);
   }
