@@ -31,7 +31,7 @@ const Announcements = () => {
           <br/>
         </div>
         <ul>
-          {announcements.map((announcement) => {
+          {announcements && announcements.map((announcement) => {
             return (<li key={announcement.id}>
                 <h2>{announcement.title}</h2>
                 <p>{announcement.content}</p>
