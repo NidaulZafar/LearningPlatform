@@ -25,24 +25,29 @@ const Announcements = () => {
       <main className="content">
         <div>
           <h1>Announcements</h1>
-          <span>
-              Check the latest announcements here.
-            </span>
-          <br/>
+          {announcements.length === 0 ? (
+            <p>No announcements available at present.</p>
+          ) : (
+            <>
+              <span>Check the latest announcements here.</span>
+              <br />
+              <ul>
+                {announcements.map((announcement) => (
+                  <li key={announcement.id}>
+                    <h2>{announcement.title}</h2>
+                    <p>{announcement.content}</p>
+                    <p>Published on: {announcement.publish_date}</p>
+                    <p>Expires on: {announcement.expiry_date}</p>
+                    <hr />
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
         </div>
-        <ul>
-          {announcements && announcements.map((announcement) => {
-            return (<li key={announcement.id}>
-                <h2>{announcement.title}</h2>
-                <p>{announcement.content}</p>
-                <p>Published on: {announcement.publish_date}</p>
-                <p>Expires on: {announcement.expiry_date}</p>
-                <hr/>
-              </li>)
-          })}
-        </ul>
       </main>
-    </>)
+    </>
+  );
 };
 
 export default Announcements;
