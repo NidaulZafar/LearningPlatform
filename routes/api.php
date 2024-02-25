@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CourseController;
@@ -53,3 +54,4 @@ Route::group(['middleware' => 'auth:sanctum'], static function () {
 });
 
 Route::get('/courses', [CourseController::class, 'index']);
+Route::get('/announcements', [AnnouncementController::class, 'index']);
