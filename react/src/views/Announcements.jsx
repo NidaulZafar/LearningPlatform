@@ -4,13 +4,7 @@ import axiosClient from "../axios-client.js";
 
 const Announcements = () => {
   const [announcements, setAnnouncements] = useState([{
-    id: 0,
-    title: "",
-    content: "",
-    expiry_date: "",
-    created_at: "",
-    updated_at: "",
-    publish_date: ""
+    id: 0, title: "", content: "", expiry_date: "", created_at: "", updated_at: "", publish_date: ""
   }]);
 
   // Fetch announcements from the API
@@ -26,8 +20,7 @@ const Announcements = () => {
     fetchAnnouncements();
   }, []);
 
-  return (
-    <>
+  return (<>
       <Sidebar/>
       <main className="content">
         <div>
@@ -39,20 +32,17 @@ const Announcements = () => {
         </div>
         <ul>
           {announcements.map((announcement) => {
-            return (
-              <li key={announcement.id}>
+            return (<li key={announcement.id}>
                 <h2>{announcement.title}</h2>
                 <p>{announcement.content}</p>
                 <p>Published on: {announcement.publish_date}</p>
                 <p>Expires on: {announcement.expiry_date}</p>
                 <hr/>
-              </li>
-            )
+              </li>)
           })}
         </ul>
       </main>
-    </>
-  )
+    </>)
 };
 
 export default Announcements;
