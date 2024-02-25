@@ -3,11 +3,30 @@ import React, {useEffect, useState} from "react";
 import axiosClient from "../axios-client.js";
 
 const Announcements = () => {
-  const announcements = [
-    {id: 1, title: "Announcement 1", body: "This is the first announcement"},
-    {id: 2, title: "Announcement 2", body: "This is the second announcement"},
-    {id: 3, title: "Announcement 3", body: "This is the third announcement"}
-  ]
+  const [announcements, setAnnouncements] = useState([{
+    id: 0,
+    title: "",
+    content: "",
+    expiry_date: "",
+    created_at: "",
+    updated_at: "",
+    publish_date: ""
+  }]);
+
+  // Fetch announcements from the API
+  useEffect(() => {
+    const fetchAnnouncements = async () => {
+      try {
+        const response = await axiosClient.get("/announcements");
+        setAnnouncements(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchAnnouncements();
+  }, []);
+
   return (
     <>
       <Sidebar/>
