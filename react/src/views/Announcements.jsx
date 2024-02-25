@@ -1,7 +1,7 @@
 import Sidebar from "../components/Sidebar.jsx";
 import React from "react";
 
-export default function Announcements() {
+const Announcements = () => {
   const announcements = [
     {id: 1, title: "Announcement 1", body: "This is the first announcement"},
     {id: 2, title: "Announcement 2", body: "This is the second announcement"},
@@ -31,4 +31,6 @@ export default function Announcements() {
       </main>
     </>
   )
-}
+};
+
+export default Announcements;
