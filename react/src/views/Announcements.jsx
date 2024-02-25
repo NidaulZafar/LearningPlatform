@@ -42,8 +42,11 @@ const Announcements = () => {
           {announcements.map((announcement) => {
             return (
               <li key={announcement.id}>
-                <h3>{announcement.title}</h3>
-                <p>{announcement.body}</p>
+                <h2>{announcement.title}</h2>
+                <p>{announcement.content}</p>
+                <p>Published on: {announcement.publish_date}</p>
+                <p>Expires on: {announcement.expiry_date}</p>
+                <hr/>
               </li>
             )
           })}
