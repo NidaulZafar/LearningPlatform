@@ -19,7 +19,6 @@ const Announcements = () => {
       try {
         const response = await axiosClient.get("/announcements");
         setAnnouncements(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
