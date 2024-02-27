@@ -52,100 +52,65 @@ const disEnrollFromCourse = async (enrollmentId, setEnrolled, setMessage, setErr
 }
 
 const CourseDetailComponent = ({
-                                 course,
-                                 enrolled,
-                                 enrollmentId,
-                                 handleEnroll,
-                                 handleUnenroll,
-                                 message,
-                                 user
+                                 course, enrolled, enrollmentId, handleEnroll, handleUnenroll, message, user
                                }) => {
   const {
-    title,
-    instructor: {name: instructorName},
-    cover_image,
-    description,
-    price,
-    modules,
+    title, instructor: {name: instructorName}, cover_image, description, price, modules,
   } = course;
 
 
-  return (
-    <div className="course-detail">
-      <img
-        src={cover_image}
-        alt={`Cover for ${title}`}
-      />
-      <h2>{title}</h2>
-      <p>Instructor: {instructorName}</p>
-      <p>Description: {description}</p>
-      <p>Price: ${price}</p>
-      {modules.length > 0 && (
-        <>
-          <h3>Modules</h3>
-          <p>This course has the following {modules.length} Modules:</p>
-          <ul>
-            {modules.map((module) => (
-              <li key={module.id}>
-                {enrolled ? (
-                  <Link to={`/module/${module.id}`}>
-                    {module.title}
-                  </Link>
-                ) : (
-                  module.title
-                )}
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
-      {user && user.type === 'student' && (
-        <EnrollmentButton enrolled={enrolled} handleEnroll={handleEnroll} handleUnenroll={handleUnenroll}
-                          courseId={course.id} enrollmentId={enrollmentId}/>
-      )}
-      {message && (
-        <div className="message">
-          {message}
-        </div>
-      )}
-    </div>
-  );
+  return (<div className="course-detail">
+    <img
+      src={cover_image}
+      alt={`Cover for ${title}`}
+    />
+    <h2>{title}</h2>
+    <p>Instructor: {instructorName}</p>
+    <p>Description: {description}</p>
+    <p>Price: ${price}</p>
+    {modules.length > 0 && (<>
+      <h3>Modules</h3>
+      <p>This course has the following {modules.length} Modules:</p>
+      <ul>
+        {modules.map((module) => (<li key={module.id}>
+          {enrolled ? (<Link to={`/module/${module.id}`}>
+            {module.title}
+          </Link>) : (module.title)}
+        </li>))}
+      </ul>
+    </>)}
+    {user && user.type === 'student' && (
+      <EnrollmentButton enrolled={enrolled} handleEnroll={handleEnroll} handleUnenroll={handleUnenroll}
+                        courseId={course.id} enrollmentId={enrollmentId}/>)}
+    {message && (<div className="message">
+      {message}
+    </div>)}
+  </div>);
 }
 
 const EnrollmentButton = ({enrolled, handleEnroll, handleUnenroll, courseId, enrollmentId}) => {
-  return (
-    <div>
-      {!enrolled ? (
-        <button
-          type="button"
-          className="enroll-button"
-          onClick={() => handleEnroll(courseId)}
-        >
-          Enroll Now
-        </button>
-      ) : (
-        <button
-          type="button"
-          className="enroll-button"
-          onClick={() => handleUnenroll(enrollmentId)}
-        >
-          Dis-enroll
-        </button>
-      )}
-    </div>
-  );
+  return (<div>
+    {!enrolled ? (<button
+      type="button"
+      className="enroll-button"
+      onClick={() => handleEnroll(courseId)}
+    >
+      Enroll Now
+    </button>) : (<button
+      type="button"
+      className="enroll-button"
+      onClick={() => handleUnenroll(enrollmentId)}
+    >
+      Dis-enroll
+    </button>)}
+  </div>);
 }
 
 const CourseDetail = () => {
   const {user} = useStateContext();
   const {id} = useParams();
   const [course, setCourse] = useState({
-    title: "",
-    instructor: {name: ""},
-    cover_image: "",
-    description: "",
-    price: 0,
-    modules: [],
+    title: "", instructor: {name: ""}, cover_image: "", description: "", price: 0, modules: [],
   });
   const [enrolled, setEnrolled] = useState(false);
   const [message, setMessage] = useState(null);
@@ -186,22 +151,16 @@ const CourseDetail = () => {
     await disEnrollFromCourse(enrollmentId, setEnrolled, setMessage, setError);
   }
 
-  return (
-    <>
-      <Sidebar/>
-      <main className="content">
-        {
-          error ? (
-            <div>
-              <h2>Error: {error}</h2>
-            </div>
-          ) : (
-            <CourseDetailComponent course={course} enrolled={enrolled} enrollmentId={enrollmentId}
-                                   handleEnroll={handleEnroll} handleUnenroll={handleUnenroll} message={message}
-                                   error={error} user={user}/>
-          )}
-      </main>
-    </>
-  );
+  return (<>
+    <Sidebar/>
+    <main className="content">
+      {error ? (<div>
+        <h2>Error: {error}</h2>
+      </div>) : (<CourseDetailComponent course={course} enrolled={enrolled} enrollmentId={enrollmentId}
+                                        handleEnroll={handleEnroll} handleUnenroll={handleUnenroll}
+                                        message={message}
+                                        error={error} user={user}/>)}
+    </main>
+  </>);
 }
 export default CourseDetail;
