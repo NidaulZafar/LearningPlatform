@@ -9,11 +9,13 @@ const ModuleDetail = () => {
   const [moduleData, setModuleData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [message, setMessage] = useState(null);
 
   useEffect(() => {
     const fetchModuleData = async () => {
       try {
         const response = await axiosClient.get(`/module/${id}`);
+        console.log('Module details:', response.data);
         setModuleData(response.data);
         setLoading(false);
       } catch (error) {
@@ -34,7 +36,7 @@ const ModuleDetail = () => {
     return <div>Error: {error}</div>;
   }
 
-  const {title, description, content, resource_files, resource_links, duration, videos} = moduleData;
+  const {title, description, content, resource_files, resource_links, duration, status, videos} = moduleData;
 
   return (
     <>
@@ -42,6 +44,7 @@ const ModuleDetail = () => {
       <main className="content">
         <div className="module-detail">
           <h2>{title}</h2>
+          <p>Status: {status}</p>
           <p>Description: {description}</p>
           <p>Content: {content}</p>
           <p>Duration: {duration} minutes</p>
@@ -65,7 +68,13 @@ const ModuleDetail = () => {
           <h4>Extra Resources:</h4>
           <p>Resource Files: {resource_files}</p>
           <p>Resource Links: {resource_links}</p>
+          {status === 'completed' ? <p>Module Completed!</p> : <button onClick={markAsCompleted}>Mark as Completed</button>}
         </div>
+        {message && (
+          <div className="message">
+            {message}
+          </div>
+        )}
       </main>
     </>
   );
