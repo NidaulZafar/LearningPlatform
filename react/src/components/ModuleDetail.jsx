@@ -28,6 +28,20 @@ const ModuleDetail = () => {
     fetchModuleData();
   }, [id]);
 
+  const markAsCompleted = async () => {
+    try {
+      const response = await axiosClient.put(`/module/${id}`);
+      console.log('Module marked as completed:', response.data);
+      setMessage(response.data.message);
+      setTimeout(() => {
+        setMessage(null);
+      } , 3000);
+      setModuleData(prevModuleData => ({ ...prevModuleData, status: 'completed' }));
+    } catch (error) {
+      console.error('Error marking module as completed:', error);
+    };
+  };
+
   if (loading) {
     return <div>Loading module data...</div>;
   }
