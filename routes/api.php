@@ -42,7 +42,6 @@ Route::group(['middleware' => 'auth:sanctum'], static function () {
     Route::get('/courses/instructor/{id}', [CourseController::class, 'allCourses']);
 });
 
-
 Route::group(['middleware' => 'auth:sanctum'], static function () {
     Route::get('/enrolled-courses', [EnrollmentController::class, 'getEnrolledCourses']);
     Route::post('/enroll', [EnrollmentController::class, 'enrollStudent']);
