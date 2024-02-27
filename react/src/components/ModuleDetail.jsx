@@ -35,11 +35,12 @@ const ModuleDetail = () => {
       setMessage(response.data.message);
       setTimeout(() => {
         setMessage(null);
-      } , 3000);
-      setModuleData(prevModuleData => ({ ...prevModuleData, status: 'completed' }));
+      }, 3000);
+      setModuleData(prevModuleData => ({...prevModuleData, status: 'completed'}));
     } catch (error) {
       console.error('Error marking module as completed:', error);
-    };
+    }
+    ;
   };
 
   if (loading) {
@@ -52,8 +53,7 @@ const ModuleDetail = () => {
 
   const {title, description, content, resource_files, resource_links, duration, status, videos} = moduleData;
 
-  return (
-    <>
+  return (<>
       <Sidebar/>
       <main className="content">
         <div className="module-detail">
@@ -65,8 +65,7 @@ const ModuleDetail = () => {
           <div>
             <h3>Videos:</h3>
             <ul>
-              {videos.map(video => (
-                <li key={video.id}>
+              {videos.map(video => (<li key={video.id}>
                   <h4>{video.title}</h4>
                   <p>Description: {video.description}</p>
                   <p>Duration: {video.duration} minutes</p>
@@ -75,23 +74,20 @@ const ModuleDetail = () => {
                          alt={video.title}/>
                     <br/>
                     Watch Video</a>
-                </li>
-              ))}
+                </li>))}
             </ul>
           </div>
           <h4>Extra Resources:</h4>
           <p>Resource Files: {resource_files}</p>
           <p>Resource Links: {resource_links}</p>
-          {status === 'completed' ? <p>Module Completed!</p> : <button onClick={markAsCompleted}>Mark as Completed</button>}
+          {status === 'completed' ? <p>Module Completed!</p> :
+            <button onClick={markAsCompleted}>Mark as Completed</button>}
         </div>
-        {message && (
-          <div className="message">
+        {message && (<div className="message">
             {message}
-          </div>
-        )}
+          </div>)}
       </main>
-    </>
-  );
+    </>);
 };
 
 export default ModuleDetail;
