@@ -9,6 +9,7 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\StudentModuleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
