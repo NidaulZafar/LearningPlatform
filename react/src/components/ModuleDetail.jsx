@@ -54,40 +54,40 @@ const ModuleDetail = () => {
   const {title, description, content, resource_files, resource_links, duration, status, videos} = moduleData;
 
   return (<>
-      <Sidebar/>
-      <main className="content">
-        <div className="module-detail">
-          <h2>{title}</h2>
-          <p>Status: {status}</p>
-          <p>Description: {description}</p>
-          <p>Content: {content}</p>
-          <p>Duration: {duration} minutes</p>
-          <div>
-            <h3>Videos:</h3>
-            <ul>
-              {videos.map(video => (<li key={video.id}>
-                  <h4>{video.title}</h4>
-                  <p>Description: {video.description}</p>
-                  <p>Duration: {video.duration} minutes</p>
-                  <a href={video.video_url} target="_blank" rel="noopener noreferrer">
-                    <img src={video.thumbnail}
-                         alt={video.title}/>
-                    <br/>
-                    Watch Video</a>
-                </li>))}
-            </ul>
-          </div>
-          <h4>Extra Resources:</h4>
-          <p>Resource Files: {resource_files}</p>
-          <p>Resource Links: {resource_links}</p>
-          {status === 'completed' ? <p>Module Completed!</p> :
-            <button onClick={markAsCompleted}>Mark as Completed</button>}
+    <Sidebar/>
+    <main className="content">
+      <div className="module-detail">
+        <h2>{title}</h2>
+        <p>Status: {status}</p>
+        <p>Description: {description}</p>
+        <p>Content: {content}</p>
+        <p>Duration: {duration} minutes</p>
+        <div>
+          <h3>Videos:</h3>
+          <ul>
+            {videos.map(video => (<li key={video.id}>
+              <h4>{video.title}</h4>
+              <p>Description: {video.description}</p>
+              <p>Duration: {video.duration} minutes</p>
+              <a href={video.video_url} target="_blank" rel="noopener noreferrer">
+                <img src={video.thumbnail}
+                     alt={video.title}/>
+                <br/>
+                Watch Video</a>
+            </li>))}
+          </ul>
         </div>
-        {message && (<div className="message">
-            {message}
-          </div>)}
-      </main>
-    </>);
+        <h4>Extra Resources:</h4>
+        <p>Resource Files: {resource_files}</p>
+        <p>Resource Links: {resource_links}</p>
+        {status === 'completed' ? <p>Module Completed!</p> :
+          <button onClick={markAsCompleted}>Mark as Completed</button>}
+      </div>
+      {message && (<div className="message">
+        {message}
+      </div>)}
+    </main>
+  </>);
 };
 
 export default ModuleDetail;
