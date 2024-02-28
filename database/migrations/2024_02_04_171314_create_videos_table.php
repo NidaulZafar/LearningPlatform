@@ -21,7 +21,6 @@ return new class extends Migration
             $table->text('content')->nullable();
             $table->string('resource_files')->nullable();
             $table->string('resource_links')->nullable();
-            $table->enum('status', ['watched', 'not_watched'])->default('not_watched');
             $table->timestamps();
         });
     }
