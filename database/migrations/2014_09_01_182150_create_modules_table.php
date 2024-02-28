@@ -20,7 +20,6 @@ return new class extends Migration {
             $table->string('resource_links')->nullable();
             $table->integer('duration')->nullable();
             $table->boolean('active')->default(true);
-            $table->enum('status', ['completed', 'incomplete'])->default('incomplete');
             $table->timestamps();
         });
     }
