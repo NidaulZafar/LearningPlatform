@@ -51,14 +51,13 @@ const ModuleDetail = () => {
     return <div>Error: {error}</div>;
   }
 
-  const {title, description, content, resource_files, resource_links, duration, status, videos} = moduleData;
+  const {title, description, content, resource_files, resource_links, duration, videos} = moduleData;
 
   return (<>
     <Sidebar/>
     <main className="content">
       <div className="module-detail">
         <h2>{title}</h2>
-        <p>Status: {status}</p>
         <p>Description: {description}</p>
         <p>Content: {content}</p>
         <p>Duration: {duration} minutes</p>
