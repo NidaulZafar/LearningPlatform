@@ -19,13 +19,11 @@ export default function DefaultLayout() {
   }, [])
 
 
-  return (
-    <>
+  return (<>
       <main className="main">
         <Outlet/>
       </main>
       <Footer/>
-    </>
-  );
+    </>);
 
 }
