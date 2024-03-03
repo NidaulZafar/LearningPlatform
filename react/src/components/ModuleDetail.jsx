@@ -84,6 +84,9 @@ const ModuleDetail = () => {
         <Link to={`/courses/${course_id}`}>
           <button>Back to Course</button>
         </Link>
+        <Link to={`/courses`}>
+          <button>All Courses</button>
+        </Link>
       </div>
       {message && (<div className="message">
         {message}

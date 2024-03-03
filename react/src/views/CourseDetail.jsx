@@ -85,6 +85,9 @@ const CourseDetailComponent = ({
     {message && (<div className="message">
       {message}
     </div>)}
+    <Link to={`/courses`}>
+      <button>All Courses</button>
+    </Link>
   </div>);
 }
 
