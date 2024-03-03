@@ -33,17 +33,13 @@ export default function EnrolledCourses() {
   }
 
 
-  return (
-    <>
+  return (<>
       <Sidebar/>
       <main className="content">
         <h1>Enrolled Courses</h1>
         <div className="course-list">
           <p>Welcome, {user.name}!</p>
-          {errorMessage ? (
-            <p>{errorMessage}</p>
-          ) : (
-            <>
+          {errorMessage ? (<p>{errorMessage}</p>) : (<>
               <p>Here are the courses you have already enrolled:</p>
               <div className="course-grid">
                 {enrolledCourses.map((enrollment) => (
@@ -56,13 +52,10 @@ export default function EnrolledCourses() {
                         <p>Enrolled on: {formatDate(enrollment.created_at)}</p>
                       </div>
                     </div>
-                  </Link>
-                ))}
+                  </Link>))}
               </div>
-            </>
-          )}
+            </>)}
         </div>
       </main>
-    </>
-  )
+    </>)
 }
