@@ -12,8 +12,9 @@ return new class extends Migration {
     {
         Schema::create('student_module', static function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->constrained()->onDelete('cascade');
-            $table->foreignId('module_id')->constrained()->onDelete('cascade');
+            $table->foreignId('module_id')->constrained('modules')->onDelete('cascade');
+            $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
+            $table->foreignId('enrollment_id')->constrained('enrollments')->onDelete('cascade');
             $table->enum('status', ['completed', 'incomplete'])->default('incomplete');
             $table->timestamps();
         });
