@@ -52,6 +52,12 @@ class EnrollmentController extends Controller
             $enrollment->enrolled_at = now();
             $enrollment->save();
 
+//            $course = Course::findOrFail($request->course_id);
+//            $modules = $course->modules;
+//
+//            foreach ($modules as $module) {
+//                $enrollment->modules()->attach($module->id, ['student_id' => $studentId]);
+//            }
             DB::commit();
 
             return response()->json(['message' => 'Enrolled successfully', 'enrollment_id' => $enrollment->id], 200);
