@@ -23,11 +23,9 @@ class Module extends Model
         return $this->belongsToMany(Video::class, 'module_video', 'module_id', 'video_id');
     }
 
-
-    public function studentModule(): BelongsToMany
+    public function students(): BelongsToMany
     {
-        return $this->belongsToMany(StudentModule::class, 'student_module')->withPivot('status')->withTimestamps();
+        return $this->belongsToMany(Student::class, 'student_module', 'module_id', 'student_id')->withPivot('status');
     }
-
 
 }
