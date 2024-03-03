@@ -14,7 +14,6 @@ const ModuleDetail = () => {
   useEffect(() => {
     const fetchModuleData = async () => {
       try {
-        console.log('Fetching module data...');
         const response = await axiosClient.get(`/module/${id}`);
         console.log('Module details:', response.data);
         setModuleData(response.data);
