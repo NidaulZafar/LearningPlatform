@@ -29,7 +29,7 @@ class Enrollment extends Model
         return $this->belongsTo(Course::class, 'course_id', 'id');
     }
 
-    public function module(): BelongsToMany
+    public function modules(): BelongsToMany
     {
         return $this->belongsToMany(Module::class, 'student_module')->withPivot('status')->withTimestamps();
     }
