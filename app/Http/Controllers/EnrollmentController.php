@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Enrollment;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
