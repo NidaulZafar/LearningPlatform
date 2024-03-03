@@ -2,8 +2,7 @@ import React from "react";
 import './styles/footer.css';
 
 const Footer = () => {
-  return (
-    <footer className="sticky-footer">
+  return (<footer className="sticky-footer">
       <small>
         © 2024 made with
         <span>&#10084;</span> by -
@@ -24,9 +23,7 @@ const Footer = () => {
           <i className="ri-linkedin-box-fill ri-xl"></i>
         </a>
       </div>
-    </footer>
-
-  )
+    </footer>)
 }
 
 export default Footer;
