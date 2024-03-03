@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axiosClient from '../axios-client';
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import Sidebar from "./Sidebar.jsx";
 import './styles/module.css';
 
@@ -51,7 +51,7 @@ const ModuleDetail = () => {
     return <div>Error: {error}</div>;
   }
 
-  const {title, description, content, resource_files, resource_links, duration, videos} = moduleData;
+  const {title, description, content, resource_files, resource_links, duration, videos, course_id} = moduleData;
 
   return (<>
     <Sidebar/>
@@ -81,6 +81,9 @@ const ModuleDetail = () => {
         <p>Resource Links: {resource_links}</p>
         {status === 'completed' ? <p>Module Completed!</p> :
           <button onClick={markAsCompleted}>Mark as Completed</button>}
+        <Link to={`/courses/${course_id}`}>
+          <button>Back to Course</button>
+        </Link>
       </div>
       {message && (<div className="message">
         {message}
