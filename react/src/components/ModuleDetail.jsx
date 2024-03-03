@@ -15,6 +15,7 @@ const ModuleDetail = () => {
     const fetchModuleData = async () => {
       try {
         const response = await axiosClient.get(`/module/${id}`);
+        console.log('Module data:', response.data);
         setModuleData(response.data);
         setLoading(false);
       } catch (error) {
@@ -56,7 +57,7 @@ const ModuleDetail = () => {
     <main className="content">
       <div className="module-detail">
         <h2>{title}</h2>
-        <p>Status: {}</p>
+        <p>Status: {moduleData.status}</p>
         <p>Description: {description}</p>
         <p>Content: {content}</p>
         <p>Duration: {duration} minutes</p>
