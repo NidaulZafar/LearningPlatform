@@ -12,10 +12,11 @@ class ModuleController extends Controller
     public function getModuleContent($moduleId): JsonResponse
     {
         $studentId = Auth::id();
-        $module = Module::with(['videos', 'students' => function ($query) use ($studentId) {
+        $module = Module::with('videos')->findOrFail($moduleId);
+
+        $module->load(['students' => function ($query) use ($studentId) {
             $query->where('student_id', $studentId);
-        }])
-            ->findOrFail($moduleId);
+        }]);
         $status = $module->students->isEmpty() ? null : $module->students[0]->pivot->status;
         $module->status = $status;
 
