@@ -20,10 +20,10 @@ export default function DefaultLayout() {
 
 
   return (<>
-      <main className="main">
-        <Outlet/>
-      </main>
-      <Footer/>
-    </>);
+    <main className="main">
+      <Outlet/>
+    </main>
+    <Footer/>
+  </>);
 
 }
