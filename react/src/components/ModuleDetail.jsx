@@ -31,7 +31,8 @@ const ModuleDetail = () => {
 
   const markAsCompleted = async () => {
     try {
-      const response = await axiosClient.put(`/module/${id}`);
+      console.log('Marking module as completed...');
+      const response = await axiosClient.put(`/module/${id}/complete`);
       console.log('Module marked as completed:', response.data);
       setMessage(response.data.message);
       setTimeout(() => {
@@ -59,6 +60,7 @@ const ModuleDetail = () => {
     <main className="content">
       <div className="module-detail">
         <h2>{title}</h2>
+        <p>Status: {}</p>
         <p>Description: {description}</p>
         <p>Content: {content}</p>
         <p>Duration: {duration} minutes</p>
