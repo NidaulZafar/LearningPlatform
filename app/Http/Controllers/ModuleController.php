@@ -20,7 +20,6 @@ class ModuleController extends Controller
 
     public function markAsCompleted($moduleId): JsonResponse
     {
-        Log::info('Marking module as completed');
         $studentId = auth()->user()->id;
         Log::info('Student ID: ' . $studentId);
         DB::table('student_module')->where('student_id', $studentId)->where('module_id', $moduleId)->update(['status'
