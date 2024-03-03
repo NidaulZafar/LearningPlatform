@@ -6,6 +6,7 @@ use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -53,6 +54,11 @@ protected $fillable = [
     public function quizzes()
     {
         return $this->hasMany(Quiz::class);
+    }
+
+    public function module(): BelongsToMany
+    {
+        return $this->belongsToMany(Module::class, 'student_module')->withPivot('status')->withTimestamps();
     }
 
 
