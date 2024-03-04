@@ -42,8 +42,7 @@ export default function Signup() {
       })
   }
 
-  return (
-    <div className="page-content">
+  return (<div className="page-content">
       <div className="form-v6-content">
         <div className="form-left">
           <img src={img} alt="form"/>
@@ -102,6 +101,5 @@ export default function Signup() {
           </div>
         </form>
       </div>
-    </div>
-  )
+    </div>)
 }
