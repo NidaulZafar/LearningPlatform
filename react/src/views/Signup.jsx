@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import { useRef, useState} from "react";
+import {useRef, useState} from "react";
 import axiosClient from "../axios-client.js";
 import {useStateContext} from "../contexts/ContextProvider.jsx";
 import img from '../assets/form-v6.jpg';
@@ -43,63 +43,63 @@ export default function Signup() {
   }
 
   return (<div className="page-content">
-      <div className="form-v6-content">
-        <div className="form-left">
-          <img src={img} alt="form"/>
-        </div>
-        <form className="form-detail" method="POST" onSubmit={onsubmit}>
-          <h2>Signup</h2>
-          {Object.keys(errors).length > 0 && (<div className="alert alert-danger">
-            {Object.keys(errors).map(key => (errors[key].map((error, index) => (
-              <p key={`${key}-${index}`}> {error}</p>))))}
-          </div>)}
-          <div className="form-row">
-            <input ref={nameRef} id="name" type="text"
-                   className="input-text" name="name"
-                   required autoComplete="name" autoFocus placeholder="Your Name"/>
-          </div>
-          <div className="form-row">
-            <input ref={emailRef} id="email" type="email"
-                   className="input-text" name="email"
-                   required autoComplete="email" placeholder="Enter a valid Email"/>
-          </div>
-          <div className="form-row">
-            <input ref={passwordRef} id="password" type="password"
-                   className="input-text" name="password"
-                   required autoComplete="new-password" placeholder="Enter a password"/>
-          </div>
-          <div className="form-row">
-            <input ref={passwordConfirmRef} id="password-confirm" type="password" className="input-text"
-                   name="password_confirmation" required autoComplete="new-password" placeholder="Confirm Password"/>
-          </div>
-          <div className="form-row">
-            <input ref={phoneRef} id="phone" type="text"
-                   className="input-text"
-                   name="phone" autoComplete="phone" placeholder="Enter your Phone Number (Optional)"/>
-          </div>
-          <div className="form-row">
-            <p className="user-type">User Type</p>
-            <div className="user-type-options">
-              <label htmlFor="instructor">
-                <input type="radio" name="type" id="instructor"
-                       value="instructor" ref={instructorRef} required/>
-                Instructor </label>
-              <label htmlFor="student">
-                <input type="radio" name="type" id="student"
-                       value="student" ref={studentRef}/>
-                Student
-              </label>
-            </div>
-          </div>
-          <div className="form-row-last">
-            <button type="submit" className="register">
-              Signup
-            </button>
-            <p className="mt-3">
-              Already have an account? <Link to="/login">Login</Link>
-            </p>
-          </div>
-        </form>
+    <div className="form-v6-content">
+      <div className="form-left">
+        <img src={img} alt="form"/>
       </div>
-    </div>)
+      <form className="form-detail" method="POST" onSubmit={onsubmit}>
+        <h2>Signup</h2>
+        {Object.keys(errors).length > 0 && (<div className="alert alert-danger">
+          {Object.keys(errors).map(key => (errors[key].map((error, index) => (
+            <p key={`${key}-${index}`}> {error}</p>))))}
+        </div>)}
+        <div className="form-row">
+          <input ref={nameRef} id="name" type="text"
+                 className="input-text" name="name"
+                 required autoComplete="name" autoFocus placeholder="Your Name"/>
+        </div>
+        <div className="form-row">
+          <input ref={emailRef} id="email" type="email"
+                 className="input-text" name="email"
+                 required autoComplete="email" placeholder="Enter a valid Email"/>
+        </div>
+        <div className="form-row">
+          <input ref={passwordRef} id="password" type="password"
+                 className="input-text" name="password"
+                 required autoComplete="new-password" placeholder="Enter a password"/>
+        </div>
+        <div className="form-row">
+          <input ref={passwordConfirmRef} id="password-confirm" type="password" className="input-text"
+                 name="password_confirmation" required autoComplete="new-password" placeholder="Confirm Password"/>
+        </div>
+        <div className="form-row">
+          <input ref={phoneRef} id="phone" type="text"
+                 className="input-text"
+                 name="phone" autoComplete="phone" placeholder="Enter your Phone Number (Optional)"/>
+        </div>
+        <div className="form-row">
+          <p className="user-type">User Type</p>
+          <div className="user-type-options">
+            <label htmlFor="instructor">
+              <input type="radio" name="type" id="instructor"
+                     value="instructor" ref={instructorRef} required/>
+              Instructor </label>
+            <label htmlFor="student">
+              <input type="radio" name="type" id="student"
+                     value="student" ref={studentRef}/>
+              Student
+            </label>
+          </div>
+        </div>
+        <div className="form-row-last">
+          <button type="submit" className="register">
+            Signup
+          </button>
+          <p className="mt-3">
+            Already have an account? <Link to="/login">Login</Link>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>)
 }
