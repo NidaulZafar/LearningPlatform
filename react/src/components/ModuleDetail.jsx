@@ -15,7 +15,6 @@ const ModuleDetail = () => {
     const fetchModuleData = async () => {
       try {
         const response = await axiosClient.get(`/module/${id}`);
-        console.log('Module details:', response.data);
         setModuleData(response.data);
         setLoading(false);
       } catch (error) {
@@ -30,8 +29,7 @@ const ModuleDetail = () => {
 
   const markAsCompleted = async () => {
     try {
-      const response = await axiosClient.put(`/module/${id}`);
-      console.log('Module marked as completed:', response.data);
+      const response = await axiosClient.put(`/module/${id}/complete`);
       setMessage(response.data.message);
       setTimeout(() => {
         setMessage(null);
@@ -58,6 +56,7 @@ const ModuleDetail = () => {
     <main className="content">
       <div className="module-detail">
         <h2>{title}</h2>
+        <p>Status: {moduleData.status}</p>
         <p>Description: {description}</p>
         <p>Content: {content}</p>
         <p>Duration: {duration} minutes</p>
