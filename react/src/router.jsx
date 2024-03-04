@@ -17,96 +17,49 @@ import Quiz from "./components/Quiz.jsx";
 import NewCourse from "./components/NewCourse.jsx";
 import InstructorsCourses from "./components/InstructorsCourses.jsx";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <DefaultLayout/>,
-    children: [
-      {
-        path: "/",
-        element: <Navigate to="/dashboard"/>
-      },
-      {
-        path: "/dashboard",
-        element: <Dashboard/>
-      },
-      {
-        path: "/courses",
-        element: <Courses/>
-      },
-      {
-        path: "/courses/new",
-        element: <NewCourse/>
-      },
-      {
-        path: "/courses/:id",
-        element: <CourseDetail/>
-      },
-      {
-        path: "your-courses",
-        element: <InstructorsCourses/>
-      },
-      {
-        path: "module/:id",
-        element: <ModuleDetail/>
-      },
-      {
-        path: "/enrolled",
-        element: <EnrolledCourses/>
-      },
-      {
-        path: "/announcements",
-        element: <Announcements/>
-      },
-      {
-        path: "/feedback",
-        element: <FeedbackPage/>
-      },
-      {
-        path: "/contact",
-        element: <Contact/>
-      },
-      {
-        path: "/assignments",
-        element: <Assignments/>
-      },
-      {
-        path: "/assignments/:id",
-        element: <Assignments/>
-      },
-      {
-        path: "/quiz",
-        element: <Quiz/>
-      }
-    ]
-  },
-  {
-    path: "/",
-    element: <GuestLayout/>,
-    children: [
-      {
-        path: "/login",
-        element: <Login/>
-      },
-      {
-        path: "/signup",
-        element: <Signup/>
-      },
-      {
-        path: "/announcements",
-        element: <Announcements/>
-      },
-      {
-        path: "/contact",
-        element: <Contact/>
-      }
-    ]
-  },
-  {
-    path: "*",
-    element: <NotFound/>
-  }
-])
+const router = createBrowserRouter([{
+  path: "/", element: <DefaultLayout/>, children: [{
+    path: "/", element: <Navigate to="/dashboard"/>
+  }, {
+    path: "/dashboard", element: <Dashboard/>
+  }, {
+    path: "/courses", element: <Courses/>
+  }, {
+    path: "/courses/new", element: <NewCourse/>
+  }, {
+    path: "/courses/:id", element: <CourseDetail/>
+  }, {
+    path: "your-courses", element: <InstructorsCourses/>
+  }, {
+    path: "module/:id", element: <ModuleDetail/>
+  }, {
+    path: "/enrolled", element: <EnrolledCourses/>
+  }, {
+    path: "/announcements", element: <Announcements/>
+  }, {
+    path: "/feedback", element: <FeedbackPage/>
+  }, {
+    path: "/contact", element: <Contact/>
+  }, {
+    path: "/assignments", element: <Assignments/>
+  }, {
+    path: "/assignments/:id", element: <Assignments/>
+  }, {
+    path: "/quiz", element: <Quiz/>
+  }]
+}, {
+  path: "/", element: <GuestLayout/>, children: [{
+    path: "/login", element: <Login/>
+  }, {
+    path: "/signup", element: <Signup/>
+  }, {
+    path: "/announcements", element: <Announcements/>
+  }, {
+    path: "/contact", element: <Contact/>
+  }]
+}, {
+  path: "*", element: <NotFound/>
+}])
 
 
 export default router;
