@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import {useEffect, useRef, useState} from "react";
+import { useRef, useState} from "react";
 import axiosClient from "../axios-client.js";
 import {useStateContext} from "../contexts/ContextProvider.jsx";
 import img from '../assets/form-v6.jpg';
