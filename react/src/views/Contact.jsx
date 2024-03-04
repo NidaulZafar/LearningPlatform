@@ -7,15 +7,12 @@ import './CSS/contact.css';
 export default function Contact() {
   const [message, setMessage] = useState(null);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    name: '', email: '', message: ''
   });
   const handleChange = (e) => {
     const {name, value} = e.target;
     setFormData({
-      ...formData,
-      [name]: value
+      ...formData, [name]: value
     });
   };
 
@@ -28,17 +25,14 @@ export default function Contact() {
         setMessage(null);
       }, 3000);
       setFormData({
-        name: '',
-        email: '',
-        message: ''
+        name: '', email: '', message: ''
       });
     } catch (error) {
       console.error('Error submitting form:', error);
     }
   };
 
-  return (
-    <>
+  return (<>
       <Sidebar/>
       <main className="content">
         <h1>Contact Us</h1>
@@ -78,13 +72,10 @@ export default function Contact() {
             </div>
             <button type="submit">Submit</button>
           </form>
-          {message && (
-            <div className="message">
+          {message && (<div className="message">
               {message}
-            </div>
-          )}
+            </div>)}
         </div>
       </main>
-    </>
-  );
+    </>);
 }
