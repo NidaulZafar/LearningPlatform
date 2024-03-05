@@ -208,6 +208,7 @@ const NewCourse = () => {
                     name="video_url"
                     value={video.video_url}
                     onChange={(e) => handleVideoDataChange(moduleIndex, videoIndex, e)}
+                    required
                   />
                 </div>
                 <div className="form-group">
