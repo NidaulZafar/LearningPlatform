@@ -48,12 +48,11 @@ class CourseController extends Controller
         $courseData['instructor_id'] = auth()->id();
         $course = Course::create($courseData);
 
-        // Create modules
         foreach ($courseData['modules'] as $moduleData) {
             $module = new Module($moduleData);
             $course->modules()->save($module);
 
-            // Create videos for each module
+            // videos for each module
             if (isset($moduleData['videos'])) {
                 foreach ($moduleData['videos'] as $videoData) {
                     $video = new Video($videoData);
