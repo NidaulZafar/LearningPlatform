@@ -185,39 +185,33 @@ const NewCourse = () => {
               {module.videos.map((video, videoIndex) => (<div key={`video-${moduleIndex}-${videoIndex}`}>
                 <h3>Video {videoIndex + 1}</h3>
                 <div className="form-group">
-                  <label htmlFor={`video-title-${moduleIndex}-${videoIndex}`}>Title<span
-                    className="required">*</span></label>
+                  <label htmlFor={`video-title-${moduleIndex}-${videoIndex}`}>Title</label>
                   <input
                     type="text"
                     id={`video-title-${moduleIndex}-${videoIndex}`}
                     name="title"
                     value={video.title}
                     onChange={(e) => handleVideoDataChange(moduleIndex, videoIndex, e)}
-                    required
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor={`video-video_url-${moduleIndex}-${videoIndex}`}>Video URL<span
-                    className="required">*</span></label>
+                  <label htmlFor={`video-video_url-${moduleIndex}-${videoIndex}`}>Video URL</label>
                   <input
                     type="text"
                     id={`video-video_url-${moduleIndex}-${videoIndex}`}
                     name="video_url"
                     value={video.video_url}
                     onChange={(e) => handleVideoDataChange(moduleIndex, videoIndex, e)}
-                    required
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor={`video-duration-${moduleIndex}-${videoIndex}`}>Duration<span
-                    className="required">*</span></label>
+                  <label htmlFor={`video-duration-${moduleIndex}-${videoIndex}`}>Duration</label>
                   <input
                     type="number"
                     id={`video-duration-${moduleIndex}-${videoIndex}`}
                     name="duration"
                     value={video.duration}
                     onChange={(e) => handleVideoDataChange(moduleIndex, videoIndex, e)}
-                    required
                   />
                 </div>
                 <div className="form-group">
