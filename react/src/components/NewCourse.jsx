@@ -200,7 +200,8 @@ const NewCourse = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor={`video-video_url-${moduleIndex}-${videoIndex}`}>Video URL</label>
+                  <label htmlFor={`video-video_url-${moduleIndex}-${videoIndex}`}>Video URL<span
+                    className="required">*</span></label>
                   <input
                     type="text"
                     id={`video-video_url-${moduleIndex}-${videoIndex}`}
