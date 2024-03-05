@@ -7,9 +7,7 @@ import './styles/newCourse.css';
 const NewCourse = () => {
   const initialCourseData = {
     title: "", code: "", description: "", coverImage: "", price: 0, modules: [{
-      title: "", description: "", duration: 0, content: "", videos: [{
-        title: "", video_url: "", duration: 0, thumbnail: "", description: "", content: ""
-      }]
+      title: "", description: "", duration: 0, content: "", videos: []
     }]
   };
   const {user} = useStateContext();
@@ -76,6 +74,12 @@ const NewCourse = () => {
   const addVideo = (moduleIndex) => {
     const modules = [...courseData.modules];
     modules[moduleIndex].videos.push({...initialCourseData.modules[0].videos[0]});
+    setCourseData({...courseData, modules});
+  };
+
+  const deleteVideo = (moduleIndex, videoIndex) => {
+    const modules = [...courseData.modules];
+    modules[moduleIndex].videos.splice(videoIndex, 1);
     setCourseData({...courseData, modules});
   };
 
@@ -185,13 +189,14 @@ const NewCourse = () => {
               {module.videos.map((video, videoIndex) => (<div key={`video-${moduleIndex}-${videoIndex}`}>
                 <h3>Video {videoIndex + 1}</h3>
                 <div className="form-group">
-                  <label htmlFor={`video-title-${moduleIndex}-${videoIndex}`}>Title</label>
+                  <label htmlFor={`video-title-${moduleIndex}-${videoIndex}`}>Title<span className="required">*</span></label>
                   <input
                     type="text"
                     id={`video-title-${moduleIndex}-${videoIndex}`}
                     name="title"
                     value={video.title}
                     onChange={(e) => handleVideoDataChange(moduleIndex, videoIndex, e)}
+                    required
                   />
                 </div>
                 <div className="form-group">
@@ -241,10 +246,11 @@ const NewCourse = () => {
                     value={video.content}
                     onChange={(e) => handleVideoDataChange(moduleIndex, videoIndex, e)}
                   />
+                  <button type="button" onClick={() => deleteVideo(moduleIndex, videoIndex)}>Delete Video</button>
                 </div>
               </div>))}
               <button type="button" onClick={() => addVideo(moduleIndex)}>
-                Add Video
+              Add Video
               </button>
             </div>))}
             <button type="button" onClick={addModule}>
