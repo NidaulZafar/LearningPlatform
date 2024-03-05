@@ -220,6 +220,7 @@ const NewCourse = () => {
                     name="duration"
                     value={video.duration}
                     onChange={(e) => handleVideoDataChange(moduleIndex, videoIndex, e)}
+                    required
                   />
                 </div>
                 <div className="form-group">
