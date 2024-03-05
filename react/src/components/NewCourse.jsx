@@ -258,7 +258,7 @@ const NewCourse = () => {
               </button>
             </div>))}
             <button type="button" onClick={addModule}>
-              Add Module
+              Add Another Module
             </button>
             <div className="form-group">
               <button type="submit">Submit Course</button>
