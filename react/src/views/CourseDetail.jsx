@@ -8,7 +8,19 @@ import './CSS/courseDetail.css';
 const fetchCourseDetail = async (id, setCourse, setError) => {
   try {
     const response = await axiosClient.get(`/courses/${id}`);
-    setCourse(response.data);
+    const courseData = response.data;
+    const moduleIds = courseData.modules.map(module => module.id);
+    const studentModuleResponse = await axiosClient.get('/student_module', {
+      params: {
+        module_ids: moduleIds.join(','),
+      },
+    });
+    const studentModules = studentModuleResponse.data;
+    courseData.modules.forEach((module) => {
+      const studentModule = studentModules.find((sm) => sm.module_id === module.id);
+      module.status = studentModule ? studentModule.status : "incomplete";
+    });
+    setCourse(courseData);
   } catch (error) {
     if (error.response && error.response.status === 404) {
       setError("Course not found");
