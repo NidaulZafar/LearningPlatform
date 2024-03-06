@@ -78,7 +78,7 @@ const ModuleDetail = () => {
         <h4>Extra Resources:</h4>
         <p>Resource Files: {resource_files}</p>
         <p>Resource Links: {resource_links}</p>
-        {status === 'completed' ? <p>Module Completed!</p> :
+        {moduleData.status === 'completed' ? <p>Module Completed!</p> :
           <button onClick={markAsCompleted}>Mark as Completed</button>}
         <Link to={`/courses/${course_id}`}>
           <button>Back to Course</button>
