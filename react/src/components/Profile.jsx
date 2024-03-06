@@ -17,8 +17,7 @@ const Profile = () => {
   const handleInputChange = (e) => {
     const {name, value} = e.target;
     setEditedUser((prevUser) => ({
-      ...prevUser,
-      [name]: value,
+      ...prevUser, [name]: value,
     }));
   };
 
@@ -37,25 +36,19 @@ const Profile = () => {
 
   const {name, type, email, phone, bio, occupation, education} = user;
 
-  const renderProfileHeader = () => (
-    <div className="profile-header">
+  const renderProfileHeader = () => (<div className="profile-header">
       <div className="profile-info">
         <h1>
           {editing ? (
-            <input type="text" name="name" value={editedUser.name || ''} onChange={handleInputChange}/>
-          ) : (
-            name
-          )}
+            <input type="text" name="name" value={editedUser.name || ''} onChange={handleInputChange}/>) : (name)}
         </h1>
         <h3>({type} Profile)</h3>
       </div>
       {!editing && <button onClick={() => setEditing(true)}>Edit Profile</button>}
       {editing && <button onClick={handleSaveChanges}>Save Changes</button>}
-    </div>
-  );
+    </div>);
 
-  const renderProfileDetails = () => (
-    <div className="profile-details">
+  const renderProfileDetails = () => (<div className="profile-details">
       <h2>About Me</h2>
       <p>{editing ? <textarea name="bio" value={editedUser.bio || ''}
                               onChange={handleInputChange}/> : bio || "Bio not provided"}</p>
@@ -66,45 +59,31 @@ const Profile = () => {
         </li>
         <li>
           <strong>Phone:</strong>{" "}
-          {editing ? (
-            <input type="text" name="phone" value={editedUser.phone || ''} onChange={handleInputChange}/>
-          ) : (
-            phone || "Phone number not provided"
-          )}
+          {editing ? (<input type="text" name="phone" value={editedUser.phone || ''}
+                             onChange={handleInputChange}/>) : (phone || "Phone number not provided")}
         </li>
       </ul>
-      {type === "instructor" && (
-        <>
+      {type === "instructor" && (<>
           <h2>Occupation</h2>
           <p>
-            {editing ? (
-              <input type="text" name="occupation" value={editedUser.occupation || ''} onChange={handleInputChange}/>
-            ) : (
-              occupation || 'Occupation Not provided'
-            )}
+            {editing ? (<input type="text" name="occupation" value={editedUser.occupation || ''}
+                               onChange={handleInputChange}/>) : (occupation || 'Occupation Not provided')}
           </p>
-        </>
-      )}
+        </>)}
       <h2>Education</h2>
       <p>
-        {editing ? (
-          <input type="text" name="education" value={editedUser.education || ''} onChange={handleInputChange}/>
-        ) : (
-          education || "Education not provided"
-        )}
+        {editing ? (<input type="text" name="education" value={editedUser.education || ''}
+                           onChange={handleInputChange}/>) : (education || "Education not provided")}
       </p>
-    </div>
-  );
+    </div>);
 
-  return (
-    <>
+  return (<>
       <Sidebar/>
       <main className="content">
         {renderProfileHeader()}
         {renderProfileDetails()}
       </main>
-    </>
-  );
+    </>);
 };
 
 export default Profile;
