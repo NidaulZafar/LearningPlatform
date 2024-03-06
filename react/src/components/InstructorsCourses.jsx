@@ -58,7 +58,8 @@ const InstructorsCourses = () => {
               ))}
             </div>) : (
             <div>
-              <h2>Currently no courses authored by you available. <Link to="/courses/new">Click here</Link> to create your first course</h2>
+              <h2>Currently no courses authored by you available. <Link to="/courses/new">Click here</Link> to create
+                your first course</h2>
             </div>
           )}
         </div>
