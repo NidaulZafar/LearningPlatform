@@ -20,7 +20,6 @@ const fetchCourseDetail = async (id, setCourse, setError) => {
       const studentModule = studentModules.find((sm) => sm.module_id === module.id);
       module.status = studentModule ? studentModule.status : "incomplete";
     });
-    console.log('courseData:', courseData);
     setCourse(courseData);
   } catch (error) {
     if (error.response && error.response.status === 404) {
