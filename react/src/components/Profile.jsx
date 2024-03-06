@@ -27,8 +27,8 @@ const Profile = () => {
         throw new Error("Invalid user type")
       })();
       const response = await axiosClient.put(`/${endpoint}/${editedUser.id}`, editedUser);
-      setUser(response.data); // Update user in context after successful update
-      setEditing(false); // Exit editing mode
+      setUser(response.data);
+      setEditing(false);
     } catch (error) {
       console.error("Error updating profile:", error);
     }
