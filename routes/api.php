@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth:sanctum'], static function () {
     Route::get('/feedback', [FeedbackController::class, 'index']);
     Route::post('/contact', [ContactController::class, 'store']);
     Route::get('/courses/{id}', [CourseController::class, 'show']);
+    Route::get('/student_module', [StudentModuleController::class, 'getStudentModules']);
     Route::get('/module/{id}', [ModuleController::class, 'getModuleContent']);
     Route::put('/module/{id}/complete', [ModuleController::class, 'markAsCompleted']);
 });
