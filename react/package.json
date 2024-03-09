@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000",
-    "build": "vite build && npm run copy-build",
-    "copy-build": "rm -rf ../public/assets && cp -r dist/* ../public && rm -rf dist",
+    "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

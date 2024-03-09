@@ -14,17 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
-
-// routes/web.php
-
-Route::get('/', function () {
-    return File::get(public_path() . '/index.html');
+Route::get('/', static function () {
+    return view('welcome');
 });
 
-Route::get('/{any}', function () {
-    return File::get(public_path() . '/index.html');
-})->where('any', '.*');
+
