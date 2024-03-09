@@ -41,7 +41,7 @@ const Profile = () => {
         {editing ? (
           <input type="text" name="name" value={editedUser.name || ''} onChange={handleInputChange}/>) : (name)}
       </h1>
-      <h3>({type} Profile)</h3>
+      <h3>({type})</h3>
     </div>
     {!editing && <button onClick={() => setEditing(true)}>Edit Profile</button>}
     {editing && <button onClick={handleSaveChanges}>Save Changes</button>}

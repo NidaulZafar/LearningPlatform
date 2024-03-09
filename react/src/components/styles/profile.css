@@ -6,6 +6,7 @@
   background-color: #f0f0f0;
   padding: 20px;
   border-bottom: 1px solid #ccc;
+  border-radius: 10px;
 }
 
 .avatar {
@@ -17,7 +18,7 @@
 
 .profile-info {
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
 .profile-info h1 {
@@ -29,7 +30,7 @@
 .profile-info h3 {
   color: #666;
   font-weight: normal;
-  margin: 0 0 0 10px;
+  margin: 0;
 }
 
 .profile-header button {
@@ -49,6 +50,9 @@
 
 .profile-details {
   padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .profile-details h2 {
@@ -68,12 +72,11 @@
 
 .profile-details strong {
   font-weight: bold;
-  margin-right: 0;
 }
 
 .profile-details p {
   color: #666;
-  margin-top: 0;
+  margin: 0;
 }
 
 .profile-details input[type="text"],
@@ -81,6 +84,8 @@
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
 .profile-details textarea {
