@@ -48,9 +48,12 @@ const Profile = () => {
   </div>);
 
   const renderProfileDetails = () => (<div className="profile-details">
+    <div className="profile-section">
     <h2>About Me</h2>
     <p>{editing ? <textarea name="bio" value={editedUser.bio || ''}
                             onChange={handleInputChange}/> : bio || "Bio not provided"}</p>
+    </div>
+    <div className="profile-section">
     <h2>Contact Information</h2>
     <ul>
       <li>
@@ -62,6 +65,8 @@ const Profile = () => {
                            onChange={handleInputChange}/>) : (phone || "Phone number not provided")}
       </li>
     </ul>
+    </div>
+    <div className="profile-section">
     {type === "instructor" && (<>
       <h2>Occupation</h2>
       <p>
@@ -74,6 +79,7 @@ const Profile = () => {
       {editing ? (<input type="text" name="education" value={editedUser.education || ''}
                          onChange={handleInputChange}/>) : (education || "Education not provided")}
     </p>
+    </div>
   </div>);
 
   return (<>

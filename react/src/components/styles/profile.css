@@ -55,19 +55,19 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.profile-details .profile-section {
+  margin-bottom: 20px;
+}
 .profile-details h2 {
   font-size: 20px;
-  margin: 0 0 20px 0;
+  margin: 0;
   color: #333;
 }
 
 .profile-details ul {
   list-style: none;
   padding: 0;
-}
-
-.profile-details li {
-  margin-bottom: 10px;
+  margin: 0;
 }
 
 .profile-details strong {
