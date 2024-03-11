@@ -30,7 +30,6 @@ const fetchCourseDetail = async (id, setCourse, setError) => {
   }
 };
 
-
 const enrollInCourse = async (courseId, setEnrolled, setMessage, setEnrollmentId) => {
   try {
     const response = await axiosClient.post('/enroll', {course_id: courseId});
