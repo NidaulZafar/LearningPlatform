@@ -6,6 +6,7 @@ const Quiz = () => {
       <Sidebar/>
       <main className="content">
         Quiz page coming soon!
+        
       </main>
     </>
   );
