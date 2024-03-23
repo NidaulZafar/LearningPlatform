@@ -16,6 +16,7 @@ import {
   FaPhoneAlt
 } from 'react-icons/fa';
 
+a
 
 const Sidebar = () => {
   const {user, token, setUser, setToken} = useStateContext()
@@ -24,6 +25,7 @@ const Sidebar = () => {
   const toggleCourses = () => {
     setCoursesExpanded(!isCoursesExpanded);
   };
+
 
   const logout = (e) => {
     e.preventDefault()
