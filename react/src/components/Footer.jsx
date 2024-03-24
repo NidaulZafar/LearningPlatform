@@ -7,7 +7,7 @@ const Footer = () => {
       <small>
         © 2024 made with
         <span>&#10084;</span> by -
-        <a target="_blank" href="#"> Zee </a>
+        <Link target="_blank" href="#"> Zee </Link>
       </small>
       <br/>
       <div className="social-links">
