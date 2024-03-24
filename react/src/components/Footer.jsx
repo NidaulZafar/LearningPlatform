@@ -17,12 +17,12 @@ const Footer = () => {
         <Link href="https://twitter.com/" target="_blank">
           <i className="ri-twitter-fill ri-xl"></i>
         </Link>
-        <a href="https://codepen.io/" target="_blank">
+        <Link href="https://codepen.io/" target="_blank">
           <i className="ri-codepen-fill ri-xl"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/nidaulzafar/" target="_blank">
+        </Link>
+        <Link href="https://www.linkedin.com/in/nidaulzafar/" target="_blank">
           <i className="ri-linkedin-box-fill ri-xl"></i>
-        </a>
+        </Link>
       </div>
     </footer>)
 }
