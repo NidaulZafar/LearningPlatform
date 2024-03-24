@@ -67,11 +67,11 @@ const ModuleDetail = () => {
               <h4>{video.title}</h4>
               <p>Description: {video.description}</p>
               <p>Duration: {video.duration} minutes</p>
-              <a href={video.video_url} target="_blank" rel="noopener noreferrer">
+              <Link href={video.video_url} target="_blank" rel="noopener noreferrer">
                 <img src={video.thumbnail}
                      alt={video.title}/>
                 <br/>
-                Watch Video</a>
+                Watch Video</Link>
             </li>))}
           </ul>
         </div>
