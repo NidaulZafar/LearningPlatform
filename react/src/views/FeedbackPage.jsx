@@ -108,7 +108,7 @@ const FeedbackPage = () => {
                      required/>
             </div>
             <div className="input-container">
-              <label className="label">Email:</label>
+              <label className="label">Email<span className="required">*</span>:</label>
               <input type="email" name="email" value={formData.email} onChange={handleChange} className="input-field"
                      required/>
             </div>
