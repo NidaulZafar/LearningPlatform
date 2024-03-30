@@ -113,7 +113,7 @@ const FeedbackPage = () => {
                      required/>
             </div>
             <div className="input-container">
-              <label className="label">Message:</label>
+              <label className="label">Message<span className="required">*</span>:</label>
               <textarea name="message" value={formData.message} onChange={handleChange} className="textarea-field"
                         required/>
             </div>
