@@ -103,7 +103,7 @@ const FeedbackPage = () => {
                      required/>
             </div>
             <div className="input-container">
-              <label className="label">Title<span className="required">*</span>:</label>
+              <label className="label">Title<span className="required">*</span></label>
               <input type="text" name="title" value={formData.title} onChange={handleChange} className="input-field"
                      required/>
             </div>
