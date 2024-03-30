@@ -98,7 +98,7 @@ const FeedbackPage = () => {
           <h1>Feedback Page</h1>
           <form onSubmit={handleSubmit}>
             <div className="input-container">
-              <label className="label">Name<span className="required">*</span>:</label>
+              <label className="label">Name<span className="required">*</span></label>
               <input type="text" name="name" value={formData.name} onChange={handleChange} className="input-field"
                      required/>
             </div>
