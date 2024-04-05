@@ -50,24 +50,31 @@ const Sidebar = () => {
   const renderInstructorSidebar = () => {
     return (
       <ul className="submenu">
-        <li><Link to='/courses'>All Courses</Link></li>
-        <li><Link to='/your-courses'>Your Courses</Link></li>
-        <li><Link to='/courses/new'>New Course</Link></li>
+        <li>
+          <Link to="/courses">All Courses</Link>
+        </li>
+        <li>
+          <Link to="/your-courses">Your Courses</Link>
+        </li>
+        <li>
+          <Link to="/courses/new">New Course</Link>
+        </li>
       </ul>
     );
   };
 
-
   return (
     <aside className="sidebar">
       <div className="logo">
-        <img src={user.avatar || `https://i.pravatar.cc/150?u=${user.name}`}
-             alt="User Avatar"
-             className="user-avatar"
+        <img
+          src={user.avatar || `https://i.pravatar.cc/150?u=${user.name}`}
+          alt="User Avatar"
+          className="user-avatar"
         />
-        <img src={`https://ui-avatars.com/api/?name=${user.name}&background=random&rounded=true&size=150&color=random`}
-             alt="User Avatar"
-             className="user-avatar"
+        <img
+          src={`https://ui-avatars.com/api/?name=${user.name}&background=random&rounded=true&size=150&color=random`}
+          alt="User Avatar"
+          className="user-avatar"
         />
       </div>
 
