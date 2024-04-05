@@ -13,12 +13,11 @@ import {
   FaChevronUp,
   FaHome,
   FaEnvelope,
-  FaPhoneAlt
-} from 'react-icons/fa';
-
+  FaPhoneAlt,
+} from "react-icons/fa";
 
 const Sidebar = () => {
-  const {user, token, setUser, setToken} = useStateContext()
+  const { user, token, setUser, setToken } = useStateContext();
   const [isCoursesExpanded, setCoursesExpanded] = useState(false);
 
   const toggleCourses = () => {
