@@ -82,66 +82,68 @@ const Sidebar = () => {
         <h1>Dashboard</h1>
         <span className="menu-header">GENERAL</span>
         <div className="menu-item">
-          <Link to='/dashboard'>
-            <FaHome/>
+          <Link to="/dashboard">
+            <FaHome />
             <span>Home</span>
           </Link>
         </div>
         <div className="menu-item">
-          <FaBook/>
+          <FaBook />
           <span onClick={toggleCourses}>
-            Courses {isCoursesExpanded ? <FaChevronUp/> : <FaChevronDown/>}
+            Courses {isCoursesExpanded ? <FaChevronUp /> : <FaChevronDown />}
           </span>
           {isCoursesExpanded && (
             <ul className="submenu">
-              {user.type === 'student' ? renderStudentSidebar() : user.type === 'instructor' && renderInstructorSidebar()}
+              {user.type === "student"
+                ? renderStudentSidebar()
+                : user.type === "instructor" && renderInstructorSidebar()}
             </ul>
           )}
         </div>
 
         <div className="menu-item">
-          <Link to='/assignments'>
-            <FaFileAlt/>
+          <Link to="/assignments">
+            <FaFileAlt />
             <span>Assignments</span>
           </Link>
         </div>
 
         <div className="menu-item">
-          <Link to='/quiz'>
-            <FaClipboardCheck/>
+          <Link to="/quiz">
+            <FaClipboardCheck />
             <span>Quiz</span>
           </Link>
         </div>
 
         <div className="menu-item">
-          <Link to='/announcements'>
-            <FaEnvelope/>
+          <Link to="/announcements">
+            <FaEnvelope />
             <span>Announcements</span>
           </Link>
         </div>
         <span className="menu-header">EXTRA</span>
 
         <div className="menu-item">
-          <Link to='/feedback'>
-            <FaComment/>
+          <Link to="/feedback">
+            <FaComment />
             <span>Feedback</span>
           </Link>
         </div>
 
         <div className="menu-item">
-          <Link to='/contact'>
-            <FaPhoneAlt/>
+          <Link to="/contact">
+            <FaPhoneAlt />
             <span>Contact Us</span>
           </Link>
         </div>
 
         <div className="menu-item" onClick={logout}>
-          <FaSignOutAlt/>
+          <FaSignOutAlt />
           <span>Logout</span>
         </div>
       </div>
     </aside>
-  )
-}
+  );
+};
 
 export default Sidebar;
