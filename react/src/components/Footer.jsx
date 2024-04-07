@@ -8,7 +8,9 @@ const Footer = () => {
       <small>
         © 2024 made with
         <span>&#10084;</span> by -
-        <Link target="_blank" href="#">Zee</Link>
+        <Link target="_blank" href="#">
+          Zee
+        </Link>
       </small>
       <br />
       <div className="social-links">
