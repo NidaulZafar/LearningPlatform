@@ -68,7 +68,9 @@ const ModuleDetail = () => {
       <main className="content">
         <div className="module-detail">
           <h2>{title}</h2>
-          <p>Status: {moduleData.status}</p>
+          <p>
+            Status: <strong>{moduleData.status}</strong>
+          </p>
           <p>Description: {description}</p>
           <p>Content: {content}</p>
           <p>Duration: {duration} minutes</p>
