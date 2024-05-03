@@ -82,7 +82,7 @@ const ModuleDetail = () => {
                   <h4>{video.title}</h4>
                   <p>Description: {video.description}</p>
                   <p>Duration: {video.duration} minutes</p>
-                  <Link
+                  <a
                     href={video.video_url}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -90,7 +90,7 @@ const ModuleDetail = () => {
                     <img src={video.thumbnail} alt={video.title} />
                     <br />
                     Watch Video
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
