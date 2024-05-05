@@ -21,12 +21,13 @@ class InstructorFactory extends Factory
     protected $model = Instructor::class;
     public function definition(): array
     {
+        $randomNumber = $this->faker->numberBetween(1, 70);
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'password' => Hash::make('Test1234'),
             'bio' => $this->faker->paragraph(),
-            'avatar' => 'https://i.pravatar.cc/300',
+            'avatar' => 'https://i.pravatar.cc/300?img=$randomNumber',
             'education' => $this->faker->sentence(),
             'occupation' => $this->faker->sentence(),
             'phone' => $this->faker->phoneNumber(),
