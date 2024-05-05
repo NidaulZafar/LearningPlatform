@@ -4,6 +4,7 @@ import Sidebar from "./Sidebar.jsx";
 import "./styles/profile.css";
 import { useStateContext } from "../contexts/ContextProvider.jsx";
 import {useParams} from "react-router-dom";
+import {renderProfileDetails} from "./ProfileUtils.jsx";
 
 const PublicProfile = () => {
 
@@ -39,13 +40,7 @@ const PublicProfile = () => {
             <h1>{instructor.name}</h1>
           </div>
           <div className="profile-info">
-            <p><strong>Email:</strong></p><p>{instructor.email}</p>
-            <p><strong>Phone:</strong></p><p>{instructor.phone}</p>
-            <p><strong>Education:</strong></p><p>{instructor.education}</p>
-            <p><strong>Occupation:</strong></p><p>{instructor.occupation}</p>
-          </div>
-          <div className="profile-bio">
-            <p><strong>Bio:</strong></p><p>{instructor.bio}</p>
+            {renderProfileDetails(instructor, false, null, null)}
           </div>
         </div>
       </main>
