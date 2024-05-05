@@ -10,7 +10,7 @@
 
 ## About the Project
 I designed and built this web app to practice my coding skills utilizing the knowledge of React and Laravel.
-The web version of this project can be seen [here](#).
+The web version of this project can be seen [here](https://learning-management-a43483664054.herokuapp.com/).
 
 <div align="center">
 <img src="#" width="600" height="400" alt="WelcomeScreen">
