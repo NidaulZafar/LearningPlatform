@@ -75,3 +75,4 @@ I would like to express my deepest appreciation to a number of people and resour
 * [Othneil Drew](https://github.com/othneildrew) For his carefully designed readme template that helped me design mine.
 * [Shields](https://shields.io/) For their easy to design badges that I have used above.
 * [Colorlib](https://colorlib.com/) For their Sign-up / Sign-in page.
+* [Mohamed Azouaoui](https://codepen.io/azouaoui-med) For their Sidebar template.
