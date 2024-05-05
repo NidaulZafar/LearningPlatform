@@ -29,10 +29,9 @@ use Illuminate\Support\Facades\Route;
 Route::post('/signup', [AuthController::class, 'signup']);
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::group(['middleware' => 'auth:sanctum'], static function () {
-    Route::get('/user', static function () {
-        return auth()->user();
-    });
+
+// Protected routes
+Route::middleware(['auth:sanctum'])->group(function (){
     Route::get('/instructor-profile', [InstructorController::class, 'getInstructorProfile']);
     Route::get('/student-profile', [StudentController::class, 'getStudentProfile']);
     Route::put('/students/{id}', [StudentController::class, 'update']);
@@ -41,9 +40,6 @@ Route::group(['middleware' => 'auth:sanctum'], static function () {
     Route::post('/courses', [CourseController::class, 'store']);
     Route::get('/courses/instructor/{id}', [CourseController::class, 'allCourses']);
     Route::get('/instructors/{id}', [InstructorController::class, 'show']);
-});
-
-Route::group(['middleware' => 'auth:sanctum'], static function () {
     Route::get('/enrolled-courses', [EnrollmentController::class, 'getEnrolledCourses']);
     Route::post('/enroll', [EnrollmentController::class, 'enrollStudent']);
     Route::delete('/enroll/{enrollmentId}', [EnrollmentController::class, 'unenrollStudent']);
@@ -54,7 +50,6 @@ Route::group(['middleware' => 'auth:sanctum'], static function () {
     Route::get('/student_module', [StudentModuleController::class, 'getStudentModules']);
     Route::get('/module/{id}', [ModuleController::class, 'getModuleContent']);
     Route::put('/module/{id}/complete', [ModuleController::class, 'markAsCompleted']);
+    Route::get('/courses', [CourseController::class, 'index']);
+    Route::get('/announcements', [AnnouncementController::class, 'index']);
 });
-
-Route::get('/courses', [CourseController::class, 'index']);
-Route::get('/announcements', [AnnouncementController::class, 'index']);
