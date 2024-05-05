@@ -74,3 +74,4 @@ I would like to express my deepest appreciation to a number of people and resour
 * [HackYourFuture Team](https://github.com/HackYourFuture) who laid the foundation for me in web development.
 * [Othneil Drew](https://github.com/othneildrew) For his carefully designed readme template that helped me design mine.
 * [Shields](https://shields.io/) For their easy to design badges that I have used above.
+* [Colorlib](https://colorlib.com/) For their Sign-up / Sign-in page.
