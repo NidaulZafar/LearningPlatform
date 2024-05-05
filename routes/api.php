@@ -29,9 +29,10 @@ use Illuminate\Support\Facades\Route;
 Route::post('/signup', [AuthController::class, 'signup']);
 Route::post('/login', [AuthController::class, 'login']);
 
-
-// Protected routes
-Route::middleware(['auth:sanctum'])->group(function (){
+Route::group(['middleware' => 'auth:sanctum'], static function () {
+    Route::get('/user', static function () {
+        return auth()->user();
+    });
     Route::get('/instructor-profile', [InstructorController::class, 'getInstructorProfile']);
     Route::get('/student-profile', [StudentController::class, 'getStudentProfile']);
     Route::put('/students/{id}', [StudentController::class, 'update']);
@@ -50,6 +51,7 @@ Route::middleware(['auth:sanctum'])->group(function (){
     Route::get('/student_module', [StudentModuleController::class, 'getStudentModules']);
     Route::get('/module/{id}', [ModuleController::class, 'getModuleContent']);
     Route::put('/module/{id}/complete', [ModuleController::class, 'markAsCompleted']);
-    Route::get('/courses', [CourseController::class, 'index']);
-    Route::get('/announcements', [AnnouncementController::class, 'index']);
 });
+
+Route::get('/courses', [CourseController::class, 'index']);
+Route::get('/announcements', [AnnouncementController::class, 'index']);
