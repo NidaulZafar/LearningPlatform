@@ -36,12 +36,11 @@ class CourseController extends Controller
 
     public function create()
     {
-        // Define the logic for creating a new course
+        // creating a new course
     }
 
     public function store(Request $request): JsonResponse
     {
-        // Validate the incoming request data
 
         $courseData = $request->all();
 
@@ -61,23 +60,22 @@ class CourseController extends Controller
             }
         }
 
-        // Return success response
         return response()->json(['message' => 'Course created successfully'], 201);
     }
 
     public function edit($course)
     {
-        // Define the logic for editing an existing course
+        // Editing an existing course
     }
 
     public function update(Request $request, $course)
     {
-        // Define the logic to update an existing course
+        // Update an existing course
     }
 
     public function destroy($course)
     {
-        // Define the logic to delete a course
+        // Delete a course
     }
 
     public function allCourses($instructorId): JsonResponse
