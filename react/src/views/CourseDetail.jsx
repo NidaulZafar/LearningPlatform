@@ -65,7 +65,10 @@ const disEnrollFromCourse = async (enrollmentId, setEnrolled, setMessage, setErr
 
 const CourseDetailComponent = ({course, enrolled, enrollmentId, handleEnroll, handleUnenroll, message, user}) => {
   const {
-    title, instructor: {name: instructorName}, cover_image, description, price, modules,
+    title, instructor: {
+      id: instructorId,
+      name: instructorName
+    }, cover_image, description, price, modules,
   } = course;
 
 
@@ -75,7 +78,7 @@ const CourseDetailComponent = ({course, enrolled, enrollmentId, handleEnroll, ha
       alt={`Cover for ${title}`}
     />
     <h2>{title}</h2>
-    <p>Instructor: {instructorName}</p>
+    <p>Instructor: <Link to={`/instructors/${instructorId}`}>{instructorName}</Link></p>
     <p>Description: {description}</p>
     <p>Price: ${price}</p>
     {modules.length > 0 && (<>
