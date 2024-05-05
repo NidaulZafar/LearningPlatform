@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="#">
-    <img src="#" alt="Logo" width="120" height="100">
+    <img src="https://raw.githubusercontent.com/NidaulZafar/LearningPlatform/master/react/src/assets/logo.png" alt="Logo" width="120" height="100">
   </a>
   </div>
 
