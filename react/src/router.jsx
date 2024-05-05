@@ -16,6 +16,7 @@ import Assignments from "./components/Assignments.jsx";
 import Quiz from "./components/Quiz.jsx";
 import NewCourse from "./components/NewCourse.jsx";
 import InstructorsCourses from "./components/InstructorsCourses.jsx";
+import PublicProfile from "./components/PublicProfile.jsx";
 
 const router = createBrowserRouter([{
   path: "/", element: <DefaultLayout/>, children: [{
@@ -46,6 +47,8 @@ const router = createBrowserRouter([{
     path: "/assignments/:id", element: <Assignments/>
   }, {
     path: "/quiz", element: <Quiz/>
+  }, {
+    path: "/instructors/:instructorId", element: <PublicProfile/>
   }]
 }, {
   path: "/", element: <GuestLayout/>, children: [{
