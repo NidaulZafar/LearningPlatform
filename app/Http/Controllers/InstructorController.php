@@ -40,4 +40,13 @@ class InstructorController extends Controller
 
         return response()->json($instructor);
     }
+
+    public function show($id): JsonResponse
+    {
+        $instructor = Instructor::findOrFail($id);
+
+        return $instructor
+            ? response()->json($instructor)
+            : response()->json(['error' => 'Instructor not found.'], 404);
+    }
 }
