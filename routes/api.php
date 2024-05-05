@@ -37,9 +37,12 @@ Route::group(['middleware' => 'auth:sanctum'], static function () {
     Route::get('/student-profile', [StudentController::class, 'getStudentProfile']);
     Route::put('/students/{id}', [StudentController::class, 'update']);
     Route::put('/instructors/{id}', [InstructorController::class, 'update']);
-    Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/courses', [CourseController::class, 'store']);
+    Route::get('/courses/{id}', [CourseController::class, 'show']);
     Route::get('/courses/instructor/{id}', [CourseController::class, 'allCourses']);
+    Route::get('/student_module', [StudentModuleController::class, 'getStudentModules']);
+    Route::get('/module/{id}', [ModuleController::class, 'getModuleContent']);
+    Route::put('/module/{id}/complete', [ModuleController::class, 'markAsCompleted']);
     Route::get('/instructors/{id}', [InstructorController::class, 'show']);
     Route::get('/enrolled-courses', [EnrollmentController::class, 'getEnrolledCourses']);
     Route::post('/enroll', [EnrollmentController::class, 'enrollStudent']);
@@ -47,11 +50,7 @@ Route::group(['middleware' => 'auth:sanctum'], static function () {
     Route::post('/feedback', [FeedbackController::class, 'store']);
     Route::get('/feedback', [FeedbackController::class, 'index']);
     Route::post('/contact', [ContactController::class, 'store']);
-    Route::get('/courses/{id}', [CourseController::class, 'show']);
-    Route::get('/student_module', [StudentModuleController::class, 'getStudentModules']);
-    Route::get('/module/{id}', [ModuleController::class, 'getModuleContent']);
-    Route::put('/module/{id}/complete', [ModuleController::class, 'markAsCompleted']);
+    Route::get('/courses', [CourseController::class, 'index']);
+    Route::get('/announcements', [AnnouncementController::class, 'index']);
+    Route::post('/logout', [AuthController::class, 'logout']);
 });
-
-Route::get('/courses', [CourseController::class, 'index']);
-Route::get('/announcements', [AnnouncementController::class, 'index']);
