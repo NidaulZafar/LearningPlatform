@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth:sanctum'], static function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/courses', [CourseController::class, 'store']);
     Route::get('/courses/instructor/{id}', [CourseController::class, 'allCourses']);
+    Route::get('/instructors/{id}', [InstructorController::class, 'show']);
 });
 
 Route::group(['middleware' => 'auth:sanctum'], static function () {
