@@ -1,4 +1,3 @@
-// axios-client.js
 import axios from 'axios';
 
 
