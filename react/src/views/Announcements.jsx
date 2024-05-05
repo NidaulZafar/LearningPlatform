@@ -7,7 +7,6 @@ const Announcements = () => {
     id: 0, title: "", content: "", expiry_date: "", created_at: "", updated_at: "", publish_date: ""
   }]);
 
-  // Fetch announcements from the API
   useEffect(() => {
     const fetchAnnouncements = async () => {
       try {
