@@ -63,7 +63,6 @@ class EnrollmentController extends Controller
             return response()->json(['message' => 'Enrolled successfully', 'enrollment_id' => $enrollment->id], 200);
         } catch (\Exception $e) {
             DB::rollBack();
-            Log::error('Enrollment failed', ['error' => $e->getMessage()]);
             return response()->json(['message' => 'Enrollment failed'], 500);
         }
     }
