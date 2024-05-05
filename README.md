@@ -12,11 +12,6 @@
 I designed and built this web app to practice my coding skills utilizing the knowledge of React and Laravel.
 The web version of this project can be seen [here](https://learning-management-a43483664054.herokuapp.com/).
 
-<div align="center">
-<img src="#" width="600" height="400" alt="WelcomeScreen">
-</div>
-
-
 ## Usage
 The app provides a platform where instructors and students can come together to enjoy a learning environment
 * First of all, users can sign up as an instructor or student.
