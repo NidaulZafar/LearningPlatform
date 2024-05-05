@@ -22,11 +22,12 @@ class CourseFactory extends Factory
     public function definition(): array
     {
         $instructor = Instructor::inRandomOrder()->first();
+        $randomNumber = $this->faker->numberBetween(1, 70);
         return [
             'title' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
             'instructor_id' => $instructor->id,
-            'cover_image' => 'https://i.pravatar.cc/300',
+            'cover_image' => "https://i.pravatar.cc/300?img=$randomNumber",
             'code' => $this->faker->word() . ' ' . $this->faker->numberBetween(100, 999),
             'price' => $this->faker->numberBetween(1000, 10000),
         ];
