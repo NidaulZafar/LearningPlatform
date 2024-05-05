@@ -78,7 +78,6 @@ class AuthController extends Controller
             ]);
         }
 
-        // If the user is not authenticated, return an appropriate response
         return response()->json([
             'message' => 'User not authenticated'
         ], 401);
