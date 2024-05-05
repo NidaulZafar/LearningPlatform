@@ -63,9 +63,7 @@ const disEnrollFromCourse = async (enrollmentId, setEnrolled, setMessage, setErr
   }
 }
 
-const CourseDetailComponent = ({
-                                 course, enrolled, enrollmentId, handleEnroll, handleUnenroll, message, user
-                               }) => {
+const CourseDetailComponent = ({course, enrolled, enrollmentId, handleEnroll, handleUnenroll, message, user}) => {
   const {
     title, instructor: {name: instructorName}, cover_image, description, price, modules,
   } = course;
