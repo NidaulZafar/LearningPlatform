@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Random\RandomException;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<Video>
+ * @extends Factory<Video>
  */
 class VideoFactory extends Factory
 {
