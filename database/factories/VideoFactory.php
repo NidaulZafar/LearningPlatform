@@ -38,7 +38,13 @@ class VideoFactory extends Factory
     {
         return $this->afterCreating(function (Video $video) {
             $moduleIds = Module::pluck('id')->toArray();
-            $video->modules()->attach($this->faker->randomElements($moduleIds, $this->faker->numberBetween(1, count($moduleIds))));
+
+            shuffle($moduleIds);
+
+            $selectedModuleIds = array_slice($moduleIds, 0, random_int(3, 4));
+            foreach ($selectedModuleIds as $moduleId) {
+                $video->modules()->attach($moduleId);
+            }
         });
     }
 }
