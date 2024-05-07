@@ -13,6 +13,7 @@ use Tests\TestCase;
 class AuthControllerTest extends TestCase
 {
     use RefreshDatabase;
+
     /** @test */
     public function it_can_register_a_student(): void
     {
