@@ -20,8 +20,8 @@ class AuthControllerTest extends TestCase
         Artisan::call('db:seed');
 
         $data = [
-            'name' => 'John Doe',
-            'email' => 'john@example.com',
+            'name' => 'Full Name',
+            'email' => 'name@test.com',
             'password' => 'password',
             'password_confirmation' => 'password',
             'type' => 'student'
@@ -44,12 +44,12 @@ class AuthControllerTest extends TestCase
 
         $student = Student::create([
             'name' => 'Test Student',
-            'email' => 'test@example.com',
+            'email' => 'test@test.com',
             'password' => bcrypt('password'),
         ]);
 
         $data = [
-            'email' => 'test@example.com',
+            'email' => 'test@test.com',
             'password' => 'password',
             'type' => 'student'
         ];
