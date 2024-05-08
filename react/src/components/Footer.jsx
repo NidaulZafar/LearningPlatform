@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import "./styles/footer.css";
 
 const Footer = () => {
@@ -12,7 +12,7 @@ const Footer = () => {
           Zee
         </Link>
       </small>
-      <br />
+      <br/>
       <div className="social-links">
         <Link href="https://github.com/nidaulzafar" target="_blank">
           <i className="ri-github-fill ri-xl"></i>

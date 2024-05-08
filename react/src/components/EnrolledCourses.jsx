@@ -1,11 +1,11 @@
-import { useStateContext } from "../contexts/ContextProvider.jsx";
-import { useEffect, useState } from "react";
+import {useStateContext} from "../contexts/ContextProvider.jsx";
+import {useEffect, useState} from "react";
 import axiosClient from "../axios-client.js";
 import Sidebar from "./Sidebar.jsx";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 export default function EnrolledCourses() {
-  const { user } = useStateContext();
+  const {user} = useStateContext();
   const [enrolledCourses, setEnrolledCourses] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -29,13 +29,13 @@ export default function EnrolledCourses() {
   };
 
   function formatDate(dateString) {
-    const options = { year: "numeric", month: "long", day: "numeric" };
+    const options = {year: "numeric", month: "long", day: "numeric"};
     return new Date(dateString).toLocaleDateString(undefined, options);
   }
 
   return (
     <>
-      <Sidebar />
+      <Sidebar/>
       <main className="content">
         <h1>Enrolled Courses</h1>
         <div className="course-list">
