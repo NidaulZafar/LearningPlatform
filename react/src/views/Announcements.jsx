@@ -35,8 +35,7 @@ const Announcements = () => {
                   <li key={announcement.id}>
                     <h2>{announcement.title}</h2>
                     <p>{announcement.content}</p>
-                    <p>Published on: {announcement.publish_date}</p>
-                    <p>Expires on: {announcement.expiry_date}</p>
+                    <p>Published on: {new Date(announcement.publish_date).toLocaleDateString()}</p>
                     <hr />
                   </li>
                 ))}
