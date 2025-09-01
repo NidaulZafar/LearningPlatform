@@ -46,6 +46,9 @@ This is a basic app that fulfills the requirements for the MVP of a learning pla
     - [ ] Comments on the modules
     - [ ] Generate certificates on completion
 
+## Running the Project
+To run the project locally, run the local servers using ```npm run dev``` on frontend folder react and ```php artisan serve``` on backend. Database can be seeded using the command ```php artisan db:seed```
+
 ## Contributing
 
 This is in no way a perfect application. I am in the process of learning and implementing knowledge. Therefore, contributions, suggestions and feedbacks are **heartily welcome**. If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
